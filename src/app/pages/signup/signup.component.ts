@@ -1,13 +1,16 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { RegisterDTO } from 'src/app/dtos/RegisterDTO';
+import { RegisterDTO } from 'src/app/dtos/register.dto';
+import { BaseComponent } from '../base/base.component';
+import { ApiResponse } from 'src/app/responses/api.response';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']
 })
-export class SignupComponent {
+export class SignupComponent extends BaseComponent {
   @ViewChild('registerForm') registerForm!: NgForm;
 
   email: string;
@@ -19,6 +22,8 @@ export class SignupComponent {
   roleId: number;
 
   constructor() {
+    super();
+
     this.email = '';
     this.username = '';
     this.password = '';
@@ -67,7 +72,7 @@ export class SignupComponent {
     //console.error(message);
     debugger
 
-    const registerDTO:RegisterDTO = {
+    const registerDTO: RegisterDTO = {
       email: this.email,
       username: this.username,
       password: this.password,
@@ -76,5 +81,22 @@ export class SignupComponent {
       date_of_birth: this.dateOfBirth,
       role_id: 2
     }
+
+    this.userService.register(registerDTO).subscribe({
+      next: (apiResponse: ApiResponse) => {
+        debugger;
+        const confirmation = window
+          .confirm('Đăng ký thành công, mời bạn đăng nhập. Bấm "OK" để chuyển đến trang đăng nhập.');
+        if (confirmation) {
+          this.router.navigate(['/signin']);
+        }
+      },
+      complete: () => {
+        debugger;
+      },
+      error: (error: HttpErrorResponse) => {
+        debugger;
+      }
+    });
   }
 }

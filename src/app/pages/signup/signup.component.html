@@ -31,24 +31,64 @@
                     accept=".jpg, .jpeg, .png, .svg" />
             </div>
 
+            <!-- Username -->
             <div class="user-container">
-                <label>User name</label>
-                <input type="text" placeholder="User name..." id="username">
+                <label for="username">User name</label>
+                <input type="text" placeholder="User name..." id="username"
+                    name="username" [(ngModel)]="username" required>
             </div>
 
+            <!-- Email Address -->
             <div class="email-container">
-                <label>Email address</label>
-                <input type="text" placeholder="Email address..." id="email">
+                <label for="email">Email address</label>
+                <input type="email" placeholder="Email address..." id="email"
+                    name="email" [(ngModel)]="email" required>
             </div>
+
+            <!-- Password -->
             <div id="password-container">
-                <label>Password</label>
+                <label for="password">Password</label>
                 <div id="password-elements">
                     <input type="password" placeholder="Password..."
-                        id="password">
+                        id="password" name="password" [(ngModel)]="password"
+                        required>
                     <i class="fa-solid fa-eye-slash" id="eye-icon"></i>
                 </div>
             </div>
-            <button id="signup-btn" routerLink="/login">signup</button>
+
+            <!-- Retype Password -->
+            <div id="retype-password-container">
+                <label for="retypePassword">Retype Password</label>
+                <div id="password-elements">
+                    <input type="password" placeholder="Retype password..."
+                        id="retypePassword" name="retypePassword"
+                        [(ngModel)]="retypePassword"
+                        required>
+                    <i class="fa-solid fa-eye-slash" id="eye-icon"></i>
+                </div>
+            </div>
+
+            <!-- Country -->
+            <div class="country-container">
+                <label for="country">Country</label>
+                <select id="country" name="country" [(ngModel)]="country"
+                    required>
+                    <option value disabled selected>Select your country</option>
+                    <option value="USA">USA</option>
+                    <option value="UK">UK</option>
+                    <option value="Vietnam">Vietnam</option>
+                    <option value="Canada">Canada</option>
+                </select>
+            </div>
+
+            <!-- Date of Birth -->
+            <div class="dob-container">
+                <label for="dateOfBirth">Date of Birth</label>
+                <input type="date" id="dateOfBirth" name="dateOfBirth"
+                    [(ngModel)]="dateOfBirth" required>
+            </div>
+
+            <button id="signup-btn" (click)="register()">signup</button>
         </div>
     </form>
 
@@ -56,7 +96,7 @@
     <!-- Sign Up -->
     <div id="login-section">
         <h3>Already have an account ?</h3>
-        <button id="login-btn" routerLink="/login">LogIn for Spotify</button>
+        <button id="login-btn" routerLink="/signin">LogIn for Spotify</button>
     </div>
 
     <!-- reCAPTCHA -->

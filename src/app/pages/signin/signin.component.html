@@ -13,31 +13,38 @@
 <section id="main-container">
     <p id="validationMessage">Incorrect username or password.</p>
     <!-- Login Form -->
-    <div id="login-form">
-        <div class="email-container">
-            <label>Email address</label>
-            <input type="text" placeholder="Email address..." id="email">
-        </div>
-        <div id="password-container">
-            <label>Password</label>
-            <div id="password-elements">
-                <input type="password" placeholder="Password..."
-                    id="login-password">
-                <i class="fa-solid fa-eye-slash" id="eye-icon"></i>
+    <form #loginForm="ngForm" (ngSubmit)="login()" novalidate>
+        <div id="login-form">
+            <div class="email-container">
+                <label for="email">Email address</label>
+                <input type="email" id="email" name="email"
+                    placeholder="Email address..." [(ngModel)]="email" required>
             </div>
-        </div>
 
-        <div id="checkbox-login-container">
-            <div>
-                <p class="forgot-paragraph">Forgot your password?</p>
-                <div class="checkbox-container">
-                    <input type="checkbox" id="check-box" checked>
-                    <p>Remember me</p>
+            <div id="password-container">
+                <label for="login-password">Password</label>
+                <div id="password-elements">
+                    <input type="password" id="login-password" name="password"
+                        [(ngModel)]="password" placeholder="Password..."
+                        required>
+                    <i class="fa-solid fa-eye-slash" id="eye-icon"
+                        (click)="togglePasswordVisibility()"></i>
                 </div>
             </div>
-            <button id="login-btn" routerLink="/home">LOG IN</button>
+
+            <div id="checkbox-login-container">
+                <div>
+                    <p class="forgot-paragraph">Forgot your password?</p>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="check-box" checked>
+                        <p>Remember me</p>
+                    </div>
+                </div>
+                <button id="login-btn" type="submit">LOG IN</button>
+            </div>
         </div>
-    </div>
+    </form>
+
     <hr class="bottom-line">
     <!-- Sign Up -->
     <div id="sign-up-section">
