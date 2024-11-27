@@ -1,73 +1,57 @@
-<!-- Header Section -->
-<header>
-    <img
-        src="https://res.cloudinary.com/dlt4ash36/image/upload/v1700793822/Spotify_Logo_zhfwpq.png"
-        alt="Spotify-Logo" id="spotify-logo">
-    <div class="mode-container">
-        <i class="bi bi-brightness-high-fill" id="themeIcon"></i>
-        <p id="toggle-paragraph">Toggle Light Mode</p>
-    </div>
-</header>
-<div id="nav-line"></div>
-<!-- Login Section -->
-<section id="main-container">
-    <p id="validationMessage">Incorrect username or password.</p>
-    <!-- Login Form -->
-    <form #loginForm="ngForm" (ngSubmit)="login()" novalidate>
-        <div id="login-form">
-            <div class="email-container">
-                <label for="email">Email address</label>
-                <input type="email" id="email" name="email"
-                    placeholder="Email address..." [(ngModel)]="email" required>
-            </div>
+<div class="container" style="width: 70%;">
+    <app-header></app-header>
 
-            <div id="password-container">
-                <label for="login-password">Password</label>
-                <div id="password-elements">
-                    <input type="password" id="login-password" name="password"
-                        [(ngModel)]="password" placeholder="Password..."
+    <div id="nav-line"></div>
+    <!-- Login Section -->
+    <section id="main-container">
+        <p id="validationMessage">Incorrect username or password.</p>
+        <!-- Login Form -->
+        <form #loginForm="ngForm" (ngSubmit)="login()" novalidate>
+            <div id="login-form">
+                <div class="email-container">
+                    <label for="email">Email or Username</label>
+                    <input type="email" id="email" name="email" placeholder="Email address..." [(ngModel)]="email"
                         required>
-                    <i class="fa-solid fa-eye-slash" id="eye-icon"
-                        (click)="togglePasswordVisibility()"></i>
                 </div>
-            </div>
 
-            <div id="checkbox-login-container">
-                <div>
-                    <p class="forgot-paragraph">Forgot your password?</p>
-                    <div class="checkbox-container">
-                        <input type="checkbox" id="check-box" checked>
-                        <p>Remember me</p>
+                <div id="password-container">
+                    <label for="login-password">Password</label>
+                    <div id="password-elements">
+                        <input type="password" id="login-password" name="password" [(ngModel)]="password"
+                            placeholder="Password..." required>
+                        <i class="fa-solid fa-eye-slash" id="eye-icon" (click)="togglePasswordVisibility()"></i>
                     </div>
                 </div>
-                <button id="login-btn" type="submit">LOG IN</button>
+
+                <div id="optional-role-container">
+                    <label for="optional-role">Role</label>
+                    <select id="optional-role" [(ngModel)]="selectedRole" name="optionalRole">
+                        <option *ngFor="let role of roles" [ngValue]="role">
+                            {{ role.name }}
+                        </option>
+                    </select>
+                </div>
+
+
+                <div id="checkbox-login-container">
+                    <div>
+                        <p class="forgot-paragraph">Forgot your password?</p>
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="check-box" checked>
+                            <p>Remember me</p>
+                        </div>
+                    </div>
+                    <button id="login-btn" type="submit">LOG IN</button>
+                </div>
             </div>
+        </form>
+
+        <hr class="bottom-line">
+        <!-- Sign Up -->
+        <div id="sign-up-section">
+            <h3>Don't have an account ?</h3>
+            <button id="signup-btn" routerLink="/signup">Sign up for
+                Spotify</button>
         </div>
-    </form>
-
-    <hr class="bottom-line">
-    <!-- Sign Up -->
-    <div id="sign-up-section">
-        <h3>Don't have an account ?</h3>
-        <button id="signup-btn" routerLink="/signup">Sign up for
-            Spotify</button>
-    </div>
-
-    <!-- reCAPTCHA -->
-    <div class="captcha-container">
-        <aside class="recaptcha-section">
-            <div class="outside-recaptcha">
-                <img
-                    src="https://res.cloudinary.com/dlt4ash36/image/upload/v1700793821/recaptcha_b1yccf.png"
-                    alt="reCAPTCHA">
-                <p class="outside-para">Privacy - Terms</p>
-            </div>
-            <div class="inside-recaptcha">
-                <span class="inside-span">protected by <span
-                        class="re">re</span><span
-                        class="re-cap-span">captcha</span></span>
-                <p class="inside-para">Privacy - Terms</p>
-            </div>
-        </aside>
-    </div>
-</section>
+    </section>
+</div>

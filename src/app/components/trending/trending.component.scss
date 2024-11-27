@@ -1,0 +1,41 @@
+.trending-container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 99%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.trending-content .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+    justify-content: center;
+}
+
+.trending-content {
+    max-height: calc(2 * 320px);
+    overflow-y: hidden;
+    padding: 20px 0;
+}
+
+.trending-container {
+    width: 100%;
+}
+
+.trending-header {
+    width: 100%;
+    height: 50px;
+    font-size: 22px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+}
+
+.trending-content {
+    width: 100%;
+}

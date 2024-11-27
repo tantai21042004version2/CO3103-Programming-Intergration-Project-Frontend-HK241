@@ -1,0 +1,154 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #fff;
+    border-right: 1px solid #e0e0e0;
+    padding: 20px;
+}
+
+.sidebar .logo img {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.sidebar .menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar .menu ul li {
+    padding: 10px 0;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.sidebar .menu ul li:hover {
+    color: #1ed760;
+}
+
+.beta {
+    font-size: 10px;
+    color: #ff5a5a;
+    font-weight: bold;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px 40px;
+    background-color: #fff;
+}
+
+.profile-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.profile-avatar img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid #1ed760;
+    object-fit: cover;
+}
+
+.profile-info h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.profile-info p {
+    margin: 5px 0;
+    line-height: 1.6;
+    color: #555;
+}
+
+.streams-section {
+    margin: 20px 0;
+}
+
+.streams-section h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.streams-filter {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.streams-filter button {
+    background-color: #f1f1f1;
+    border: 1px solid #e0e0e0;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.streams-filter button.active,
+.streams-filter button:hover {
+    background-color: #1ed760;
+    color: #fff;
+    border-color: #1ed760;
+}
+
+.stream-promo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+}
+
+.stream-promo img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.stream-promo button {
+    background-color: #1ed760;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.stream-promo button:hover {
+    background-color: #19c255;
+}
+
+.recent-releases {
+    margin-top: 20px;
+}
+
+.recent-releases h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.recent-releases p {
+    color: #555;
+}

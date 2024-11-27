@@ -61,6 +61,15 @@ export class SigninComponent extends BaseComponent implements OnInit {
     }
     debugger;
 
+    if (!this.selectedRole) {
+      this.validationMessage = 'Please select a role.';
+      return;
+    }
+
+    if (!this.email.includes('@')) {
+      this.username = this.email;
+      this.email = '';
+    }
     const loginDTO: LoginDTO = {
       email: this.email,
       username: this.username,
@@ -71,27 +80,24 @@ export class SigninComponent extends BaseComponent implements OnInit {
 
     this.userService.login(loginDTO).subscribe({
       next: (apiResponse: ApiResponse) => {
+        debugger;
         const { token } = apiResponse.data;
         this.tokenService.setToken(token);
 
+        debugger;
         this.userService.getUserDetail(token).subscribe({
           next: (apiResponse2: ApiResponse) => {
             this.userResponse = {
               ...apiResponse2.data,
               date_of_birth: new Date(apiResponse2.data.date_of_birth),
             };
-
+            debugger;
             this.userService.saveUserResponseTLS(this.userResponse);
 
-            if (this.userResponse?.role.name == 'ADMIN') {
-              this.router.navigate(['/admin']);
-            } else if (this.userResponse?.role.name == 'LISTENER') {
-              this.router.navigate(['/listener']);
-            } else if (this.userResponse?.role.name == 'ARTIRST') {
-              this.router.navigate(['/artirst']);
-            }
+            this.router.navigate(['/home']);
           },
           error: (error: HttpErrorResponse) => {
+            this.validationMessage = 'Login failed. Please check your credentials.';
             console.error(error?.error?.message ?? '');
           }
         });

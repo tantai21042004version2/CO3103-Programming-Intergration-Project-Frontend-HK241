@@ -81,6 +81,7 @@ export class SignupComponent extends BaseComponent {
       date_of_birth: this.dateOfBirth,
       role_id: 2
     }
+    debugger;
 
     this.userService.register(registerDTO).subscribe({
       next: (apiResponse: ApiResponse) => {
