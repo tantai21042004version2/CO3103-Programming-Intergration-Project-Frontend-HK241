@@ -1,0 +1,17 @@
+<div class="audio-player">
+    <audio #audioPlayer (timeupdate)="updateProgress(audioPlayer)" (ended)="onEnded(audioPlayer)">
+        <source [src]="audioUrl" type="audio/mp3" />
+        Trình duyệt của bạn không hỗ trợ trình phát nhạc.
+    </audio>
+
+    <div class="controls">
+        <button (click)="togglePlayPause(audioPlayer)">
+            {{ isPlaying ? "⏸️" : "▶️" }}
+        </button>
+        <input type="range" [value]="currentTime" [max]="duration" (input)="seek(audioPlayer, $event)" />
+        <span>{{ formatTime(currentTime) }} / {{ formatTime(duration) }}</span>
+        <button (click)="setVolume(0.1)">🔉</button>
+        <input type="range" [value]="volume" min="0" max="1" step="0.1" (input)="changeVolume(audioPlayer, $event)" />
+        <button (click)="setVolume(1)">🔊</button>
+    </div>
+</div>

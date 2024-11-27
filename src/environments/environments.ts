@@ -1,5 +1,4 @@
 export const environment = {
-    prodution: false,
-    apiBaseUrl: 'http://localhost:8088/api/v1',
-    // apiBaseUrl: 'http://localhost:8088/api/v1',
+    prodution: true,
+    apiBaseUrl: 'https://co3103-programming-intergration-project-lmnw.onrender.com/api/v1',
 }

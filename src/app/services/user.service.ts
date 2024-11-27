@@ -54,7 +54,7 @@ export class UserService {
 
     private apiUserDetail = `${environment.apiBaseUrl}/users/details`;
     getUserDetail(token: string): Observable<ApiResponse> {
-        return this.http.post<ApiResponse>(this.apiUserDetail, {
+        return this.http.get<ApiResponse>(this.apiUserDetail, {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`
@@ -116,12 +116,10 @@ export class UserService {
 
     removeUserResponseTLS(): void {
         try {
-            // Remove the user data from local storage using the key
             this.localStorage?.removeItem('user');
             console.log('User data removed from local storage.');
         } catch (error) {
             console.error('Error removing user data from local storage:', error);
-            // Handle the error as needed
         }
     }
 }

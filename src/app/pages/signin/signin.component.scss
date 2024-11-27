@@ -1,287 +1,164 @@
-header {
-    height: 14vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 0 4rem;
-}
-
-#spotify-logo {
-    width: 150px;
-}
-
-.mode-container {
-    position: relative;
-}
-
-#themeIcon {
-    font-size: 25px;
-    cursor: pointer;
-}
-
-#toggle-paragraph {
-    display: none;
-    font-size: 13px;
-    position: absolute;
-    top: -1rem;
-    right: -2.5rem;
-    width: 115px;
-}
-
-@media (max-width:768px) {
-    header {
-        padding: 0 3rem 0 1rem;
-    }
-}
-
-#nav-line {
-    width: 100%;
-    border-top: 0.5px solid #dfdcdc;
-}
-
 /* Login Section */
-
 #main-container {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 2rem 2rem 0rem 2rem;
     position: relative;
+    background: #f7f9fc;
+    /* Nền sáng hơn để dễ nhìn */
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 #validationMessage {
-    background-color: #ff0000;
+    background-color: #ff4d4f;
+    /* Màu cảnh báo đỏ */
     color: #ffffff;
-    width: 30rem;
+    width: 100%;
     padding: 15px;
     margin: 15px 0;
     font-weight: 600;
-    display: none;
-}
-
-.email-container {
-    display: flex;
-    flex-direction: column;
-
-}
-
-#email,
-#password-elements {
-    outline: none;
-    background-color: transparent;
-    color: black;
-    border: 1px solid #757676;
+    text-align: center;
     border-radius: 8px;
-    width: 30rem;
-    padding: 14px 15px;
-    margin: 10px 0px;
-    font-size: 15px;
-    font-weight: 500;
+    display: none;
+    /* Ẩn mặc định */
 }
 
-#password-elements {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-#login-password {
-    background-color: transparent;
-    color: black;
-    border: none;
-    outline: none;
-    font-size: 15px;
-    font-weight: 500;
-    width: 80%;
-}
-
-#eye-icon {
-    color: #ff0000;
+.email-container,
+#password-container {
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 label {
     font-weight: bold;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
 }
 
-a {
-    color: #000000;
-    font-weight: 600;
-    margin: 12px 0px;
+#email,
+#login-password {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #d1d1d1;
+    border-radius: 8px;
+    width: 100%;
+    padding: 14px 15px;
+    font-size: 15px;
+    font-weight: 500;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 
-#checkbox-login-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+#email:focus,
+#login-password:focus {
+    border-color: #1ed760;
+    /* Đổi màu viền khi focus */
+    box-shadow: 0 0 5px rgba(30, 215, 96, 0.4);
+    outline: none;
+}
+
+#password-container {
+    position: relative;
+}
+
+#eye-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+#eye-icon:hover {
+    color: #333;
 }
 
 .checkbox-container {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
+    margin-bottom: 20px;
 }
 
-#checkbox-login-container p {
+.checkbox-container p {
     font-size: 14px;
-    font-weight: 600;
-}
-
-#check-box {
-    width: 16px;
-    height: 16px;
-    accent-color: #169b45;
-}
-
-input[type="checkbox"]:focus {
-    outline: 2.5px solid black;
-    outline-offset: 4px;
+    color: #555;
+    margin: 0;
 }
 
 #login-btn {
     background-color: #1ed760;
-    width: 7rem;
-    padding: 13px 10px;
+    width: 100%;
+    padding: 14px 0;
     border: none;
-    border-radius: 25px;
+    border-radius: 50px;
     font-size: 16px;
-    font-weight: 600;
-    transition: ease-in-out 0.2s;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
     cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+#login-btn:hover {
+    background-color: #19c255;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(30, 215, 96, 0.3);
 }
 
 .bottom-line {
-    margin-top: 20px;
-    margin-bottom: 30px;
-    border: 1px solid #d9dadc;
-    width: 470px;
+    margin: 20px 0;
+    border: 1px solid #e4e4e4;
+    width: 100%;
 }
 
 #sign-up-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 5px;
-    margin-bottom: 15px;
+    text-align: center;
+    margin-top: 20px;
 }
 
 #signup-btn {
-    width: 30rem;
+    width: 100%;
     padding: 12px 0px;
-    margin-top: 25px;
     font-size: 15px;
     font-weight: 700;
     border-radius: 50px;
     letter-spacing: 0.5px;
     cursor: pointer;
-    background-color: transparent;
+    background-color: #f1f1f1;
     color: #757676;
-    border: 1px solid #757676;
+    border: 1px solid #d1d1d1;
     text-transform: uppercase;
+    transition: all 0.3s ease;
 }
 
-@media (max-width: 550px) {
-
-    #signup-btn,
-    #email,
-    #password-elements,
-    #validationMessage,
-    .bottom-line {
-        width: 90vw;
-    }
+#signup-btn:hover {
+    background-color: #f8f8f8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Captcha */
-
-.recaptcha-section {
-    position: absolute;
-    right: 0;
-    bottom: -4rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.outside-recaptcha {
-    width: 80px;
-    height: 60px;
-    box-shadow: #757676 0 0 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    transition: 0.5s ease-in-out;
-}
-
-.outside-recaptcha img {
-    width: 40px;
-}
-
-.outside-recaptcha p {
-    font-size: 9px;
-    color: #757676;
-}
-
-.inside-recaptcha {
-    background-color: #1877f2;
-    color: #ffffff;
-    height: 60px;
-    width: 200px;
-    padding-top: 10px;
-    padding-left: 15px;
-    position: absolute;
-    right: 0;
-    transition: 0.5s ease-in-out;
-}
-
-.inside-recaptcha {
-    opacity: 0;
-}
-
-.recaptcha-section:hover .inside-recaptcha {
-    opacity: 1;
-    transform: translate(0%);
-}
-
-.recaptcha-section:hover .outside-recaptcha {
-    transform: translate(-250%);
-}
-
-
-.inside-span {
-    font-size: 14px;
-}
-
-.re-cap-span {
-    font-size: 12px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-}
-
-.re {
-    font-size: 14px;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-}
-
-.inside-recaptcha p {
-    font-size: 11px;
-    padding-top: 4px;
-}
-
-/* Hover Efect */
-
+/* Forgot Password */
 .forgot-paragraph {
-    margin-bottom: 1rem;
+    font-size: 14px;
+    color: #555;
+    text-align: left;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: color 0.3s ease;
 }
 
 .forgot-paragraph:hover {
-    color: #169b45;
-}
-
-#login-btn:hover {
-    transform: scale(1.05);
+    color: #1ed760;
 }
