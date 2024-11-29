@@ -1,216 +1,229 @@
+// Common
+// mixin flexBox
+@mixin flex($justify: flex-start, $align: stretch, $direction: row) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+
+// mixin home_page_buttons
+@mixin button-style($width, $height, $color, $bg-color, $outline: none) {
+  width: $width;
+  height: $height;
+  color: $color;
+  @include flex(center, center, row);
+  background-color: $bg-color;
+  outline: $outline;
+  margin-left: 6px;
+}
+// Button hover
+@mixin button-hover() {
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+}
+
+// Private
 .header-container {
-    background-image: url('../../../assets/Banner.png');
-    background-size: cover;
-    background-position: top;
-    background-repeat: no-repeat;
-    width: 100%;
+  width: 100vw;
+  @include flex(center, center);
+}
+
+.hero-container {
+  background-image: url("../../../assets/Banner.png");
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  width: 75%;
 }
 
 .header {
-    padding-top: 15px;
-    height: 75px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: transparent;
+  padding-top: 15px;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: transparent;
 }
 
 .brand-container {
-    width: 200px;
-    height: 100%;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    background-color: transparent;
+  width: 200px;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: transparent;
 }
 
 .logo {
-    width: 50px;
-    height: 100%;
-    overflow: hidden;
+  width: 50px;
+  height: 100%;
+  overflow: hidden;
 }
 
 .brand-name {
-    font-size: 20px;
-    font-weight: bold;
-    color: #ffffffd2;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffffd2;
 }
 
 //  ---- Right Container ----
 .right-container {
-    width: 25%;
-    height: 80%;
-
-    font-size: 11px !important;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    overflow: hidden;
+  height: 80%;
+  font-size: 14px !important;
+  font-weight: 500;
+  @include flex(center, center);
+  overflow: hidden;
 }
 
 .user-info {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .dropdown-menu {
-    position: absolute;
-    top: 50px;
-    right: 0;
-    transform: translateY(0);
-    background-color: #fff;
-    color: #333;
-    list-style: none;
-    padding: 10px 0;
-    margin: 0;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: none;
-    z-index: 10;
-    min-width: 150px;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  transform: translateY(0);
+  background-color: #fff;
+  color: #333;
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: none;
+  z-index: 10;
+  min-width: 150px;
 }
 
 .sign-in-container {
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+  @include flex(space-evenly, center);
 }
 
 .dropdown-menu li {
-    padding: 10px 20px;
-    font-size: 14px;
-    font-weight: 500;
-    text-align: left;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
 }
 
 .dropdown-menu li:hover {
-    background-color: #f50;
-    color: #fff;
+  background-color: #f50;
+  color: #fff;
 }
 
 .dropdown-menu li a {
-    color: inherit;
-    text-decoration: none;
-    display: block;
+  color: inherit;
+  text-decoration: none;
+  display: block;
 }
 
 .user-name:hover .dropdown-menu {
-    display: block;
+  display: block;
 }
 
 .avatar-container {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 2px solid #f50;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #f50;
 }
 
 .avatar-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .user-name h5 {
-    font-size: 16px;
-    font-weight: 600;
-    color: #fff;
-    margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
 }
 
 .btn {
-    border-radius: 5px;
-    // font-weight: 700;
+  border-radius: 5px;
+  // font-weight: 700;
 }
 
 .btn:hover,
 .btn:active {
-    cursor: pointer;
-    border: none !important;
+  cursor: pointer;
+  border: none !important;
 }
 
 .sign-in-btn {
-    width: 80px;
-    height: 30px;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: transparent;
-    outline: 1px solid #fff;
-    margin-bottom: 1px;
+  @include flex(center, center);
+  @include button-style(80px, 30px, #fff, transparent, 1px solid #fff);
+  @include button-hover();
 }
-
 .create-account-btn {
-    width: 130px;
-    height: 30px;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f50;
-    outline: none;
-    margin-bottom: 1px;
+  @include flex(center, center);
+  @include button-style(140px, 30px, #fff, #f50, none);
+  @include button-hover();
 }
 
 .for-artists-btn {
-    height: 30px;
-    color: #fff;
+  @include flex(center, center);
+  @include button-style(80px, 30px, #fff, transparent);
+  @include button-hover();
 }
 
 .banner {
-    width: 100%;
-    height: 400px;
+  width: 100%;
+  height: 400px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 
-    background-color: transparent;
-    overflow: hidden;
+  background-color: transparent;
+  overflow: hidden;
 }
 
 .banner-content {
-    width: 50%;
+  width: 50%;
 
-    background-color: transparent !important;
+  background-color: transparent !important;
 }
 
 .banner-content h1 {
-    font-size: 50px;
-    font-weight: 550;
-    color: #fff;
+  font-size: 50px;
+  font-weight: 550;
+  color: #fff;
 }
 
 .banner-content p {
-    font-size: 20px;
-    font-weight: 500;
-    color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
 }
 
 .banner-action {
-    margin-top: 20px;
-    width: 250px;
-    height: 50px;
+  margin-top: 20px;
+  width: 250px;
+  height: 50px;
 
-    font-size: 20px;
-    font-weight: 500;
+  font-size: 20px;
+  font-weight: 500;
 
-    color: #fff;
-    background-color: #f50;
-    border-radius: 7px;
+  color: #fff;
+  background-color: #f50;
+  border-radius: 7px;
 
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
