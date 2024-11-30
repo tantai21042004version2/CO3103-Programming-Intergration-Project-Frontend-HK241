@@ -17,6 +17,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NoaccessComponent } from './pages/noaccess/noaccess.component';
 import { ArtirstoverviewComponent } from './pages/artirstoverview/artirstoverview.component';
 import { ArtirstAddMusicComponent } from './pages/artirst-add-music/artirst-add-music.component';
+import { ArtirstTracksComponent } from './pages/artirst-tracks/artirst-tracks.component';
+import { ArtirstUploadTrackCloudinaryComponent } from './pages/artirst-upload-track-cloudinary/artirst-upload-track-cloudinary.component';
+import { ArtirstUploadTrackMetaDataComponent } from './pages/artirst-upload-track-meta-data/artirst-upload-track-meta-data.component';
+import { DetailComponent } from './pages/detail/detail.component';
 
 
 @NgModule({
@@ -34,7 +38,11 @@ import { ArtirstAddMusicComponent } from './pages/artirst-add-music/artirst-add-
     FooterComponent,
     NoaccessComponent,
     ArtirstoverviewComponent,
-    ArtirstAddMusicComponent
+    ArtirstAddMusicComponent,
+    ArtirstTracksComponent,
+    ArtirstUploadTrackCloudinaryComponent,
+    ArtirstUploadTrackMetaDataComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,
