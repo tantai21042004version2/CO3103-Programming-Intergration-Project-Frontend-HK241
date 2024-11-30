@@ -7,14 +7,22 @@ import { NoaccessComponent } from './pages/noaccess/noaccess.component';
 import { ArtirstAddMusicComponent } from './pages/artirst-add-music/artirst-add-music.component';
 import { ArtirstoverviewComponent } from './pages/artirstoverview/artirstoverview.component';
 import { RoleGuard } from './role.guard';
+import { ArtirstTracksComponent } from './pages/artirst-tracks/artirst-tracks.component';
+import { ArtirstUploadTrackCloudinaryComponent } from './pages/artirst-upload-track-cloudinary/artirst-upload-track-cloudinary.component';
+import { ArtirstUploadTrackMetaDataComponent } from './pages/artirst-upload-track-meta-data/artirst-upload-track-meta-data.component';
+import { DetailComponent } from './pages/detail/detail.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: HomepageComponent },
     { path: 'signup', component: SignupComponent },
     { path: 'signin', component: SigninComponent },
-    { path: 'artist/add-music', component: ArtirstAddMusicComponent, canActivate: [RoleGuard], data: { roles: ['ARTIST'] } },
-    { path: 'artist/overview', component: ArtirstoverviewComponent, canActivate: [RoleGuard], data: { roles: ['ARTIST'] } },
+    { path: 'detail/:id', component: DetailComponent },
+    { path: 'artist/add-music', component: ArtirstAddMusicComponent },
+    { path: 'artist/overview', component: ArtirstoverviewComponent },
+    { path: 'artist/tracks', component: ArtirstTracksComponent },
+    { path: 'artist/tracks/upload-track-cloudinary', component: ArtirstUploadTrackCloudinaryComponent },
+    { path: 'artist/tracks/upload-track-meta-data', component: ArtirstUploadTrackMetaDataComponent },
     { path: 'no-access', component: NoaccessComponent },
 ];
 
