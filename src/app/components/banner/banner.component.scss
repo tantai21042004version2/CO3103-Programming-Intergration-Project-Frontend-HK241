@@ -17,6 +17,7 @@
   outline: $outline;
   margin-left: 6px;
 }
+
 // Button hover
 @mixin button-hover() {
   &:hover {
@@ -167,6 +168,7 @@
   @include button-style(80px, 30px, #fff, transparent, 1px solid #fff);
   @include button-hover();
 }
+
 .create-account-btn {
   @include flex(center, center);
   @include button-style(140px, 30px, #fff, #f50, none);
