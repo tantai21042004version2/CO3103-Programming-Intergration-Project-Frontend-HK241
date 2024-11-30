@@ -1,84 +1,101 @@
+// Common
+@mixin button-hover() {
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+}
+
+// Private
 .header {
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: transparent;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(
+    132deg,
+    rgb(255, 127, 56) 0%,
+    rgb(255, 196, 108) 100%
+  );
 }
 
 //  ---- Brand Container ----
 .brand-container {
-    width: 200px;
-    height: 100%;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+  width: 200px;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 
-    background-color: transparent;
+  background-color: transparent;
 }
 
 .logo {
-    width: 50px;
-    height: 100%;
-    overflow: hidden;
+  width: 50px;
+  height: 100%;
+  overflow: hidden;
 }
 
 .brand-name {
-    font-size: 20px;
-    font-weight: bold;
-    color: #ffffffd2;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffffd2;
 }
 
 //  ---- Right Container ----
 .right-container {
-    width: 27%;
-    height: 80%;
+  width: 27%;
+  height: 80%;
 
-    font-size: 11px !important;
+  font-size: 14px !important;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  overflow: hidden;
 }
 
 .btn {
-    border-radius: 5px;
-    // font-weight: 700;
+  border-radius: 5px;
+  // font-weight: 700;
 }
 
 .btn:hover,
 .btn:active {
-    cursor: pointer;
-    border: none !important;
+  cursor: pointer;
+  border: none !important;
 }
 
 .sign-in-btn {
-    width: 80px;
-    height: 30px;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: transparent;
-    outline: 1px solid #fff;
-    margin-bottom: 1px;
+  width: 80px;
+  height: 30px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  outline: 1px solid #fff;
+  margin-bottom: 1px;
+  @include button-hover();
 }
 
 .create-account-btn {
-    width: 130px;
-    height: 30px;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f50;
-    outline: none;
-    margin-bottom: 1px;
+  width: 130px;
+  height: 30px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f50;
+  outline: none;
+  margin-bottom: 1px;
+  @include button-hover();
 }
 
 .for-artists-btn {
-    height: 30px;
-    color: #fff;
+  height: 30px;
+  color: #fff;
+  @include button-hover();
 }

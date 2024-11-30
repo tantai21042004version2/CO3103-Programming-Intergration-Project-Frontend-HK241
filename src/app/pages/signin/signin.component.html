@@ -1,57 +1,83 @@
-<div class="container" style="width: 70%;">
+<div class="container" style="width: 100%">
+  <div class="inner-container">
     <app-header></app-header>
-
     <div id="nav-line"></div>
     <!-- Login Section -->
     <section id="main-container">
-        <p id="validationMessage">Incorrect username or password.</p>
-        <!-- Login Form -->
-        <form #loginForm="ngForm" (ngSubmit)="login()" novalidate>
-            <div id="login-form">
-                <div class="email-container">
-                    <label for="email">Email or Username</label>
-                    <input type="email" id="email" name="email" placeholder="Email address..." [(ngModel)]="email"
-                        required>
-                </div>
+      <p id="validationMessage">Incorrect username or password.</p>
+      <!-- Login Form -->
+      <form #loginForm="ngForm" (ngSubmit)="login()" novalidate>
+        <div id="login-form">
+          <div class="email-container">
+            <label for="email">Email or Username</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email address..."
+              [(ngModel)]="email"
+              required
+            />
+          </div>
 
-                <div id="password-container">
-                    <label for="login-password">Password</label>
-                    <div id="password-elements">
-                        <input type="password" id="login-password" name="password" [(ngModel)]="password"
-                            placeholder="Password..." required>
-                        <i class="fa-solid fa-eye-slash" id="eye-icon" (click)="togglePasswordVisibility()"></i>
-                    </div>
-                </div>
-
-                <div id="optional-role-container">
-                    <label for="optional-role">Role</label>
-                    <select id="optional-role" [(ngModel)]="selectedRole" name="optionalRole">
-                        <option *ngFor="let role of roles" [ngValue]="role">
-                            {{ role.name }}
-                        </option>
-                    </select>
-                </div>
-
-
-                <div id="checkbox-login-container">
-                    <div>
-                        <p class="forgot-paragraph">Forgot your password?</p>
-                        <div class="checkbox-container">
-                            <input type="checkbox" id="check-box" checked>
-                            <p>Remember me</p>
-                        </div>
-                    </div>
-                    <button id="login-btn" type="submit">LOG IN</button>
-                </div>
+          <div id="password-container">
+            <label for="login-password">Password</label>
+            <div id="password-elements" class="flex-box position-relative">
+              <input
+                type="password"
+                id="login-password"
+                name="password"
+                [(ngModel)]="password"
+                placeholder="Password..."
+                required
+              />
+              <i
+                class="fa-solid fa-eye-slash"
+                id="eye-icon"
+                (click)="togglePasswordVisibility()"
+              ></i>
             </div>
-        </form>
+          </div>
 
-        <hr class="bottom-line">
-        <!-- Sign Up -->
-        <div id="sign-up-section">
-            <h3>Don't have an account ?</h3>
-            <button id="signup-btn" routerLink="/signup">Sign up for
-                Spotify</button>
+          <div id="optional-role-container">
+            <label for="optional-role">Role</label>
+            <select
+              id="optional-role"
+              [(ngModel)]="selectedRole"
+              name="optionalRole"
+              class="role-select"
+            >
+              <option *ngFor="let role of roles" [ngValue]="role">
+                {{ role.name }}
+              </option>
+            </select>
+          </div>
+
+          <div id="checkbox-login-container">
+            <div>
+              <p class="forgot-paragraph text-center">Forgot your password?</p>
+              <div class="checkbox-container">
+                <input type="checkbox" id="check-box" checked />
+                <p>Remember me</p>
+              </div>
+            </div>
+            <button id="login-btn" type="submit">LOG IN</button>
+          </div>
         </div>
+      </form>
+
+      <hr class="bottom-line" />
+      <!-- Sign Up -->
+      <div
+        id="sign-up-section text-center flex-box gap-8"
+        class="text-center flex-box gap-8"
+      >
+        <h3 class="text-center">Don't have an account ?</h3>
+        <button id="signup-btn" routerLink="/signup">
+          Sign up for Spotify
+          <i><img src="../../../assets/spitifot.png" alt="spotify-logo" /></i>
+        </button>
+      </div>
     </section>
+  </div>
 </div>
