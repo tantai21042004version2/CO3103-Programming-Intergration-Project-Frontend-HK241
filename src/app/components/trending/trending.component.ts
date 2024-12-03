@@ -49,6 +49,7 @@ export class TrendingComponent implements OnInit {
     this.tracks = [
       {
         id: 4,
+        artist: "Jack",
         name: "Đừng Làm Trái Tim Anh Đau",
         secure_url:
           "https://res.cloudinary.com/tantai21042004/video/upload/v1732701512/songs/pwz9za8e0nzzo2lq0jww.mp3",
@@ -58,6 +59,7 @@ export class TrendingComponent implements OnInit {
       },
       {
         id: 5,
+        artist: "Jack",
         name: "Chạy Ngay Đi",
         secure_url:
           "https://res.cloudinary.com/tantai21042004/video/upload/v1732702300/songs/xd4ldiyutxnyrdfutgkl.mp3",
@@ -67,6 +69,7 @@ export class TrendingComponent implements OnInit {
       },
 {
         id: 6,
+        artist: "Jack",
         name: "Chúng Ta Của Hiện Tại",
         secure_url:
           "https://res.cloudinary.com/tantai21042004/video/upload/v1732702734/songs/mkkjgg8r2qsuggoqqxu4.mp3",
@@ -76,6 +79,7 @@ export class TrendingComponent implements OnInit {
       },
       {
         id: 7,
+        artist: "Jack",
         name: "Hãy Trao Cho Anh",
         secure_url:
           "https://res.cloudinary.com/tantai21042004/video/upload/v1732702941/songs/bdsof3qdycwgi3tmhq2x.mp3",
@@ -85,6 +89,7 @@ export class TrendingComponent implements OnInit {
       },
       {
         id: 8,
+        artist: "Jack",
         name: "Em Của Ngày Hôm Qua",
         secure_url:
           "https://res.cloudinary.com/tantai21042004/video/upload/v1732703301/songs/epv09d5ck3wxgv0o2k0z.mp3",
