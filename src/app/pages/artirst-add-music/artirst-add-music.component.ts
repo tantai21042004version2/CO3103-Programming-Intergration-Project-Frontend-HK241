@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { BaseComponent } from '../base/base.component';
 import { UploadSongDTO } from '../../dtos/upload.song.dto';
 import { ApiResponse } from 'src/app/responses/api.response';
-import { SongDetailResponse } from 'src/app/responses/song.detail.response';
+import { SongDetailResponse } from 'src/app/responses/song/song.detail.response';
+import { AlbumResponse } from 'src/app/responses/album/album.response';
+import { GenreResponse } from 'src/app/responses/role_and_genre/genre.response';
 
 @Component({
   selector: 'app-artirst-add-music',
@@ -26,6 +28,16 @@ export class ArtirstAddMusicComponent extends BaseComponent {
     duration: 0
   };
 
+  albumResponse: AlbumResponse = {
+    id: 0,
+    name: '',
+  }
+
+  genreResponse: GenreResponse = {
+    id: 0,
+    name: '',
+  }
+
   songDetailResponse: SongDetailResponse = {
     id: 0,
     name: '',
@@ -40,7 +52,10 @@ export class ArtirstAddMusicComponent extends BaseComponent {
     },
     status: '',
     created_at: '',
-    updated_at: ''
+    updated_at: '',
+    image_url: '',
+    album: this.albumResponse,
+    genre: this.genreResponse
   };
 
   handleFileUpload(): void {

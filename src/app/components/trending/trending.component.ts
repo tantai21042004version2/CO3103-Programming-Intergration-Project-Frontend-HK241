@@ -33,7 +33,7 @@
 //   }
 // }
 import { Component, OnInit } from '@angular/core';
-import { SongResponse } from 'src/app/responses/song.response';
+import { SongResponse } from 'src/app/responses/song/song.response';
 
 @Component({
   selector: 'app-trending',
@@ -67,7 +67,7 @@ export class TrendingComponent implements OnInit {
           "http://res.cloudinary.com/tantai21042004/image/upload/v1732700860/profileimages/gyngaasq2tlqkashgppe.jpg",
         status: "APPROVED",
       },
-{
+      {
         id: 6,
         artist: "Jack",
         name: "Chúng Ta Của Hiện Tại",
@@ -101,19 +101,19 @@ export class TrendingComponent implements OnInit {
     ];
   }
 
-// ngOnInit(): void {
-//     debugger;
-//     this.songService.getAllSong({ page: 1, limit: 15, keyword: '' }).subscribe({
-//       next: (apiResponse: ApiResponse) => {
-//         debugger;
-//         this.tracks = apiResponse.data.songs;
-//       },
-//       error: (error: HttpErrorResponse) => {
-//         debugger;
-//         console.log(error);
-//       }
-//     });
-//   }
+  // ngOnInit(): void {
+  //     debugger;
+  //     this.songService.getAllSong({ page: 1, limit: 15, keyword: '' }).subscribe({
+  //       next: (apiResponse: ApiResponse) => {
+  //         debugger;
+  //         this.tracks = apiResponse.data.songs;
+  //       },
+  //       error: (error: HttpErrorResponse) => {
+  //         debugger;
+  //         console.log(error);
+  //       }
+  //     });
+  //   }
 
 
   toggleExpand() {

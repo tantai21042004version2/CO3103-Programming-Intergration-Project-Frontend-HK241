@@ -4,7 +4,7 @@ import { Role } from 'src/app/models/role';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ApiResponse } from 'src/app/responses/api.response';
 import { NgForm } from '@angular/forms';
-import { UserResponse } from 'src/app/responses/user.response';
+import { UserResponse } from 'src/app/responses/user/user.response';
 import { LoginDTO } from 'src/app/dtos/login.dto';
 
 @Component({

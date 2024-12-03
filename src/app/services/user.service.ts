@@ -6,8 +6,8 @@ import { Observable } from "rxjs";
 import { HttpUtilService } from './http.util.service';
 import { ApiResponse } from "../responses/api.response";
 import { LoginDTO } from "../dtos/login.dto";
-import { UserResponse } from "../responses/user.response";
 import { DOCUMENT } from "@angular/common";
+import { UserResponse } from "../responses/user/user.response";
 
 
 @Injectable({

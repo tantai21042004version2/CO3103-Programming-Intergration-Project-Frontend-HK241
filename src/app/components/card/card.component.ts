@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { SongResponse } from 'src/app/responses/song.response';
+import { SongResponse } from 'src/app/responses/song/song.response';
 
 @Component({
   selector: 'app-card',
