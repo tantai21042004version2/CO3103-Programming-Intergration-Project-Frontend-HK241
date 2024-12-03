@@ -25,6 +25,11 @@ export class SongService {
         );
     }
 
+    private apiDetailSong = `${environment.apiBaseUrl}/songs/detail`;
+    detail(id: number): Observable<ApiResponse> {
+        return this.http.get<ApiResponse>(`${this.apiDetailSong}/${id}`);
+    }
+
     private apiUploadToCloudinary = `${environment.apiBaseUrl}/songs/cloudinary`;
     uploadToCloudinary(file: File, token: string): Observable<ApiResponse> {
         return this.http.post<ApiResponse>(

@@ -1,4 +1,4 @@
-import { RoleResponse } from "./role.response";
+import { RoleResponse } from "../role_and_genre/role.response";
 
 export interface UserDetailResponse {
     id: number;
