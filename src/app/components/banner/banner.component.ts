@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from 'src/app/pages/base/base.component';
 import { ApiResponse } from 'src/app/responses/api.response';
-import { UserDetailResponse } from 'src/app/responses/user.detail.response';
+import { UserDetailResponse } from 'src/app/responses/user/user.detail.response';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({

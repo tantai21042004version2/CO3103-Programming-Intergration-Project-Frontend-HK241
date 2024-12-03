@@ -6,13 +6,13 @@
                 <div class="hero-header">
                     <button class="play-button">▶</button>
                     <div class="song-details">
-                        <h2>Theo Em Về Nhà - Rinv X Haozi</h2>
-                        <span class="artist-name">TÙNG</span>
+                        <h2>{{ detailSong.name }}</h2>
+                        <span class="artist-name">{{ artist.username }}</span>
                     </div>
                 </div>
                 <div class="meta-info">
-                    <span class="time">9 months ago</span>
-                    <span class="genre">#Dance & EDM</span>
+                    <span class="time">{{ detailSong.release_date }}</span>
+                    <span class="genre">{{ genre.name }}</span>
                 </div>
                 <div class="progress-container">
                     <div class="progress-bar">
@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img src="https://via.placeholder.com/150" alt="Hero Image">
+                <img [src]="detailSong.image_url" alt="Hero Image">
             </div>
         </div>
         <div class="listen-container">
@@ -35,7 +35,7 @@
                 <div class="comment-container">
                     <div class="comment-search-container">
                         <div class="user-avatar-container">
-                            <img class="user-avatar" src="https://via.placeholder.com/40" alt="User Avatar">
+                            <img class="user-avatar" [src]="artist.image_url" alt="User Avatar">
                         </div>
                         <input class="comment-input" type="text" placeholder="Write a comment">
                         <button class="send-button">
@@ -63,9 +63,9 @@
                     <div class="user-detail-container">
                         <div class="user-card">
                             <div class="user-avatar">
-                                <img src="https://via.placeholder.com/100" alt="User Avatar">
+                                <img [src]="artist.image_url" alt="User Avatar">
                             </div>
-                            <div class="user-name">TÙNG</div>
+                            <div class="user-name">{{ artist.username }}</div>
                             <div class="user-stats">
                                 <span class="user-votes">105</span>
                                 <span class="user-posts">2</span>
@@ -88,40 +88,13 @@
                             </div>
                         </div>
                         <div class="list-body">
-                            <div class="comment-card">
-                                <img src="https://via.placeholder.com/40" alt="Avatar" class="comment-avatar">
+                            <div class="comment-card" *ngFor="let comment of comments">
+                                <img [src]="comment.user.image_url" alt="Avatar" class="comment-avatar">
                                 <div class="comment-content">
                                     <div class="comment-header">
-                                        <span class="comment-author">Tramanh Buithi</span>
-                                        <span class="comment-time">at 1:20 • 26 days ago</span>
+                                        <span class="comment-author">{{ comment.user.username }}</span>
                                     </div>
-                                    <div class="comment-text">❤️ This track is</div>
-                                </div>
-                                <div class="comment-likes">
-                                    <span>0</span> ❤️
-                                </div>
-                            </div>
-                            <div class="comment-card">
-                                <img src="https://via.placeholder.com/40" alt="Avatar" class="comment-avatar">
-                                <div class="comment-content">
-                                    <div class="comment-header">
-                                        <span class="comment-author">Chan Tran</span>
-                                        <span class="comment-time">at 0:57 • 1 month ago</span>
-                                    </div>
-                                    <div class="comment-text">🔥🔥🔥</div>
-                                </div>
-                                <div class="comment-likes">
-                                    <span>0</span> ❤️
-                                </div>
-                            </div>
-                            <div class="comment-card">
-                                <img src="https://via.placeholder.com/40" alt="Avatar" class="comment-avatar">
-                                <div class="comment-content">
-                                    <div class="comment-header">
-                                        <span class="comment-author">Dũng Ngô</span>
-                                        <span class="comment-time">at 2:47 • 1 month ago</span>
-                                    </div>
-                                    <div class="comment-text">Duma đỉnh vcc</div>
+                                    <div class="comment-text">{{ comment.content }}</div>
                                 </div>
                                 <div class="comment-likes">
                                     <span>0</span> ❤️
