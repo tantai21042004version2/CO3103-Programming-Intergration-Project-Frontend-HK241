@@ -1,41 +1,136 @@
 .trending-container {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    width: 99%;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.trending-content .row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0px;
-    justify-content: center;
-}
-
-.trending-content {
-    max-height: calc(2 * 320px);
-    overflow-y: hidden;
-    padding: 20px 0;
-}
-
-.trending-container {
-    width: 100%;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .trending-header {
-    width: 100%;
-    height: 50px;
-    font-size: 22px;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: black;
+  width: 100%;
+  height: 50px;
+  font-size: 22px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
 }
 
 .trending-content {
-    width: 100%;
+  width: 100%;
+  max-height: calc(2 * 320px); /* Hiển thị tối đa 2 hàng */
+  overflow-y: hidden; /* Ẩn scrollbar */
+  padding: 20px 0;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; /* Khoảng cách giữa các bài nhạc */
+}
+
+.track-card {
+  flex: 0 0 calc(100% / 6 - 20px); /* Chia đều thành 6 cột */
+  max-width: calc(100% / 6 - 20px);
+  text-align: center;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.track-image {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.track-name {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 5px 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.track-artist {
+  font-size: 12px;
+  color: #666;
+  margin-top: 5px;
+}
+
+// Thiết kế thanh bar
+.music-player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+.player-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.player-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  object-fit: cover;
+  border: 1px solid #ddd;
+}
+
+.player-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.player-track-name {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  color: #333;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 200px;
+}
+
+.player-track-artist {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.player-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.control-button {
+  font-size: 18px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.control-button:hover {
+  background-color: #ddd;
 }
