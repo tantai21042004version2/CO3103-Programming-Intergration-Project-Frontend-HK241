@@ -1,21 +1,39 @@
 <header class="navbar header">
     <div class="brand-container">
         <div class="logo">
-            <img src="assets/hcmut.png" alt="SoundCloud Logo">
+            <img src="assets/hcmut.png" alt="SoundCloud Logo" />
         </div>
         <div class="brand-name">
             <h3>TT2990</h3>
         </div>
     </div>
+
     <div class="right-container">
-        <div class="btn btn-sm sign-in-btn" (click)="goToSignIn()">
-            Sign In
+        <!-- Nếu người dùng null, hiển thị các nút -->
+        <div class="sign-in-container" *ngIf="!userResponse">
+            <div class="btn btn-sm sign-in-btn" (click)="goToSignIn()">
+                Sign In
+            </div>
+            <div class="btn btn-sm create-account-btn" (click)="goToSignUp()">
+                Create Account
+            </div>
+            <div class="btn btn-sm for-artists-btn">For Artists</div>
         </div>
-        <div class="btn btn-sm create-account-btn" (click)="goToSignUp()">
-            Create Account
-        </div>
-        <div class="btn btn-sm for-artists-btn">
-            For Artists
+
+        <!-- Nếu người dùng không null, hiển thị avatar và tên -->
+        <div *ngIf="userResponse" class="user-info">
+            <div class="avatar-container">
+                <img [src]="userResponse.image_url || 'assets/default-avatar.png'" alt="User Avatar"
+                    class="avatar-img" />
+            </div>
+            <div class="user-name">
+                <h5>{{ userResponse.username }}</h5>
+                <!-- Dropdown menu -->
+                <ul class="dropdown-menu">
+                    <li><a (click)="goToProfile()">Profile</a></li>
+                    <li><a (click)="logout()">Logout</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </header>

@@ -17,7 +17,7 @@ export class SongService {
     }
 
     private apiGetAllSong = `${environment.apiBaseUrl}/songs`;
-    getAllSong(params: { page: number, limit: number, keyword: string })
+    getAllSong(params: { page: number, limit: number, keyword: string, album_id: number })
         : Observable<ApiResponse> {
         return this.http.get<ApiResponse>(
             this.apiGetAllSong,

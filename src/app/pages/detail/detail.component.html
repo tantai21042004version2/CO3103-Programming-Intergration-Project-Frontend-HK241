@@ -4,8 +4,11 @@
         <div class="hero-container">
             <div class="hero-content">
                 <div class="hero-header">
-                    <button class="play-button">▶</button>
                     <div class="song-details">
+                        <!-- Nút bật/tắt phát nhạc -->
+                        <button class="play-button" (click)="togglePlayPause(audioPlayer)">
+                            {{ isPlaying ? "⏸" : "▶" }}
+                        </button>
                         <h2>{{ detailSong.name }}</h2>
                         <span class="artist-name">{{ artist.username }}</span>
                     </div>
@@ -14,13 +17,33 @@
                     <span class="time">{{ detailSong.release_date }}</span>
                     <span class="genre">{{ genre.name }}</span>
                 </div>
-                <div class="progress-container">
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 40%;"></div>
+
+
+
+                <div class="audio-player">
+
+                    <!-- Trình phát nhạc ẩn -->
+                    <audio #audioPlayer [src]="detailSong.secure_url" (timeupdate)="updateProgress(audioPlayer)"
+                        (ended)="onEnded(audioPlayer)" (canplaythrough)="onAudioReady()">
+                    </audio>
+
+
+                    <!-- Thanh tiến trình -->
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress" [style.width.%]="(currentTime / duration) * 100"></div>
+                        </div>
+                        <div class="time-info">
+                            <span>{{ formatTime(currentTime) }}</span>
+                            <span>{{ formatTime(duration) }}</span>
+                        </div>
                     </div>
-                    <div class="time-info">
-                        <span>0:00</span>
-                        <span>3:19</span>
+
+                    <!-- Thanh điều chỉnh âm lượng -->
+                    <div class="volume-container">
+                        <label for="volume-control">🔊</label>
+                        <input id="volume-control" type="range" min="0" max="1" step="0.01" [value]="volume"
+                            (input)="changeVolume(audioPlayer, $event)" />
                     </div>
                 </div>
             </div>
@@ -28,6 +51,7 @@
                 <img [src]="detailSong.image_url" alt="Hero Image">
             </div>
         </div>
+
         <div class="listen-container">
             <!-- LEFT -->
             <div class="about-container">
@@ -35,7 +59,7 @@
                 <div class="comment-container">
                     <div class="comment-search-container">
                         <div class="user-avatar-container">
-                            <img class="user-avatar" [src]="artist.image_url" alt="User Avatar">
+                            <img class="user-avatar" [src]="listener.image_url" alt="User Avatar">
                         </div>
                         <input class="comment-input" type="text" placeholder="Write a comment">
                         <button class="send-button">
@@ -112,42 +136,16 @@
                         <a href="#">View all</a>
                     </div>
                     <div class="related-tracks">
-                        <div class="track-item">
-                            <img src="https://via.placeholder.com/50" alt="Track Cover">
+                        <div class="track-item" *ngFor="let song of relatedSongs">
+                            <img [src]="song.image_url" alt="Track Cover">
                             <div class="track-info">
-                                <div class="track-title">BENN</div>
-                                <div class="track-name">HIEN HO - KHOC O TRONG CLUB...</div>
+                                <div class="track-title">{{ song.name }}</div>
+                                <div class="track-name">{{ artist.username }} - {{ song.description }}</div>
                                 <div class="track-stats">
                                     <span>195K</span>
                                     <span>4,823</span>
                                     <span>738</span>
                                     <span>827</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="track-item">
-                            <img src="https://via.placeholder.com/50" alt="Track Cover">
-                            <div class="track-info">
-                                <div class="track-title">GUANG</div>
-                                <div class="track-name">KHÓC CÙNG GUANG</div>
-                                <div class="track-stats">
-                                    <span>140K</span>
-                                    <span>2,775</span>
-                                    <span>74</span>
-                                    <span>53</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="track-item">
-                            <img src="https://via.placeholder.com/50" alt="Track Cover">
-                            <div class="track-info">
-                                <div class="track-title">Haozi</div>
-                                <div class="track-name">A Nên Yêu Cô Ấy - Haozi X CBD</div>
-                                <div class="track-stats">
-                                    <span>282K</span>
-                                    <span>5,734</span>
-                                    <span>229</span>
-                                    <span>140</span>
                                 </div>
                             </div>
                         </div>
