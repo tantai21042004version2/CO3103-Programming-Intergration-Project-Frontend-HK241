@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { BaseComponent } from '../base/base.component';
 import { ActivatedRoute } from '@angular/router';
-import { ApiResponse } from 'src/app/responses/api.response';
-import { HttpErrorResponse } from '@angular/common/http';
 import { Song } from 'src/app/models/song';
 import { Artist } from 'src/app/models/artirst';
 import { Album } from 'src/app/models/album';
 import { Genre } from 'src/app/models/genre';
 import { Comment } from 'src/app/models/comment';
-import { CommentUserResponse } from 'src/app/responses/user/cmtuser.response';
-import { Role } from 'src/app/models/role';
+import { convertResponseToSong } from 'src/app/utils/to.song';
+import { convertResponseToArtist } from 'src/app/utils/to.artirst';
+import { convertResponseToAlbum } from 'src/app/utils/to.album';
+import { convertResponseToComment } from 'src/app/utils/to.comment';
+import { Listener } from 'src/app/models/listener';
 
 @Component({
   selector: 'app-detail',
@@ -18,145 +19,172 @@ import { Role } from 'src/app/models/role';
 })
 export class DetailComponent extends BaseComponent implements OnInit {
   song_id: number = 0;
-  detailSong: Song = { id: 0, name: '', duration: 0, secure_url: '', description: '', release_date: '', artist_id: 0, image_url: '', album_id: 0, genre_id: 0, public_id: '', status: '', created_at: '', updated_at: '' }
-  artist: Artist = { id: 0, username: '', image_url: '', artist_name: '', biography: '' }
-  album: Album = { id: 0, name: '', artist_id: 0, release_date: '', cover_url: '', status: '', created_at: '', updated_at: '', description: '', genre_id: 0, deleted_at: '' }
-  genre: Genre = { id: 0, name: '' }
-  comments: Comment[] = [];
+  detailSong: Song = {
+    id: 16, name: 'Perfect', duration: 188.107755, secure_url: 'https://res.cloudinary.com/tantai21042004/video/upload/v1732704732/songs/fjwyvbj23xgfkexshmwm.mp3',
+    description: 'https://res.cloudinary.com/tantai21042004/image/upload/v1732880370/albums/nwdo0m9f6gxbxaaq2ido.jpg', release_date: '2024-10-30', artist_id: 28,
+    image_url: 'https://res.cloudinary.com/tantai21042004/image/upload/v1732880370/albums/nwdo0m9f6gxbxaaq2ido.jpg',
+    album_id: 28, genre_id: 3, public_id: '', status: 'APPROVED', created_at: '2024-11-27 00:00:00', updated_at: '2024-12-03 17:22:03'
+  }
+  artist: Artist = {
+    id: 22, username: 'shiki', image_url: 'http://res.cloudinary.com/tantai21042004/image/upload/v1732705685/profileimages/e9qbilyb2kyhkuq8z166.jpg',
+    artist_name: '', biography: ''
+  }
+  album: Album = {
+    id: 28, name: 'LẶNG', artist_id: 22, release_date: '2024-10-30', cover_url: 'http://res.cloudinary.com/tantai21042004/image/upload/v1732705685/profileimages/e9qbilyb2kyhkuq8z166.jpg',
+    status: '', created_at: '', updated_at: '', description: '', genre_id: 3, deleted_at: ''
+  }
+  genre: Genre = { id: 3, name: 'Pop' }
+  comments: Comment[] = [
+    { id: 1, content: 'This is a comment', user: { id: 2, username: 'LISTENER', image_url: 'http://res.cloudinary.com/tantai21042004/image/upload/v1732715652/profileimages/d2knrydxoapfvsbgmzxq.jpg', role: { id: 2, name: 'LISTENER' } } },
+    { id: 2, content: 'This is a comment', user: { id: 2, username: 'LISTENER', image_url: 'http://res.cloudinary.com/tantai21042004/image/upload/v1732715652/profileimages/d2knrydxoapfvsbgmzxq.jpg', role: { id: 2, name: 'LISTENER' } } },
+    { id: 3, content: 'This is a comment', user: { id: 2, username: 'LISTENER', image_url: 'http://res.cloudinary.com/tantai21042004/image/upload/v1732715652/profileimages/d2knrydxoapfvsbgmzxq.jpg', role: { id: 2, name: 'LISTENER' } } },
+    { id: 2, content: 'This is a comment', user: { id: 2, username: 'LISTENER', image_url: 'http://res.cloudinary.com/tantai21042004/image/upload/v1732715652/profileimages/d2knrydxoapfvsbgmzxq.jpg', role: { id: 2, name: 'LISTENER' } } },
+    { id: 2, content: 'This is a comment', user: { id: 2, username: 'LISTENER', image_url: 'http://res.cloudinary.com/tantai21042004/image/upload/v1732715652/profileimages/d2knrydxoapfvsbgmzxq.jpg', role: { id: 2, name: 'LISTENER' } } },
+    { id: 2, content: 'This is a comment', user: { id: 2, username: 'LISTENER', image_url: 'http://res.cloudinary.com/tantai21042004/image/upload/v1732715652/profileimages/d2knrydxoapfvsbgmzxq.jpg', role: { id: 2, name: 'LISTENER' } } },
+    { id: 2, content: 'This is a comment', user: { id: 2, username: 'LISTENER', image_url: 'http://res.cloudinary.com/tantai21042004/image/upload/v1732715652/profileimages/d2knrydxoapfvsbgmzxq.jpg', role: { id: 2, name: 'LISTENER' } } },
+  ];
+  listener: Listener = { id: 0, username: '', image_url: '' };
+  relatedSongs: Song[] = [
+    {
+      id: 1, name: 'Perfect', duration: 188.107755, secure_url: 'https://res.cloudinary.com/tantai21042004/video/upload/v1732704732/songs/fjwyvbj23xgfkexshmwm.mp3',
+      description: 'https://res.cloudinary.com/tantai21042004/image/upload/v1732880370/albums/nwdo0m9f6gxbxaaq2ido.jpg', release_date: '2024-10-30', artist_id: 28,
+      image_url: 'https://res.cloudinary.com/tantai21042004/image/upload/v1732880370/albums/nwdo0m9f6gxbxaaq2ido.jpg',
+      album_id: 28, genre_id: 3, public_id: '', status: 'APPROVED', created_at: '2024-11-27 00:00:00', updated_at: '2024-12-03 17:22:03'
+    },
+    {
+      id: 2, name: 'Perfect', duration: 188.107755, secure_url: 'https://res.cloudinary.com/tantai21042004/video/upload/v1732704732/songs/fjwyvbj23xgfkexshmwm.mp3',
+      description: 'https://res.cloudinary.com/tantai21042004/image/upload/v1732880370/albums/nwdo0m9f6gxbxaaq2ido.jpg', release_date: '2024-10-30', artist_id: 28,
+      image_url: 'https://res.cloudinary.com/tantai21042004/image/upload/v1732880370/albums/nwdo0m9f6gxbxaaq2ido.jpg',
+      album_id: 28, genre_id: 3, public_id: '', status: 'APPROVED', created_at: '2024-11-27 00:00:00', updated_at: '2024-12-03 17:22:03'
+    },
+    {
+      id: 1, name: 'Perfect', duration: 188.107755, secure_url: 'https://res.cloudinary.com/tantai21042004/video/upload/v1732704732/songs/fjwyvbj23xgfkexshmwm.mp3',
+      description: 'https://res.cloudinary.com/tantai21042004/image/upload/v1732880370/albums/nwdo0m9f6gxbxaaq2ido.jpg', release_date: '2024-10-30', artist_id: 28,
+      image_url: 'https://res.cloudinary.com/tantai21042004/image/upload/v1732880370/albums/nwdo0m9f6gxbxaaq2ido.jpg',
+      album_id: 28, genre_id: 3, public_id: '', status: 'APPROVED', created_at: '2024-11-27 00:00:00', updated_at: '2024-12-03 17:22:03'
+    }
+  ];
+  isPlaying: boolean = false;
+  duration: number = 0;
+  currentTime: number = 0;
+  volume: number = 0.5;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private cdr: ChangeDetectorRef) {
     super();
   }
 
-  getDetailSong(): void {
-    this.songService.detail(this.song_id).subscribe({
-      next: (apiResponse: ApiResponse) => {
-        const song = apiResponse.data;
-        this.detailSong = this.convertResponseToSong(song);
-        this.artist = this.convertResponseToArtist(song.artist);
-        this.album = this.convertResponseToAlbum(song.album);
-        this.genre = this.convertResponseToGenre(song.genre);
-      },
-      complete: () => {
-        // console.log(this.detailSong);
-        // console.log(this.artist);
-        // console.log(this.album);
-      },
-      error: (error: HttpErrorResponse) => {
-        console.error(error?.error?.message ?? '');
-      }
-    });
-  }
-
-  getComments(): void {
-    this.commentService.getBySongId(this.song_id, { page: 1, limit: 10 }).subscribe({
-      next: (apiResponse: ApiResponse) => {
-        const comments = apiResponse.data.comments;
-        this.comments = comments.map((comment: any) => this.convertResponseToComment(comment));
-      },
-      complete: () => {
-        console.log(this.comments);
-      },
-      error: (error: HttpErrorResponse) => {
-        console.error(error?.error?.message ?? '');
-      }
-    });
-  }
-
   ngOnInit(): void {
-    const id = this.route.snapshot.params['id'];
-    this.song_id = Number(id);
+    this.volume = 0.5;
 
-    this.getDetailSong();
-    this.getComments();
+    this.listener.image_url = this.tokenService.getImageUrl();
+    this.listener.id = this.tokenService.getUserId();
   }
 
-  convertResponseToSong(songResponse: any): Song {
-    const detailSong: Song = { id: 0, name: '', duration: 0, secure_url: '', description: '', release_date: '', artist_id: 0, image_url: '', album_id: 0, genre_id: 0, public_id: '', status: '', created_at: '', updated_at: '' }
+  // async ngOnInit(): Promise<void> {
+  //   const id = this.route.snapshot.params['id'];
+  //   this.song_id = Number(id);
+  //   this.listener.image_url = this.tokenService.getImageUrl();
+  //   this.listener.id = this.tokenService.getUserId();
 
-    detailSong.id = songResponse.id;
-    detailSong.name = songResponse.name;
-    detailSong.artist_id = songResponse.artist.id;
-    detailSong.duration = songResponse.duration;
-    detailSong.image_url = songResponse.image_url;
-    detailSong.secure_url = songResponse.secure_url;
-    detailSong.public_id = songResponse.public_id;
-    detailSong.genre_id = songResponse.genre.id;
-    detailSong.status = songResponse.status;
-    detailSong.description = songResponse.description;
-    detailSong.release_date = songResponse.release_date;
-    detailSong.created_at = songResponse.created_at;
-    detailSong.updated_at = songResponse.updated_at;
+  //   try {
+  //     const [songDetailResponse, commentsResponse] = await Promise.all([
+  //       this.songService.detail(this.song_id).toPromise(),
+  //       this.commentService.getBySongId(this.song_id, { page: 1, limit: 10 }).toPromise(),
+  //     ]);
 
-    return detailSong;
+  //     if (songDetailResponse && songDetailResponse.status === "OK") {
+  //       const song = songDetailResponse.data;
+  //       this.detailSong = convertResponseToSong(song);
+  //       this.artist = convertResponseToArtist(song.artist);
+  //       this.album = convertResponseToAlbum(song.album);
+
+  //       this.updateAudioUrl(this.detailSong.secure_url, this.detailSong.duration);
+  //     }
+
+  //     if (commentsResponse && commentsResponse.status === "OK") {
+  //       const comments = commentsResponse.data.comments;
+  //       this.comments = comments.map((comment: any) => convertResponseToComment(comment));
+  //     }
+  //   } catch (error) {
+  //     console.error('Error fetching data:', error);
+  //   }
+
+  //   try {
+  //     debugger;
+  //     console.log(this.album.id);
+  //     const response = await this.songService.getAllSong({ page: 1, limit: 3, keyword: '', album_id: this.album.id }).toPromise();
+  //     if (response && response.status === "OK") {
+  //       this.relatedSongs = response.data.songs;
+  //       console.log(this.relatedSongs);
+  //     }
+  //   } catch (error) {
+  //     console.error('Error fetching data:', error);
+  //   }
+  // }
+
+  updateAudioUrl(url: string, duration: number): void {
+    this.duration = duration;
+    this.cdr.detectChanges();
   }
 
-  convertResponseToArtist(userResponse: any): Artist {
-    const artist: Artist = { id: 0, username: '', image_url: '', artist_name: '', biography: '' }
+  togglePlayPause(audio: HTMLAudioElement): void {
+    if (!this.detailSong.secure_url) {
+      console.error("Audio URL is empty!");
+      return;
+    }
 
-    artist.id = userResponse.id;
-    artist.username = userResponse.username;
-    artist.image_url = userResponse.image_url;
-    artist.artist_name = userResponse.artist_name;
-    artist.biography = userResponse.biography;
-
-    return artist;
+    if (!this.isPlaying) {
+      // Chỉ gọi play khi audio không bị paused
+      audio.play()
+        .then(() => {
+          console.log("Audio is playing!");
+          this.isPlaying = true;
+        })
+        .catch((error) => {
+          console.error("Error during play:", error);
+        });
+    } else {
+      // Gọi pause nếu đang phát
+      audio.pause();
+      this.isPlaying = false;
+      console.log("Audio is paused!");
+    }
   }
 
-  convertResponseToAlbum(albumResponse: any): Album {
-    const album: Album = { id: 0, name: '', artist_id: 0, release_date: '', cover_url: '', status: '', created_at: '', updated_at: '', description: '', genre_id: 0, deleted_at: '' }
-
-    album.id = albumResponse.id;
-    album.name = albumResponse.name;
-    album.artist_id = albumResponse.artist_id;
-    album.release_date = albumResponse.release_date;
-    album.cover_url = albumResponse.cover_url;
-    album.status = albumResponse.status;
-    album.created_at = albumResponse.created_at;
-    album.updated_at = albumResponse.updated_at;
-    album.description = albumResponse.description;
-    album.genre_id = albumResponse.genre_id;
-    album.deleted_at = albumResponse.deleted_at;
-
-    return album;
+  onAudioReady(): void {
+    console.log("Audio is ready to play!");
   }
 
-  convertResponseToGenre(genreResponse: any): Genre {
-    const genre: Genre = { id: 0, name: '' }
 
-    genre.id = genreResponse.id;
-    genre.name = genreResponse.name;
-
-    return genre;
+  updateProgress(audio: HTMLAudioElement): void {
+    this.currentTime = audio.currentTime;
+    this.duration = audio.duration || 0;
   }
 
-  convertResponseToCommentUser(commentUserResponse: any): CommentUserResponse {
-    const commentUser: CommentUserResponse = { id: 0, image_url: '', username: '', role: { id: 0, name: '' } }
-
-    commentUser.id = commentUserResponse.id;
-    commentUser.image_url = commentUserResponse.image_url;
-    commentUser.username = commentUserResponse.username;
-    commentUser.role = this.convertResponseToRole(commentUserResponse.role);
-
-    return commentUser;
+  seek(audio: HTMLAudioElement, event: Event): void {
+    const target = event.target as HTMLInputElement;
+    audio.currentTime = parseFloat(target.value);
   }
 
-  convertResponseToComment(commentResponse: any): Comment {
-    const comment: Comment = { id: 0, content: '', user_id: 0, user: this.convertResponseToCommentUser(commentResponse.user) }
-
-    comment.id = commentResponse.id;
-    comment.content = commentResponse.content;
-    comment.user_id = commentResponse.user_id;
-
-    return comment;
+  setVolume(level: number): void {
+    this.volume = level;
   }
 
-  convertResponseToRole(roleResponse: any): Role {
-    const role: Role = { id: 0, name: '' }
+  changeVolume(audio: HTMLAudioElement, event: Event): void {
+    const target = event.target as HTMLInputElement;
+    this.volume = parseFloat(target.value);
+    audio.volume = this.volume;
+    console.log(`Volume set to: ${this.volume}`);
+  }
 
-    role.id = roleResponse.id;
-    role.name = roleResponse.name;
 
-    return role;
+  formatTime(seconds: number): string {
+    const minutes = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60).toString().padStart(2, '0');
+    return `${minutes}:${secs}`;
+  }
+
+  onEnded(audio: HTMLAudioElement): void {
+    this.isPlaying = false;
   }
 }

@@ -28,9 +28,18 @@ export class TokenService {
         return 'userId' in userObject ? parseInt(userObject['userId']) : 0;
     }
 
+    getImageUrl(): string {
+        let token = this.getToken();
+        if (!token) {
+            return '';
+        }
+        let userObject = this.jwtHelperService.decodeToken(token);
+        return 'image_url' in userObject ? userObject['image_url'] : '';
+    }
+
     removeToken(): void {
         this.localStorage?.removeItem(this.TOKEN_KEY);
     }
 
-    
+
 }

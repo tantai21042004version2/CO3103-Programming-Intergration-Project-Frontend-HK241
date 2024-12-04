@@ -5,7 +5,5 @@ export interface Comment {
 
     content: string;
 
-    user_id: number;
-
     user: CommentUserResponse;
 }
