@@ -20,6 +20,7 @@ export class SignupComponent extends BaseComponent {
   country: string;
   dateOfBirth: Date;
   roleId: number;
+  errorMessage: string = '';
 
   constructor() {
     super();
@@ -61,16 +62,29 @@ export class SignupComponent extends BaseComponent {
     }
   }
 
+  validateInformation(): void {
+    if (this.username === '' || this.email === '') {
+      this.errorMessage = 'You must enter both your username and email.';
+    }
+    else if (this.password === '' || this.retypePassword === '') {
+      this.errorMessage = 'You must enter both your password and retype password.';
+    }
+    else if (this.password !== this.retypePassword) {
+      this.errorMessage = 'Your password and retype password do not match.';
+    }
+    else if (this.dateOfBirth === null) {
+      this.errorMessage = 'You must enter your date of birth.';
+    } else if (this.country === '') {
+      this.errorMessage = 'You must enter your country.';
+    } else {
+      this.errorMessage = '';
+    }
+  }
+
   register() {
-    const message = `email: ${this.email}` +
-      `username: ${this.username}` +
-      `password: ${this.password}` +
-      `retypePassword: ${this.retypePassword}` +
-      `country: ${this.country}` +
-      `dateOfBirth: ${this.dateOfBirth}` +
-      `roleId: ${this.roleId}`;
-    //console.error(message);
-    debugger
+    if (this.registerForm.invalid) {
+      this.validateInformation();
+    }
 
     const registerDTO: RegisterDTO = {
       email: this.email,
@@ -81,23 +95,26 @@ export class SignupComponent extends BaseComponent {
       date_of_birth: this.dateOfBirth,
       role_id: 2
     }
-    debugger;
 
     this.userService.register(registerDTO).subscribe({
       next: (apiResponse: ApiResponse) => {
-        debugger;
-        const confirmation = window
-          .confirm('Đăng ký thành công, mời bạn đăng nhập. Bấm "OK" để chuyển đến trang đăng nhập.');
-        if (confirmation) {
-          this.router.navigate(['/signin']);
+        if (apiResponse.status === 'CREATED') {
+          const confirmation = window
+            .confirm('Đăng ký thành công, mời bạn đăng nhập. Bấm "OK" để chuyển đến trang đăng nhập.');
+          if (confirmation) {
+            this.router.navigate(['/signin']);
+          }
         }
       },
       complete: () => {
-        debugger;
       },
       error: (error: HttpErrorResponse) => {
-        debugger;
+        this.errorMessage = error.error.message;
       }
     });
+  }
+
+  navigateToSignin() {
+    this.router.navigate(['/signin']);
   }
 }
