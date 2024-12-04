@@ -1,140 +1,94 @@
-<div class="container" style="width: 100%">
-  <app-header></app-header>
+<app-header></app-header>
 
-  <div id="nav-line"></div>
+<div class="signup-container">
+  <div class="inner-container">
 
-  <!-- Signup Section -->
-  <section id="main-container">
-    <p id="validationMessage">All input fields are required.</p>
-    <!-- Signup Form -->
-    <form #registerForm="ngForm">
-      <div id="signup-form">
-        <!-- Avatar Upload -->
-        <div class="avatar-container">
-          <label for="imageUpload" class="avatar-label-container">
-            <div class="avatar-image-container">
-              <img class="avatar-preview-image" />
-              <i class="fa-solid fa-user avatar-default-icon"></i>
-            </div>
-          </label>
-          <input
-            onchange="handleImage(event)"
-            type="file"
-            class="avatar-upload-input"
-            name="imageUpload"
-            id="imageUpload"
-            accept=".jpg, .jpeg, .png, .svg"
-          />
-        </div>
+    <!-- Signup Section -->
+    <section class="main-container">
+      <!-- Signup Form -->
+      <form class="signup-form" #registerForm="ngForm">
+        <div class="form-container">
+          <div class="input-form">
+            <div class="left-input-form width-100-percent flex-box">
+              <!-- Username -->
+              <div class="form-group">
+                <label for="username">User name</label>
+                <input type="text" placeholder="User name..." id="username" name="username" [(ngModel)]="username"
+                  required />
+              </div>
 
-        <div class="input-form">
-          <div class="left-input-form width-100-percent flex-box">
-            <!-- Username -->
-            <div class="form-group">
-              <label for="username">User name</label>
-              <input
-                type="text"
-                placeholder="User name..."
-                id="username"
-                name="username"
-                [(ngModel)]="username"
-                required
-              />
-            </div>
+              <!-- Password -->
+              <div class="form-group">
+                <label for="password">Password</label>
+                <div class="password-container">
+                  <input type="password" placeholder="Password..." id="password" name="password" [(ngModel)]="password"
+                    required />
+                  <i class="fa-solid fa-eye-slash toggle-password"></i>
+                </div>
+              </div>
 
-            <!-- Email Address -->
-            <div class="form-group">
-              <label for="email">Email address</label>
-              <input
-                type="email"
-                placeholder="Email address..."
-                id="email"
-                name="email"
-                [(ngModel)]="email"
-                required
-              />
+              <!-- Country -->
+              <div class="form-group">
+                <label for="country">Country</label>
+                <select id="country" name="country" [(ngModel)]="country" required>
+                  <option value="" disabled selected>Select your country</option>
+                  <option value="USA">USA</option>
+                  <option value="UK">UK</option>
+                  <option value="Vietnam">Vietnam</option>
+                  <option value="Canada">Canada</option>
+                </select>
+              </div>
+
             </div>
 
-            <!-- Password -->
-            <div class="form-group">
-              <label for="password">Password</label>
-              <div class="password-container">
-                <input
-                  type="password"
-                  placeholder="Password..."
-                  id="password"
-                  name="password"
-                  [(ngModel)]="password"
-                  required
-                />
-                <i class="fa-solid fa-eye-slash toggle-password"></i>
+            <div class="right-input-form width-100-percent flex-box">
+              <!-- Email Address -->
+              <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" placeholder="Email address..." id="email" name="email" [(ngModel)]="email"
+                  required />
+              </div>
+
+              <!-- Retype Password -->
+              <div class="form-group">
+                <label for="retypePassword">Retype Password</label>
+                <div class="password-container">
+                  <input type="password" placeholder="Retype password..." id="retypePassword" name="retypePassword"
+                    [(ngModel)]="retypePassword" required />
+                  <i class="fa-solid fa-eye-slash toggle-password"></i>
+                </div>
+              </div>
+
+              <!-- Date of Birth -->
+              <div class="form-group">
+                <label for="dateOfBirth">Date of Birth</label>
+                <input type="date" id="dateOfBirth" name="dateOfBirth" [(ngModel)]="dateOfBirth" required />
               </div>
             </div>
           </div>
 
-          <div class="right-input-form width-100-percent flex-box">
-            <!-- Retype Password -->
-            <div class="form-group">
-              <label for="retypePassword">Retype Password</label>
-              <div class="password-container">
-                <input
-                  type="password"
-                  placeholder="Retype password..."
-                  id="retypePassword"
-                  name="retypePassword"
-                  [(ngModel)]="retypePassword"
-                  required
-                />
-                <i class="fa-solid fa-eye-slash toggle-password"></i>
-              </div>
-            </div>
+          <div class="validation-message-container">
+            <p id="validationMessage">{{ errorMessage }}</p>
+          </div>
 
-            <!-- Country -->
-            <div class="form-group">
-              <label for="country">Country</label>
-              <select
-                id="country"
-                name="country"
-                [(ngModel)]="country"
-                required
-              >
-                <option value="" disabled selected>Select your country</option>
-                <option value="USA">USA</option>
-                <option value="UK">UK</option>
-                <option value="Vietnam">Vietnam</option>
-                <option value="Canada">Canada</option>
-              </select>
-            </div>
-
-            <!-- Date of Birth -->
-            <div class="form-group">
-              <label for="dateOfBirth">Date of Birth</label>
-              <input
-                type="date"
-                id="dateOfBirth"
-                name="dateOfBirth"
-                [(ngModel)]="dateOfBirth"
-                required
-              />
-            </div>
+          <div class="signup-btn-container">
+            <button id="signup-btn" (click)="register()">Sign Up</button>
           </div>
         </div>
+      </form>
 
-        <div class="sign-up-box text-center">
-          <button id="signup-btn" (click)="register()">Sign Up</button>
+      <hr class="bottom-line" />
+
+      <!-- Login Section -->
+      <div class="login-section">
+        <h3 class="margin-top-bottom-12">Already have an account?</h3>
+        <div class="login-btn-container" (click)="navigateToSignin()">
+          <button id="login-btn" class="flex-box">
+            Log In
+          </button>
+          <i><img src="../../../assets/hcmut.png" alt="hcmut-logo" /></i>
         </div>
       </div>
-    </form>
-
-    <hr class="bottom-line" />
-
-    <!-- Login Section -->
-    <div id="login-section">
-      <h3 class="margin-top-bottom-12">Already have an account?</h3>
-      <button id="login-btn" class="flex-box" routerLink="/signin">
-        Log In for Spotify
-        <i><img src="../../../assets/spitifot.png" alt="spotify-logo" /></i>
-      </button>
-    </div>
-  </section>
+    </section>
+  </div>
 </div>

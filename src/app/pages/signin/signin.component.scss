@@ -58,7 +58,7 @@
 
 .login-form {
   width: 100%;
-  height: 70%;
+  height: 80%;
 }
 
 .form-container {
@@ -74,19 +74,6 @@
 .sign-up-container {
   width: 100%;
   height: 25%;
-}
-
-#validationMessage {
-  background-color: #ff4d4f;
-  /* Màu cảnh báo đỏ */
-  color: #ffffff;
-  width: 100%;
-  padding: 15px;
-  margin: 15px 0;
-  font-weight: 600;
-  text-align: center;
-  border-radius: 8px;
-  display: none;
 }
 
 .email-container,
@@ -107,7 +94,7 @@
 
 label {
   font-weight: bold;
-  font-size: 14px;
+  font-size: 16px;
   color: #333;
   margin-bottom: 5px;
   display: block;
@@ -184,6 +171,7 @@ input {
 
 .checkbox-container {
   display: flex;
+  justify-content: center;
   align-items: center;
   height: 100%;
   width: 40%;
@@ -226,9 +214,9 @@ input {
 }
 
 #login-btn {
-  background-color: #fabf66;
+  background-color: #1ed760;
   width: 100%;
-  padding: 14px 0;
+  padding: 12px 8px;
   border: none;
   border-radius: 10px;
   font-size: 16px;
@@ -241,9 +229,26 @@ input {
 }
 
 #login-btn:hover {
-  background-color: #f50;
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(30, 215, 96, 0.3);
+}
+
+.validation-message-container {
+  color: #ff4d4f;
+  width: 100%;
+  height: fit-content;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 8px;
+  // opacity: 0;
+
+  // background-color: #fff;
+}
+
+.bottom-line {
+  width: 100%;
+  height: 1px;
+  background-color: #d1d1d1;
 }
 
 .sign-up-container {
@@ -275,13 +280,18 @@ input {
   justify-content: center;
 }
 
-#signup-btn {
+.sign-up-btn-inner {
+  width: 130px;
+  height: 50px;
+
   display: flex;
-  width: 50%;
+  align-items: center;
+  justify-content: center;
+
   padding: 12px 8px;
   font-size: 15px;
   font-weight: 700;
-  border-radius: 50px;
+  border-radius: 10px;
   letter-spacing: 0.5px;
   cursor: pointer;
   background-color: #000;
@@ -289,10 +299,9 @@ input {
   border: 1px solid #d1d1d1;
   text-transform: uppercase;
   transition: all 0.3s ease;
-  margin-bottom: 1.5rem;
 }
 
-#signup-btn:hover {
+.sign-up-btn-inner:hover {
   background-color: #f8f8f8;
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);

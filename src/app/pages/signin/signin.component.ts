@@ -34,6 +34,14 @@ export class SigninComponent extends BaseComponent implements OnInit {
     this.showPassword = false;
   }
 
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+    const passwordInput = document.getElementById('login-password') as HTMLInputElement;
+    passwordInput.type = this.showPassword ? 'text' : 'password';
+  }
+
+
   ngOnInit(): void {
     this.roleService.getAllRole().subscribe({
       next: (apiResponse: ApiResponse) => {
@@ -47,9 +55,40 @@ export class SigninComponent extends BaseComponent implements OnInit {
     });
   }
 
+  validateInformation(): LoginDTO {
+    const loginDTO: LoginDTO = {
+      email: this.email,
+      username: this.username,
+      password: this.password,
+      role_id: this.selectedRole?.id ?? 2
+    }
+
+    if (!this.email.includes('@')) {
+      loginDTO.username = this.email;
+      loginDTO.email = '';
+    }
+    return loginDTO;
+  }
+
+  getUserDetail(token: string): void {
+    this.userService.getUserDetail(token).subscribe({
+      next: (apiResponse2: ApiResponse) => {
+        this.userResponse = {
+          ...apiResponse2.data,
+          date_of_birth: new Date(apiResponse2.data.date_of_birth),
+        };
+        this.userService.saveUserResponseTLS(this.userResponse);
+
+        this.router.navigate(['/home']);
+      },
+      error: (error: HttpErrorResponse) => {
+        this.validationMessage = 'Login failed. Please check your credentials.';
+        console.error(error?.error?.message ?? '');
+      }
+    });
+  }
+
   login(): void {
-    // Ensure the form is valid before proceeding
-    debugger;
     if (this.loginForm.invalid) {
       this.validationMessage = 'Please enter valid email and password.';
       return;
@@ -59,48 +98,20 @@ export class SigninComponent extends BaseComponent implements OnInit {
       this.validationMessage = 'Please enter both email and password.';
       return;
     }
-    debugger;
 
     if (!this.selectedRole) {
       this.validationMessage = 'Please select a role.';
       return;
     }
 
-    if (!this.email.includes('@')) {
-      this.username = this.email;
-      this.email = '';
-    }
-    const loginDTO: LoginDTO = {
-      email: this.email,
-      username: this.username,
-      password: this.password,
-      role_id: this.selectedRole?.id ?? 2
-    };
-    debugger;
-
+    const loginDTO = this.validateInformation();
     this.userService.login(loginDTO).subscribe({
       next: (apiResponse: ApiResponse) => {
-        debugger;
         const { token } = apiResponse.data;
         this.tokenService.setToken(token);
 
+        this.getUserDetail(token);
         debugger;
-        this.userService.getUserDetail(token).subscribe({
-          next: (apiResponse2: ApiResponse) => {
-            this.userResponse = {
-              ...apiResponse2.data,
-              date_of_birth: new Date(apiResponse2.data.date_of_birth),
-            };
-            debugger;
-            this.userService.saveUserResponseTLS(this.userResponse);
-
-            this.router.navigate(['/home']);
-          },
-          error: (error: HttpErrorResponse) => {
-            this.validationMessage = 'Login failed. Please check your credentials.';
-            console.error(error?.error?.message ?? '');
-          }
-        });
       },
       error: (error: HttpErrorResponse) => {
         this.validationMessage = 'Login failed. Please check your credentials.';
@@ -109,9 +120,7 @@ export class SigninComponent extends BaseComponent implements OnInit {
     });
   }
 
-  togglePasswordVisibility() {
-    this.showPassword = !this.showPassword;
-    const passwordInput = document.getElementById('login-password') as HTMLInputElement;
-    passwordInput.type = this.showPassword ? 'text' : 'password';
+  navigateToSignUp() {
+    this.router.navigate(['/signup']);
   }
 }
