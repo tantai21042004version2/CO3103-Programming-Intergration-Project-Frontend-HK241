@@ -5,6 +5,7 @@
 
     <!-- Login Section -->
     <section class="main-container">
+      <p id="validationMessage">Incorrect username or password.</p>
       <!-- Login Form -->
       <form class="login-form" #loginForm="ngForm" (ngSubmit)="login()" novalidate>
         <div class="form-container">
@@ -70,6 +71,9 @@
 
       <hr class="bottom-line" />
 
+        </div>
+      </form>
+
       <!-- Sign Up -->
       <div class="sign-up-container">
         <div class="sign-up-text-wrapper">
@@ -80,6 +84,7 @@
             Sign up
             <i><img src="../../../assets/hcmut.png" alt="spotify-logo" /></i>
           </div>
+
         </div>
       </div>
     </section>
