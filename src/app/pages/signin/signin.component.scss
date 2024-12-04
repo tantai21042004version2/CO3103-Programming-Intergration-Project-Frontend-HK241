@@ -46,7 +46,7 @@
   justify-content: center;
   padding: 2rem 2rem 2rem 2rem;
   position: relative;
-  background: #f7f9fc;
+  background: #eaedf1;
 
   /* Nền sáng hơn để dễ nhìn */
   border-radius: 15px;
@@ -226,7 +226,7 @@ input {
 }
 
 #login-btn {
-  background-color: #1ed760;
+  background-color: #fabf66;
   width: 100%;
   padding: 14px 0;
   border: none;
@@ -241,7 +241,7 @@ input {
 }
 
 #login-btn:hover {
-  background-color: #19c255;
+  background-color: #f50;
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(30, 215, 96, 0.3);
 }
