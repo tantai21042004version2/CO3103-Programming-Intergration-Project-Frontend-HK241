@@ -97,6 +97,76 @@ export class TrendingComponent implements OnInit {
           "http://res.cloudinary.com/tantai21042004/image/upload/v1732700860/profileimages/gyngaasq2tlqkashgppe.jpg",
         status: "APPROVED",
       },
+      {
+        id: 4,
+        artist: "Jack",
+        name: "Đừng Làm Trái Tim Anh Đau",
+        secure_url:
+          "https://res.cloudinary.com/tantai21042004/video/upload/v1732701512/songs/pwz9za8e0nzzo2lq0jww.mp3",
+        image_url:
+          "http://res.cloudinary.com/tantai21042004/image/upload/v1732700860/profileimages/gyngaasq2tlqkashgppe.jpg",
+        status: "APPROVED",
+      },
+      {
+        id: 5,
+        artist: "Jack",
+        name: "Chạy Ngay Đi",
+        secure_url:
+          "https://res.cloudinary.com/tantai21042004/video/upload/v1732702300/songs/xd4ldiyutxnyrdfutgkl.mp3",
+        image_url:
+          "http://res.cloudinary.com/tantai21042004/image/upload/v1732700860/profileimages/gyngaasq2tlqkashgppe.jpg",
+        status: "APPROVED",
+      },
+      {
+        id: 6,
+        artist: "Jack",
+        name: "Chúng Ta Của Hiện Tại",
+        secure_url:
+          "https://res.cloudinary.com/tantai21042004/video/upload/v1732702734/songs/mkkjgg8r2qsuggoqqxu4.mp3",
+        image_url:
+          "http://res.cloudinary.com/tantai21042004/image/upload/v1732700860/profileimages/gyngaasq2tlqkashgppe.jpg",
+        status: "APPROVED",
+      },
+      {
+        id: 7,
+        artist: "Jack",
+        name: "Hãy Trao Cho Anh",
+        secure_url:
+          "https://res.cloudinary.com/tantai21042004/video/upload/v1732702941/songs/bdsof3qdycwgi3tmhq2x.mp3",
+        image_url:
+          "http://res.cloudinary.com/tantai21042004/image/upload/v1732700860/profileimages/gyngaasq2tlqkashgppe.jpg",
+        status: "APPROVED",
+      },
+      {
+        id: 8,
+        artist: "Jack",
+        name: "Em Của Ngày Hôm Qua",
+        secure_url:
+          "https://res.cloudinary.com/tantai21042004/video/upload/v1732703301/songs/epv09d5ck3wxgv0o2k0z.mp3",
+        image_url:
+          "http://res.cloudinary.com/tantai21042004/image/upload/v1732700860/profileimages/gyngaasq2tlqkashgppe.jpg",
+        status: "APPROVED",
+      },
+      {
+        id: 7,
+        artist: "Jack",
+        name: "Hãy Trao Cho Anh",
+        secure_url:
+          "https://res.cloudinary.com/tantai21042004/video/upload/v1732702941/songs/bdsof3qdycwgi3tmhq2x.mp3",
+        image_url:
+          "http://res.cloudinary.com/tantai21042004/image/upload/v1732700860/profileimages/gyngaasq2tlqkashgppe.jpg",
+        status: "APPROVED",
+      },
+      {
+        id: 8,
+        artist: "Jack",
+        name: "Em Của Ngày Hôm Qua",
+        secure_url:
+          "https://res.cloudinary.com/tantai21042004/video/upload/v1732703301/songs/epv09d5ck3wxgv0o2k0z.mp3",
+        image_url:
+          "http://res.cloudinary.com/tantai21042004/image/upload/v1732700860/profileimages/gyngaasq2tlqkashgppe.jpg",
+        status: "APPROVED",
+      },
       // Thêm các bài hát khác nếu cần
     ];
   }

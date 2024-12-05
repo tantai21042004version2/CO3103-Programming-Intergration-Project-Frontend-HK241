@@ -1,202 +1,307 @@
 <app-header></app-header>
 <div class="detail-page-container">
-    <div class="content-container">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-header">
-                    <div class="song-details">
-                        <!-- Nút bật/tắt phát nhạc -->
-                        <button class="play-button" (click)="togglePlayPause(audioPlayer)">
-                            {{ isPlaying ? "⏸" : "▶" }}
-                        </button>
-                        <h2>{{ detailSong.name }}</h2>
-                        <span class="artist-name">{{ artist.username }}</span>
-                    </div>
-                </div>
-                <div class="meta-info">
-                    <span class="time">{{ detailSong.release_date }}</span>
-                    <span class="genre">{{ genre.name }}</span>
-                </div>
+  <div class="content-container">
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-header">
+          <div class="song-details">
+            <button class="play-button" (click)="togglePlayPause(audioPlayer)">
+              <img
+                *ngIf="isPlaying; else playIcon"
+                src="../../../assets/pausebutton.svg"
+                alt="Pause Button"
+                class="w-18 h-29"
+              />
+              <ng-template #playIcon>
+                <img src="../../../assets/playbutton.svg" alt="Play Button" />
+              </ng-template>
+            </button>
 
-
-
-                <div class="audio-player">
-
-                    <!-- Trình phát nhạc ẩn -->
-                    <audio #audioPlayer [src]="detailSong.secure_url" (timeupdate)="updateProgress(audioPlayer)"
-                        (ended)="onEnded(audioPlayer)" (canplaythrough)="onAudioReady()">
-                    </audio>
-
-
-                    <!-- Thanh tiến trình -->
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress" [style.width.%]="(currentTime / duration) * 100"></div>
-                        </div>
-                        <div class="time-info">
-                            <span>{{ formatTime(currentTime) }}</span>
-                            <span>{{ formatTime(duration) }}</span>
-                        </div>
-                    </div>
-
-                    <!-- Thanh điều chỉnh âm lượng -->
-                    <div class="volume-container">
-                        <label for="volume-control">🔊</label>
-                        <input id="volume-control" type="range" min="0" max="1" step="0.01" [value]="volume"
-                            (input)="changeVolume(audioPlayer, $event)" />
-                    </div>
-                </div>
+            <div class="song-info m-l-12 { margin-left: 4px; }">
+              <div class="song-title m-b-8">
+                <h2 class="fz-24 fw-400 name">{{ detailSong.name }}</h2>
+              </div>
+              <div class="artist-name">
+                <span class="artist-name fw-400 name">{{
+                  artist.username
+                }}</span>
+              </div>
             </div>
-            <div class="hero-image">
-                <img [src]="detailSong.image_url" alt="Hero Image">
-            </div>
+          </div>
+          <div class="meta-info">
+            <span class="time c-white fw-400">{{
+              detailSong.release_date
+            }}</span>
+            <span class="genre c-white fw-400">#{{ genre.name }}</span>
+          </div>
         </div>
 
-        <div class="listen-container">
-            <!-- LEFT -->
-            <div class="about-container">
-                <!-- ABOVE LEFT -->
-                <div class="comment-container">
-                    <div class="comment-search-container">
-                        <div class="user-avatar-container">
-                            <img class="user-avatar" [src]="listener.image_url" alt="User Avatar">
-                        </div>
-                        <input class="comment-input" type="text" placeholder="Write a comment">
-                        <button class="send-button">
-                            <i class="send-icon">➤</i>
-                        </button>
-                    </div>
-                    <div class="comment-button-container">
-                        <div class="action-buttons">
-                            <button class="action-button">❤️ Like</button>
-                            <button class="action-button">🔁 Repost</button>
-                            <button class="action-button">📤 Share</button>
-                            <button class="action-button">🔗 Copy Link</button>
-                            <button class="action-button">➕ Add to Next up</button>
-                            <button class="action-button">⋯ More</button>
-                        </div>
-                        <div class="stats">
-                            <span>▶ 138K</span>
-                            <span>❤️ 2,905</span>
-                            <span>💬 43</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- BELOW LEFT -->
-                <div class="about-right-container">
-                    <div class="user-detail-container">
-                        <div class="user-card">
-                            <div class="user-avatar">
-                                <img [src]="artist.image_url" alt="User Avatar">
-                            </div>
-                            <div class="user-name">{{ artist.username }}</div>
-                            <div class="user-stats">
-                                <span class="user-votes">105</span>
-                                <span class="user-posts">2</span>
-                            </div>
-                            <div class="user-follow-button-container">
-                                <button class="follow-button">Follow</button>
-                            </div>
-                        </div>
-                    </div>
+        <div class="audio-player">
+          <!-- Trình phát nhạc ẩn -->
+          <audio
+            #audioPlayer
+            [src]="detailSong.secure_url"
+            (timeupdate)="updateProgress(audioPlayer)"
+            (ended)="onEnded(audioPlayer)"
+            (canplaythrough)="onAudioReady()"
+          ></audio>
 
-                    <div class="comment-list-container">
-                        <div class="list-header">
-                            <span>93 comments</span>
-                            <div class="sort-dropdown">
-                                Sorted by: <select>
-                                    <option value="newest">Newest</option>
-                                    <option value="oldest">Oldest</option>
-                                    <option value="most-liked">Most Liked</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="list-body">
-                            <div class="comment-card" *ngFor="let comment of comments">
-                                <img [src]="comment.user.image_url" alt="Avatar" class="comment-avatar">
-                                <div class="comment-content">
-                                    <div class="comment-header">
-                                        <span class="comment-author">{{ comment.user.username }}</span>
-                                    </div>
-                                    <div class="comment-text">{{ comment.content }}</div>
-                                </div>
-                                <div class="comment-likes">
-                                    <span>0</span> ❤️
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          <!-- Thanh tiến trình -->
+          <div class="progress-container">
+            <div class="progress-bar">
+              <div
+                class="progress"
+                [style.width.%]="(currentTime / duration) * 100"
+              ></div>
             </div>
-            <!-- RIGHT -->
-            <div class="sidebar-container">
-                <div class="album-container">
-                    <div class="related-header">
-                        <span>RELATED TRACKS</span>
-                        <a href="#">View all</a>
-                    </div>
-                    <div class="related-tracks">
-                        <div class="track-item" *ngFor="let song of relatedSongs">
-                            <img [src]="song.image_url" alt="Track Cover">
-                            <div class="track-info">
-                                <div class="track-title">{{ song.name }}</div>
-                                <div class="track-name">{{ artist.username }} - {{ song.description }}</div>
-                                <div class="track-stats">
-                                    <span>195K</span>
-                                    <span>4,823</span>
-                                    <span>738</span>
-                                    <span>827</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="like-container">
-                    <div class="like-header">
-                        <span class="like-count">2,905 LIKES</span>
-                        <a href="#" class="view-all">View all</a>
-                    </div>
-                    <div class="like-body">
-                        <div class="like-avatars">
-                            <img src="https://via.placeholder.com/40" alt="Avatar">
-                            <img src="https://via.placeholder.com/40" alt="Avatar">
-                            <img src="https://via.placeholder.com/40" alt="Avatar">
-                            <img src="https://via.placeholder.com/40" alt="Avatar">
-                            <img src="https://via.placeholder.com/40" alt="Avatar">
-                            <img src="https://via.placeholder.com/40" alt="Avatar">
-                            <img src="https://via.placeholder.com/40" alt="Avatar">
-                        </div>
-                    </div>
-                </div>
-                <div class="share-container">
-                    <div class="share-header">GO MOBILE</div>
-                    <div class="app-links">
-                        <a href="#" class="app-link">
-                            <img src="https://via.placeholder.com/150x50?text=App+Store"
-                                alt="Download on the App Store">
-                        </a>
-                        <a href="#" class="app-link">
-                            <img src="https://via.placeholder.com/150x50?text=Google+Play" alt="Get it on Google Play">
-                        </a>
-                    </div>
-                </div>
-                <div class="footer-container">
-                    <div class="footer-links">
-                        <a href="#">Legal</a> -
-                        <a href="#">Privacy</a> -
-                        <a href="#">Cookie Policy</a> -
-                        <a href="#">Cookie Manager</a> -
-                        <a href="#">Imprint</a> -
-                        <a href="#">Artist Resources</a> -
-                        <a href="#">Blog</a> -
-                        <a href="#">Charts</a> -
-                        <a href="#">Transparency Reports</a>
-                    </div>
-                    <div class="footer-language">
-                        Language: <a href="#">English (US)</a>
-                    </div>
-                </div>
+            <div class="time-info">
+              <span>{{ formatTime(currentTime) }}</span>
+              <span>{{ formatTime(duration) }}</span>
             </div>
+          </div>
+          <!-- Thanh điều chỉnh âm lượng -->
+          <div class="volume-container m-b-12">
+            <label class="volume-icon">🔊</label>
+            <div class="volume-bar" (mousedown)="changeVolumeOnDrag($event)">
+              <div class="volume-level" [style.height.%]="volume * 100"></div>
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="hero-image">
+        <img [src]="detailSong.image_url" alt="Hero Image" />
+      </div>
     </div>
+
+    <div class="listen-container">
+      <!-- LEFT -->
+      <div class="about-container">
+        <!-- ABOVE LEFT -->
+        <div class="comment-container">
+          <div class="comment-search-container">
+            <div class="user-avatar-container">
+              <img
+                class="user-avatar"
+                [src]="listener.image_url"
+                alt="User Avatar"
+              />
+            </div>
+            <input
+              class="comment-input"
+              type="text"
+              placeholder="Write a comment"
+            />
+            <button class="send-button">
+              <i class="send-icon">➤</i>
+            </button>
+          </div>
+          <div class="comment-button-container">
+            <div class="action-buttons">
+              <button class="action-button">❤️ Like</button>
+              <button class="action-button">🔁 Repost</button>
+              <button class="action-button">📤 Share</button>
+              <button class="action-button">🔗 Copy Link</button>
+              <button class="action-button">➕ Add to Next up</button>
+              <button class="action-button">⋯ More</button>
+            </div>
+            <div class="stats">
+              <span>▶ 138K</span>
+              <span>❤️ 2,905</span>
+              <span>💬 43</span>
+            </div>
+          </div>
+        </div>
+        <!-- BELOW LEFT -->
+        <div class="about-right-container">
+          <div class="user-detail-container">
+            <div class="user-card">
+              <div class="artist-avatar">
+                <img [src]="artist.image_url" alt="User Avatar" />
+              </div>
+              <div class="user-name">{{ artist.username }}</div>
+              <div class="user-stats">
+                <span class="user-votes">105</span>
+                <span class="user-posts">2</span>
+              </div>
+              <div class="user-follow-button-container">
+                <button class="follow-button">Follow</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="comment-list-container">
+            <div class="list-header">
+              <span>93 comments</span>
+              <div class="sort-dropdown">
+                Sorted by:
+                <select>
+                  <option value="newest">Newest</option>
+                  <option value="oldest">Oldest</option>
+                  <option value="most-liked">Most Liked</option>
+                </select>
+              </div>
+            </div>
+            <div class="list-body">
+              <div class="comment-card" *ngFor="let comment of comments">
+                <img
+                  [src]="comment.user.image_url"
+                  alt="Avatar"
+                  class="comment-avatar"
+                />
+                <div class="comment-content">
+                  <div class="comment-header">
+                    <span class="comment-author">{{
+                      comment.user.username
+                    }}</span>
+                  </div>
+                  <div class="comment-text">{{ comment.content }}</div>
+                </div>
+                <div class="comment-likes"><span>0</span> ❤️</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- RIGHT -->
+      <div class="sidebar-container">
+        <div class="album-container">
+          <div class="related-header">
+            <span>RELATED TRACKS</span>
+            <a href="#" class="c-757575">View all</a>
+          </div>
+          <div class="related-tracks">
+            <div class="track-item" *ngFor="let song of relatedSongs">
+              <img [src]="song.image_url" alt="Track Cover" />
+              <div class="track-info">
+                <div class="track-title">{{ song.name }}</div>
+                <div class="track-name">
+                  {{ artist.username }} - {{ song.description }}
+                </div>
+                <div class="track-stats">
+                  <span>195K</span>
+                  <span>4,823</span>
+                  <span>738</span>
+                  <span>827</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="like-container">
+          <div class="like-header">
+            <span class="like-count">2,905 LIKES</span>
+            <a href="#" class="view-all c-757575">View all</a>
+          </div>
+          <div class="like-body">
+            <div class="like-avatars">
+              <img
+                src="https://via.placeholder.com/40"
+                alt="Avatar"
+                class="like-acc"
+              />
+              <img
+                src="https://via.placeholder.com/40"
+                alt="Avatar"
+                class="like-acc"
+              />
+              <img
+                src="https://via.placeholder.com/40"
+                alt="Avatar"
+                class="like-acc"
+              />
+              <img
+                src="https://via.placeholder.com/40"
+                alt="Avatar"
+                class="like-acc"
+              />
+              <img
+                src="https://via.placeholder.com/40"
+                alt="Avatar"
+                class="like-acc"
+              />
+              <img
+                src="https://via.placeholder.com/40"
+                alt="Avatar"
+                class="like-acc"
+              />
+              <img
+                src="https://via.placeholder.com/40"
+                alt="Avatar"
+                class="like-acc"
+              />
+              <img
+                src="https://via.placeholder.com/40"
+                alt="Avatar"
+                class="like-acc"
+              />
+              <img
+                src="https://via.placeholder.com/40"
+                alt="Avatar"
+                class="like-acc"
+              />
+              <img
+                src="https://via.placeholder.com/40"
+                alt="Avatar"
+                class="like-acc"
+              />
+              <img
+                src="https://via.placeholder.com/40"
+                alt="Avatar"
+                class="like-acc"
+              />
+              <img
+                src="https://via.placeholder.com/40"
+                alt="Avatar"
+                class="like-acc"
+              />
+              <img
+                src="https://via.placeholder.com/40"
+                alt="Avatar"
+                class="like-acc"
+              />
+              <img
+                src="https://via.placeholder.com/40"
+                alt="Avatar"
+                class="like-acc"
+              />
+              <img
+                src="https://via.placeholder.com/40"
+                alt="Avatar"
+                class="like-acc"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="share-container">
+          <div class="share-header">GO MOBILE</div>
+          <div class="app-links">
+            <a href="#" class="app-link">
+              <img
+                src="../../../assets/appstore.jpg"
+                alt="Download on the App Store"
+              />
+            </a>
+            <a href="#" class="app-link">
+              <img
+                src="../../../assets/gooplay.jpg"
+                alt="Get it on Google Play"
+              />
+            </a>
+          </div>
+        </div>
+        <div class="footer-container">
+          <div class="footer-links">
+            <a href="#">Legal</a> - <a href="#">Privacy</a> -
+            <a href="#">Cookie Policy</a> - <a href="#">Cookie Manager</a> -
+            <a href="#">Imprint</a> - <a href="#">Artist Resources</a> -
+            <a href="#">Blog</a> - <a href="#">Charts</a> -
+            <a href="#">Transparency Reports</a>
+          </div>
+          <div class="footer-language">
+            Language: <a href="#">English (US)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

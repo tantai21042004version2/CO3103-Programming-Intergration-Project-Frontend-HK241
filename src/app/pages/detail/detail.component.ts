@@ -170,12 +170,31 @@ export class DetailComponent extends BaseComponent implements OnInit {
     this.volume = level;
   }
 
-  changeVolume(audio: HTMLAudioElement, event: Event): void {
-    const target = event.target as HTMLInputElement;
-    this.volume = parseFloat(target.value);
-    audio.volume = this.volume;
+  // changeVolume(audio: HTMLAudioElement, event: Event): void {
+  //   const target = event.target as HTMLInputElement;
+  //   this.volume = parseFloat(target.value);
+  //   audio.volume = this.volume;
+  //   console.log(`Volume set to: ${this.volume}`);
+  // }
+  changeVolumeOnDrag(event: MouseEvent): void {
+    const volumeBar = event.currentTarget as HTMLElement;
+    const rect = volumeBar.getBoundingClientRect();
+    const clickPosition = rect.bottom - event.clientY;
+    const barHeight = rect.height;
+  
+    // Calculate the volume (0 to 1)
+    this.volume = Math.min(Math.max(clickPosition / barHeight, 0), 1);
+  
+    // Update audio volume
+    const audio = document.querySelector('audio') as HTMLAudioElement;
+    if (audio) {
+      audio.volume = this.volume;
+    }
+  
     console.log(`Volume set to: ${this.volume}`);
   }
+  
+  
 
 
   formatTime(seconds: number): string {
