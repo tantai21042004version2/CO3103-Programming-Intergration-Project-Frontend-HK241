@@ -200,9 +200,6 @@ export class DetailComponent extends BaseComponent implements OnInit {
     console.log(`Volume set to: ${this.volume}`);
   }
 
-
-
-
   formatTime(seconds: number): string {
     const minutes = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60).toString().padStart(2, '0');
