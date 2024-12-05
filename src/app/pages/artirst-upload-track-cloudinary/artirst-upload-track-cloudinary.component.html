@@ -2,21 +2,19 @@
   <!-- sidebar -->
   <aside class="sidebar">
     <div class="logo">
-      <img src="../../../assets/souncloud-black.png" alt="SoundCloud Logo" />
+      <img src="../../../assets/hcmut.png" alt="SoundCloud Logo" />
     </div>
     <nav class="menu">
       <ul>
         <li>Overview</li>
         <li>Tracks</li>
-        <li>Distribution</li>
         <li>Comments</li>
-        <li>Fans <span class="beta">BETA</span></li>
-        <li>Monetization</li>
+        <li>Albums</li>
         <li>Earnings</li>
         <li>Insights</li>
-        <li>Profile Control</li>
         <li>Benefits</li>
         <li>Membership</li>
+        <li>Profile Control</li>
       </ul>
     </nav>
   </aside>
@@ -46,11 +44,20 @@
     <div class="drop-file-box w-60-percent">
       <div class="drop-file-box-inner">
         <div class="image">
-          <img src="../../../assets/draganddrop.jpg" alt="" />
+          <img src="../../../assets/draganddrop.jpg" alt="Drag and Drop" />
         </div>
         <p class="fw-700 m-t-b-12">Drop and drag audio files to get started.</p>
-        <button class="fw-700">Choose files</button>
+        <!-- Input để chọn file -->
+        <input type="file" id="fileInput" (change)="onFileSelected($event)" accept="audio/*" style="display: none;" />
+        <button class="fw-700" (click)="triggerFileInput()">Choose files</button>
       </div>
+    </div>
+
+    <div class="upload-actions">
+      <button class="fw-700" [disabled]="!selectedFile" (click)="onUpload()">
+        Upload
+      </button>
+      <p *ngIf="uploadMessage" class="upload-message">{{ uploadMessage }}</p>
     </div>
     <p class="copyright c-gray">
       <span>Legal</span> - <span>Privacy</span> - <span>Cookie Manager</span> -
