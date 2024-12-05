@@ -2,12 +2,13 @@
   <!-- sidebar -->
   <aside class="sidebar">
     <div class="logo">
-      <img src="../../../assets/hcmut.png" alt="SoundCloud Logo" />
+      <img src="../../../assets/souncloud-black.png" alt="SoundCloud Logo" />
     </div>
     <nav class="menu">
       <ul>
-        <li>Overview</li>
-        <li>Tracks</li>
+        <li (click)="navigateToOverview()">Overview</li>
+        <li (click)="navigateToTracks()">Tracks</li>
+        <li (click)="navigateToNewTrack()">New Track</li>
         <li>Comments</li>
         <li>Albums</li>
         <li>Earnings</li>
@@ -26,18 +27,6 @@
       </div>
       <div class="right-header">
         <div class="right-header-inner">
-          <button class="search-btn header-btn h-40 p-4-16">
-            <i class="btn-inner m-r-4">
-              <img src="../../../assets/search-icon.png" alt="search-icon" class="w-20 h-20" />
-            </i>
-            Search
-          </button>
-          <button class="upload-btn header-btn h-40 p-4-16">
-            <i class="btn-inner m-r-4">
-              <img src="../../../assets/upload-cloud-data.png" alt="upload-icon" class="w-20 h-20" />
-            </i>
-            Upload
-          </button>
           <button class="notification-btn header-btn">
             <i class="btn-inner">
               <img src="../../../assets/bell.png" alt="bell-icon" />
@@ -50,7 +39,7 @@
           </button>
           <div class="account-avt header-btn">
             <i class="btn-inner">
-              <img src="../../../assets/jack.jpg" alt="jackbentreimg" />
+              <img [src]="artirstInfor.image_url" alt="jackbentreimg" />
             </i>
           </div>
         </div>
@@ -58,7 +47,7 @@
     </div>
     <div class="line"></div>
     <div class="upload-track-box">
-      <div class="upload-bar m-t-b-12">
+      <!-- <div class="upload-bar m-t-b-12">
         <div class="upload-bar-left">
           <div class="logo m-r-4">
             <img src="../../../assets/cu1.png" alt="upload-cloud-data" />
@@ -70,11 +59,11 @@
         <div class="upload-bar-right">
           <button>Get unlimited uploads</button>
         </div>
-      </div>
+      </div> -->
       <div class="upload-content">
         <div class="upload-content-text">
           <h1 class="fw-700 fz-40 m-t-b-12">
-            Upload your first track to SoundCloud
+            Upload your newest track to SoundCloud
           </h1>
           <p class="fz-12 m-t-b-12">
             Upload your tracks to SoundCloud to get heard by milions of fans
@@ -87,9 +76,46 @@
           </div>
         </div>
         <div class="upload-content-logo">
-          <img src="../../../assets/hcmut.png" alt="souncloud" />
+          <img src="../../../assets/souncloud-black.png" alt="souncloud" />
         </div>
       </div>
+    </div>
+
+    <div class="notification" *ngIf="notificationMessage">
+      <p [class.success]="isSuccess" [class.error]="!isSuccess">{{ notificationMessage }}</p>
+    </div>
+
+    <div class="track-list-container">
+      <div class="track-card" *ngFor="let track of tracks">
+        <img [src]="track.image_url" alt="Track Cover" class="track-cover" />
+        <div class="track-info">
+          <h3>{{ track.name }}</h3>
+          <p>Status: {{ track.status }}</p>
+          <audio controls>
+            <source [src]="track.secure_url" type="audio/mpeg" />
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+        <div class="action-container">
+          <div class="send-approve-container" (click)="openConfirmModal('approve', track)">
+            Send To Approve
+          </div>
+          <div class="delete-container" (click)="openConfirmModal('delete', track)">
+            Delete
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Confirm -->
+<div class="confirm-modal" *ngIf="showConfirmModal">
+  <div class="confirm-modal-content">
+    <p>{{ confirmMessage }}</p>
+    <div class="confirm-actions">
+      <button (click)="confirmAction()">Confirm</button>
+      <button (click)="cancelAction()">Cancel</button>
     </div>
   </div>
 </div>

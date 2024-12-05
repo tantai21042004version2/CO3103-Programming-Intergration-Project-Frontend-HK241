@@ -20,6 +20,10 @@ export class HeaderComponent extends BaseComponent {
     this.router.navigate(['/signup']);
   }
 
+  goToHome() {
+    this.router.navigate(['/']);
+  }
+
   ngOnInit(): void {
     if (this.tokenService.getToken() !== null) {
       this.userService.getUserDetail(this.tokenService.getToken()).subscribe({

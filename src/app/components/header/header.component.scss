@@ -23,11 +23,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: linear-gradient(
-    132deg,
-    rgb(255, 127, 56) 0%,
-    rgb(255, 196, 108) 100%
-  );
+  background: linear-gradient(132deg,
+      rgb(255, 127, 56) 0%,
+      rgb(255, 196, 108) 100%);
 }
 
 .sign-in-container {
@@ -53,6 +51,7 @@
   width: 50px;
   height: 100%;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .brand-name {
