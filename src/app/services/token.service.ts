@@ -40,6 +40,4 @@ export class TokenService {
     removeToken(): void {
         this.localStorage?.removeItem(this.TOKEN_KEY);
     }
-
-
 }

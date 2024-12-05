@@ -4,7 +4,6 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { NoaccessComponent } from './pages/noaccess/noaccess.component';
-import { ArtirstAddMusicComponent } from './pages/artirst-add-music/artirst-add-music.component';
 import { ArtirstoverviewComponent } from './pages/artirstoverview/artirstoverview.component';
 import { RoleGuard } from './role.guard';
 import { ArtirstTracksComponent } from './pages/artirst-tracks/artirst-tracks.component';
@@ -17,8 +16,7 @@ const routes: Routes = [
     { path: 'home', component: HomepageComponent },
     { path: 'signup', component: SignupComponent },
     { path: 'signin', component: SigninComponent },
-    { path: 'detail/:id', component: DetailComponent },
-    { path: 'artist/add-music', component: ArtirstAddMusicComponent },
+    { path: 'song/:id', component: DetailComponent },
     { path: 'artist/overview', component: ArtirstoverviewComponent },
     { path: 'artist/tracks', component: ArtirstTracksComponent },
     { path: 'artist/tracks/upload-track-cloudinary', component: ArtirstUploadTrackCloudinaryComponent },
