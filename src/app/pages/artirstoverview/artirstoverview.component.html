@@ -2,21 +2,20 @@
     <!-- Sidebar -->
     <aside class="sidebar">
         <div class="logo">
-            <img src="assets/soundcloud-logo.png" alt="SoundCloud Logo" />
+            <img src="../../../assets/souncloud-black.png" alt="SoundCloud Logo" />
         </div>
         <nav class="menu">
             <ul>
-                <li>Overview</li>
-                <li>Tracks</li>
-                <li>Distribution</li>
+                <li (click)="navigateToOverview()">Overview</li>
+                <li (click)="navigateToTracks()">Tracks</li>
+                <li (click)="navigateToNewTrack()">New Track</li>
                 <li>Comments</li>
-                <li>Fans <span class="beta">BETA</span></li>
-                <li>Monetization</li>
+                <li>Albums</li>
                 <li>Earnings</li>
                 <li>Insights</li>
-                <li>Profile Control</li>
                 <li>Benefits</li>
                 <li>Membership</li>
+                <li>Profile Control</li>
             </ul>
         </nav>
     </aside>
@@ -26,7 +25,7 @@
         <!-- Profile Section -->
         <div class="profile-section">
             <div class="profile-avatar">
-                <img src="assets/profile-avatar.jpg" alt="User Avatar" />
+                <img src="../../../assets/img.png" alt="User Avatar" />
             </div>
             <div class="profile-info">
                 <h1>Nguyễn Tấn Tài,</h1>

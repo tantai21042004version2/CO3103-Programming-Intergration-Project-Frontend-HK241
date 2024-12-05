@@ -20,6 +20,10 @@ export class BannerComponent extends BaseComponent implements OnInit {
     this.router.navigate(['/signup']);
   }
 
+  goToHome() {
+    this.router.navigate(['/']);
+  }
+
   ngOnInit(): void {
     debugger;
 

@@ -6,12 +6,8 @@
         <div class="hero-header">
           <div class="song-details">
             <button class="play-button" (click)="togglePlayPause(audioPlayer)">
-              <img
-                *ngIf="isPlaying; else playIcon"
-                src="../../../assets/pausebutton.svg"
-                alt="Pause Button"
-                class="w-18 h-29"
-              />
+              <img *ngIf="isPlaying; else playIcon" src="../../../assets/pausebutton.svg" alt="Pause Button"
+                class="w-18 h-29" />
               <ng-template #playIcon>
                 <img src="../../../assets/playbutton.svg" alt="Play Button" />
               </ng-template>
@@ -24,35 +20,27 @@
               <div class="artist-name">
                 <span class="artist-name fw-400 name">{{
                   artist.username
-                }}</span>
+                  }}</span>
               </div>
             </div>
           </div>
           <div class="meta-info">
             <span class="time c-white fw-400">{{
               detailSong.release_date
-            }}</span>
-            <span class="genre c-white fw-400">#{{ genre.name }}</span>
+              }}</span>
+            <span class="genre c-white fw-400">#{{ genres.name }}</span>
           </div>
         </div>
 
         <div class="audio-player">
           <!-- Trình phát nhạc ẩn -->
-          <audio
-            #audioPlayer
-            [src]="detailSong.secure_url"
-            (timeupdate)="updateProgress(audioPlayer)"
-            (ended)="onEnded(audioPlayer)"
-            (canplaythrough)="onAudioReady()"
-          ></audio>
+          <audio #audioPlayer [src]="detailSong.secure_url" (timeupdate)="updateProgress(audioPlayer)"
+            (ended)="onEnded(audioPlayer)" (canplaythrough)="onAudioReady()"></audio>
 
           <!-- Thanh tiến trình -->
           <div class="progress-container">
             <div class="progress-bar">
-              <div
-                class="progress"
-                [style.width.%]="(currentTime / duration) * 100"
-              ></div>
+              <div class="progress" [style.width.%]="(currentTime / duration) * 100"></div>
             </div>
             <div class="time-info">
               <span>{{ formatTime(currentTime) }}</span>
@@ -80,17 +68,9 @@
         <div class="comment-container">
           <div class="comment-search-container">
             <div class="user-avatar-container">
-              <img
-                class="user-avatar"
-                [src]="listener.image_url"
-                alt="User Avatar"
-              />
+              <img class="user-avatar" [src]="listener.image_url" alt="User Avatar" />
             </div>
-            <input
-              class="comment-input"
-              type="text"
-              placeholder="Write a comment"
-            />
+            <input class="comment-input" type="text" placeholder="Write a comment" />
             <button class="send-button">
               <i class="send-icon">➤</i>
             </button>
@@ -143,16 +123,12 @@
             </div>
             <div class="list-body">
               <div class="comment-card" *ngFor="let comment of comments">
-                <img
-                  [src]="comment.user.image_url"
-                  alt="Avatar"
-                  class="comment-avatar"
-                />
+                <img [src]="comment.user.image_url" alt="Avatar" class="comment-avatar" />
                 <div class="comment-content">
                   <div class="comment-header">
                     <span class="comment-author">{{
                       comment.user.username
-                    }}</span>
+                      }}</span>
                   </div>
                   <div class="comment-text">{{ comment.content }}</div>
                 </div>
@@ -194,81 +170,21 @@
           </div>
           <div class="like-body">
             <div class="like-avatars">
-              <img
-                src="https://via.placeholder.com/40"
-                alt="Avatar"
-                class="like-acc"
-              />
-              <img
-                src="https://via.placeholder.com/40"
-                alt="Avatar"
-                class="like-acc"
-              />
-              <img
-                src="https://via.placeholder.com/40"
-                alt="Avatar"
-                class="like-acc"
-              />
-              <img
-                src="https://via.placeholder.com/40"
-                alt="Avatar"
-                class="like-acc"
-              />
-              <img
-                src="https://via.placeholder.com/40"
-                alt="Avatar"
-                class="like-acc"
-              />
-              <img
-                src="https://via.placeholder.com/40"
-                alt="Avatar"
-                class="like-acc"
-              />
-              <img
-                src="https://via.placeholder.com/40"
-                alt="Avatar"
-                class="like-acc"
-              />
-              <img
-                src="https://via.placeholder.com/40"
-                alt="Avatar"
-                class="like-acc"
-              />
-              <img
-                src="https://via.placeholder.com/40"
-                alt="Avatar"
-                class="like-acc"
-              />
-              <img
-                src="https://via.placeholder.com/40"
-                alt="Avatar"
-                class="like-acc"
-              />
-              <img
-                src="https://via.placeholder.com/40"
-                alt="Avatar"
-                class="like-acc"
-              />
-              <img
-                src="https://via.placeholder.com/40"
-                alt="Avatar"
-                class="like-acc"
-              />
-              <img
-                src="https://via.placeholder.com/40"
-                alt="Avatar"
-                class="like-acc"
-              />
-              <img
-                src="https://via.placeholder.com/40"
-                alt="Avatar"
-                class="like-acc"
-              />
-              <img
-                src="https://via.placeholder.com/40"
-                alt="Avatar"
-                class="like-acc"
-              />
+              <img src="https://via.placeholder.com/40" alt="Avatar" class="like-acc" />
+              <img src="https://via.placeholder.com/40" alt="Avatar" class="like-acc" />
+              <img src="https://via.placeholder.com/40" alt="Avatar" class="like-acc" />
+              <img src="https://via.placeholder.com/40" alt="Avatar" class="like-acc" />
+              <img src="https://via.placeholder.com/40" alt="Avatar" class="like-acc" />
+              <img src="https://via.placeholder.com/40" alt="Avatar" class="like-acc" />
+              <img src="https://via.placeholder.com/40" alt="Avatar" class="like-acc" />
+              <img src="https://via.placeholder.com/40" alt="Avatar" class="like-acc" />
+              <img src="https://via.placeholder.com/40" alt="Avatar" class="like-acc" />
+              <img src="https://via.placeholder.com/40" alt="Avatar" class="like-acc" />
+              <img src="https://via.placeholder.com/40" alt="Avatar" class="like-acc" />
+              <img src="https://via.placeholder.com/40" alt="Avatar" class="like-acc" />
+              <img src="https://via.placeholder.com/40" alt="Avatar" class="like-acc" />
+              <img src="https://via.placeholder.com/40" alt="Avatar" class="like-acc" />
+              <img src="https://via.placeholder.com/40" alt="Avatar" class="like-acc" />
             </div>
           </div>
         </div>
@@ -276,16 +192,10 @@
           <div class="share-header">GO MOBILE</div>
           <div class="app-links">
             <a href="#" class="app-link">
-              <img
-                src="../../../assets/appstore.jpg"
-                alt="Download on the App Store"
-              />
+              <img src="../../../assets/appstore.jpg" alt="Download on the App Store" />
             </a>
             <a href="#" class="app-link">
-              <img
-                src="../../../assets/gooplay.jpg"
-                alt="Get it on Google Play"
-              />
+              <img src="../../../assets/gooplay.jpg" alt="Get it on Google Play" />
             </a>
           </div>
         </div>

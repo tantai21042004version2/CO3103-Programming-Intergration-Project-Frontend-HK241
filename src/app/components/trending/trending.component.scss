@@ -19,8 +19,10 @@
 
 .trending-content {
   max-width: 1152px;
-  max-height: calc(2 * 320px); /* Hiển thị tối đa 2 hàng */
-  overflow-y: hidden; /* Ẩn scrollbar */
+  max-height: calc(2 * 320px);
+  /* Hiển thị tối đa 2 hàng */
+  overflow-y: hidden;
+  /* Ẩn scrollbar */
   padding: 20px 0;
 }
 
@@ -28,11 +30,13 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 8px; /* Khoảng cách giữa các bài nhạc */
+  gap: 8px;
+  /* Khoảng cách giữa các bài nhạc */
 }
 
 .track-card {
-  flex: 0 0 calc(100% / 6 - 20px); /* Chia đều thành 6 cột */
+  flex: 0 0 calc(100% / 6 - 20px);
+  /* Chia đều thành 6 cột */
   max-width: calc(100% / 6 - 20px);
   text-align: center;
   background-color: #f9f9f9;
@@ -40,6 +44,7 @@
   border-radius: 5px;
   padding: 10px;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 .track-image {

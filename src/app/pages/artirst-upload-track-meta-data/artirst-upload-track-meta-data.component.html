@@ -6,23 +6,23 @@
     </div>
     <nav class="menu">
       <ul>
-        <li>Overview</li>
-        <li>Tracks</li>
-        <li>Distribution</li>
+        <li (click)="navigateToOverview()">Overview</li>
+        <li (click)="navigateToTracks()">Tracks</li>
+        <li (click)="navigateToNewTrack()">New Track</li>
         <li>Comments</li>
-        <li>Fans <span class="beta">BETA</span></li>
-        <li>Monetization</li>
+        <li>Albums</li>
         <li>Earnings</li>
         <li>Insights</li>
-        <li>Profile Control</li>
         <li>Benefits</li>
         <li>Membership</li>
+        <li>Profile Control</li>
       </ul>
     </nav>
   </aside>
+
   <!-- main content  -->
   <div class="main-content">
-    <div class="main-content-header">
+    <!-- <div class="main-content-header">
       <div class="header-top">
         <p>porn.mp3</p>
         <p>We're uploading your track...<span>3%</span></p>
@@ -32,69 +32,40 @@
           <div class="loading-stripes"></div>
         </div>
       </div>
+    </div> -->
+    <div class="cloudinary-response-container">
+      {{ message }}
     </div>
     <div class="main-content-body">
       <div class="body-left">
         <div class="dashed avt m-t-44">
           <div class="artwork-avt">
-            <img
-              src="../../../assets/img.png"
-              alt="imageicon"
-              class="w-100 h-auto"
-            />
+            <img src="../../../assets/meta-data.webp" alt="imageicon" />
           </div>
-          <label for="addart" class="fw-700 text-center"
-            >Add new artwork<input
-              type="file"
-              name=""
-              id="addart"
-              class="m-l-100"
-          /></label>
         </div>
-        <span class="options">Options</span>
       </div>
+
       <div class="body-right">
+
         <div class="track-title m-t-b-12">
-          <label for="tracktitle" class="fw-700 flex-align-center m-b-8"
-            >Track title<span class="c-red">*</span>
-            <img
-              src="../../../assets/questionmark.png"
-              alt="question-mark"
-              class="w-16 h-16 m-l-4"
-          /></label>
-          <input
-            type="text"
-            id="tracktitle"
-            placeholder="anh hẹn em pickleball"
-            class="input"
-          />
+          <label for="tracktitle" class="fw-700 flex-align-center m-b-8">Track title<span class="c-red">*</span>
+            <img src="../../../assets/questionmark.png" alt="question-mark" class="w-16 h-16 m-l-4" /></label>
+          <input type="text" id="tracktitle" placeholder="anh hẹn em pickleball" class="input" />
         </div>
+
         <div class="track-link m-t-b-12">
           <label for="tracklink" class="fw-700 m-b-8">Track link</label>
-          <input
-            type="text"
-            id="tracklink"
-            placeholder="https://chatgpt.com/c/6749e29a-b6bc-8002-b797-87bf73d36b10"
-            class="input m-t-8"
-          />
+          <input type="text" id="tracklink" placeholder="https://chatgpt.com/c/6749e29a-b6bc-8002-b797-87bf73d36b10"
+            class="input m-t-8" />
         </div>
+
         <div class="main-artist m-t-b-12">
-          <label for="mainartist" class="fw-700 flex-align-center m-b-8"
-            >Main artist(s) <span class="c-red">*</span>
-            <img
-              src="../../../assets/questionmark.png"
-              alt="questionmark"
-              class="w-16 h-16 m-l-4"
-          /></label>
-          <input
-            type="text"
-            name=""
-            id="mainartist"
-            placeholder="Jack và những người bạn"
-            class="input"
-          />
+          <label for="mainartist" class="fw-700 flex-align-center m-b-8">Main artist(s) <span class="c-red">*</span>
+            <img src="../../../assets/questionmark.png" alt="questionmark" class="w-16 h-16 m-l-4" /></label>
+          <input type="text" name="" id="mainartist" placeholder="Jack và những người bạn" class="input" />
           <i class="c-ccc">Tip: Use commas to add multiple artist names</i>
         </div>
+
         <div class="genre m-t-b-12 flex-dir-col">
           <label for="genre" class="fw-700 m-b-8">Genre</label>
           <input list="options" name="" id="genre" class="input" />
@@ -106,67 +77,34 @@
           </datalist>
         </div>
         <div class="tags m-t-b-12">
-          <label for="tags" class="fw-700 flex-align-center m-b-8"
-            >Tags
-            <img
-              src="../../../assets/questionmark.png"
-              alt="questionmark"
-              class="w-16 h-16 m-l-4"
-          /></label>
-          <input
-            type="text"
-            id="tags"
-            placeholder="Add styles, mood, tempo"
-            class="input"
-          />
+          <label for="tags" class="fw-700 flex-align-center m-b-8">Tags
+            <img src="../../../assets/questionmark.png" alt="questionmark" class="w-16 h-16 m-l-4" /></label>
+          <input type="text" id="tags" placeholder="Add styles, mood, tempo" class="input" />
         </div>
         <div class="description m-t-b-12">
           <label for="description" class="fw-700 m-b-8">Description</label>
-          <input
-            type="text"
-            name=""
-            id="description"
-            placeholder="Tracks with description tend to get more plays and engaments"
-            class="input m-t-8"
-          />
+          <input type="text" name="" id="description"
+            placeholder="Tracks with description tend to get more plays and engaments" class="input m-t-8" />
         </div>
         <div class="track-privacy m-t-b-12">
           <label for="trackprivacy" class="fw-700 m-b-8">Track Privacy</label>
           <div class="box-radio">
-            <label for="public"
-              ><input
-                type="radio"
-                id="public"
-                name="trackprivacy"
-              />Public</label
-            >
-            <label for="private"
-              ><input
-                type="radio"
-                id="private"
-                name="trackprivacy"
-                class="m-l-60"
-              />Private</label
-            >
-            <label for="schedule"
-              ><input
-                type="radio"
-                id="schedule"
-                name="trackprivacy"
-                class="m-l-60"
-              />Schedule</label
-            >
+            <label for="public"><input type="radio" id="public" name="trackprivacy" />Public</label>
+            <label for="private"><input type="radio" id="private" name="trackprivacy" class="m-l-60" />Private</label>
+            <label for="schedule"><input type="radio" id="schedule" name="trackprivacy"
+                class="m-l-60" />Schedule</label>
           </div>
         </div>
+        <button>Upload</button>
       </div>
     </div>
+
     <div class="main-content-footage">
       <div class="main-content-footage-inner">
         <p>
           By uploading, you confirm that your sounds comply with our
           <u>Terms of Use</u> and you don't infringe anyone's rights.
         </p>
-        <button>Upload</button>
       </div>
     </div>
   </div>

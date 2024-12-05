@@ -2,12 +2,13 @@
   <!-- sidebar -->
   <aside class="sidebar">
     <div class="logo">
-      <img src="../../../assets/hcmut.png" alt="SoundCloud Logo" />
+      <img src="../../../assets/souncloud-black.png" alt="SoundCloud Logo" />
     </div>
     <nav class="menu">
       <ul>
-        <li>Overview</li>
-        <li>Tracks</li>
+        <li (click)="navigateToOverview()">Overview</li>
+        <li (click)="navigateToTracks()">Tracks</li>
+        <li (click)="navigateToNewTrack()">New Track</li>
         <li>Comments</li>
         <li>Albums</li>
         <li>Earnings</li>
@@ -21,19 +22,34 @@
 
   <!-- Main content -->
   <div class="main-content">
-    <div class="upload-bar m-t-b-12 w-60-percent">
-      <div class="upload-bar-left">
-        <div class="logo m-r-4">
-          <img src="../../../assets/cu1.png" alt="upload-cloud-data" />
-        </div>
-        <p class="fw-700"><span class="fw-700">0</span>% of uploads used</p>
-        <div class="loading"></div>
-        <p><span>0</span> of 180 minutes</p>
+
+    <div class="header-content">
+      <div class="left-header">
+        <h1 class="fz-40">My track</h1>
       </div>
-      <div class="upload-bar-right">
-        <button>Get unlimited uploads</button>
+      <div class="right-header">
+        <div class="right-header-inner">
+          <button class="notification-btn header-btn">
+            <i class="btn-inner">
+              <img src="../../../assets/bell.png" alt="bell-icon" />
+            </i>
+          </button>
+          <button class="message-btn header-btn">
+            <i class="btn-inner">
+              <img src="../../../assets/envelope.png" alt="envelope-icon" />
+            </i>
+          </button>
+          <div class="account-avt header-btn">
+            <i class="btn-inner">
+              <img [src]="artirstInfor.image_url" alt="jackbentreimg" />
+            </i>
+          </div>
+        </div>
       </div>
     </div>
+
+    <div class="line"></div>
+
     <div class="text w-60-percent">
       <h1 class="fw-700 fz-40 m-t-b-12">Upload your audio files.</h1>
       <p class="fz-12 m-t-b-12">
@@ -53,12 +69,6 @@
       </div>
     </div>
 
-    <div class="upload-actions">
-      <button class="fw-700" [disabled]="!selectedFile" (click)="onUpload()">
-        Upload
-      </button>
-      <p *ngIf="uploadMessage" class="upload-message">{{ uploadMessage }}</p>
-    </div>
     <p class="copyright c-gray">
       <span>Legal</span> - <span>Privacy</span> - <span>Cookie Manager</span> -
       <span>Cookie Policy</span> - <span>Imprint</span> -

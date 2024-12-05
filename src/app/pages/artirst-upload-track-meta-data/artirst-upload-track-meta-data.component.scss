@@ -10,12 +10,15 @@
 .fz-40 {
   font-size: 40px;
 }
+
 .fz-12 {
   font-size: 12px;
 }
+
 .fw-700 {
   font-weight: 700;
 }
+
 .br-20 {
   border-radius: 20px;
 }
@@ -71,18 +74,23 @@
 .m-t-b-12 {
   margin: 12px 0;
 }
+
 .m-r-4 {
   margin-right: 4px;
 }
+
 .m-l-4 {
   margin-left: 4px;
 }
+
 .m-l-100 {
   margin-left: 100px;
 }
+
 .m-l-60 {
   margin-left: 60px;
 }
+
 .c-ccc {
   color: #ccc;
 }
@@ -109,16 +117,19 @@
   display: flex;
   align-items: center;
 }
+
 .flex-dir-col {
   display: flex;
   flex-direction: column;
 }
+
 .input {
   border: 1px solid gray;
   border-radius: 4px;
   padding: 4px 12px;
   width: 100%;
 }
+
 .header-btn {
   margin-right: 12px;
   border-radius: 20px;
@@ -170,7 +181,7 @@ body {
 }
 
 .sidebar .menu ul li:hover {
-  color: #1ed760;
+  color: #f50;
 }
 
 .beta {
@@ -186,6 +197,7 @@ body {
   @include flex(none, center);
   flex-direction: column;
 }
+
 .main-content-header {
   width: 100%;
   height: 5%;
@@ -206,28 +218,32 @@ body {
 }
 
 .loading-bar {
-  width: 100%; /* Chiều rộng của thanh loading */
-  height: 10px; /* Chiều cao của thanh loading */
-  background-color: #ddd; /* Màu nền xám nhạt */
+  width: 100%;
+  /* Chiều rộng của thanh loading */
+  height: 10px;
+  /* Chiều cao của thanh loading */
+  background-color: #ddd;
+  /* Màu nền xám nhạt */
   overflow: hidden;
   position: relative;
-  border-radius: 5px; /* Bo tròn các góc */
+  border-radius: 5px;
+  /* Bo tròn các góc */
 }
 
 .loading-stripes {
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    135deg,
-    #fff 25%,
-    #ccc 25%,
-    #ccc 50%,
-    #fff 50%,
-    #fff 75%,
-    #ccc 75%
-  );
-  background-size: 40px 40px; /* Kích thước từng ô trắng và xám */
-  animation: move-stripes 1s linear infinite; /* Hiệu ứng chuyển động */
+  background: linear-gradient(135deg,
+      #fff 25%,
+      #ccc 25%,
+      #ccc 50%,
+      #fff 50%,
+      #fff 75%,
+      #ccc 75%);
+  background-size: 40px 40px;
+  /* Kích thước từng ô trắng và xám */
+  animation: move-stripes 1s linear infinite;
+  /* Hiệu ứng chuyển động */
 }
 
 /* Hiệu ứng chuyển động */
@@ -235,6 +251,7 @@ body {
   from {
     background-position: 0 0;
   }
+
   to {
     background-position: 40px 0;
   }
@@ -250,6 +267,16 @@ body {
 .body-left {
   position: relative;
   width: 416px;
+}
+
+.artwork-avt {
+  width: 100%;
+  height: 100%;
+}
+
+.artwork-avt img {
+  width: 100%;
+  height: 100%;
 }
 
 .avt {
@@ -271,6 +298,7 @@ body {
   position: relative;
   @include flex(center, center);
 }
+
 .main-content-footage-inner button {
   position: absolute;
   color: #fff;
@@ -278,4 +306,8 @@ body {
   padding: 4px 52px;
   border-radius: 20px;
   right: 20px;
+}
+
+.body-right {
+  background-color: rebeccapurple;
 }
