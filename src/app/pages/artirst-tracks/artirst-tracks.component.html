@@ -82,12 +82,16 @@
     </div>
 
     <div class="notification" *ngIf="notificationMessage">
-      <p [class.success]="isSuccess" [class.error]="!isSuccess">{{ notificationMessage }}</p>
+      <p [class.success]="isSuccess" [class.error]="!isSuccess">
+        {{ notificationMessage }}
+      </p>
     </div>
 
     <div class="track-list-container">
       <div class="track-card" *ngFor="let track of tracks">
-        <img [src]="track.image_url" alt="Track Cover" class="track-cover" />
+        <div class="track-image">
+          <img [src]="track.image_url" alt="Track Cover" class="track-cover" />
+        </div>
         <div class="track-info">
           <h3>{{ track.name }}</h3>
           <p>Status: {{ track.status }}</p>
@@ -97,10 +101,16 @@
           </audio>
         </div>
         <div class="action-container">
-          <div class="send-approve-container" (click)="openConfirmModal('approve', track)">
+          <div
+            class="send-approve-container"
+            (click)="openConfirmModal('approve', track)"
+          >
             Send To Approve
           </div>
-          <div class="delete-container" (click)="openConfirmModal('delete', track)">
+          <div
+            class="delete-container"
+            (click)="openConfirmModal('delete', track)"
+          >
             Delete
           </div>
         </div>
