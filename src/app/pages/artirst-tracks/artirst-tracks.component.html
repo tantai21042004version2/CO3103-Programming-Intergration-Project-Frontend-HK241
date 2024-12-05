@@ -2,21 +2,19 @@
   <!-- sidebar -->
   <aside class="sidebar">
     <div class="logo">
-      <img src="../../../assets/souncloud-black.png" alt="SoundCloud Logo" />
+      <img src="../../../assets/hcmut.png" alt="SoundCloud Logo" />
     </div>
     <nav class="menu">
       <ul>
         <li>Overview</li>
         <li>Tracks</li>
-        <li>Distribution</li>
         <li>Comments</li>
-        <li>Fans <span class="beta">BETA</span></li>
-        <li>Monetization</li>
+        <li>Albums</li>
         <li>Earnings</li>
         <li>Insights</li>
-        <li>Profile Control</li>
         <li>Benefits</li>
         <li>Membership</li>
+        <li>Profile Control</li>
       </ul>
     </nav>
   </aside>
@@ -30,21 +28,13 @@
         <div class="right-header-inner">
           <button class="search-btn header-btn h-40 p-4-16">
             <i class="btn-inner m-r-4">
-              <img
-                src="../../../assets/search-icon.png"
-                alt="search-icon"
-                class="w-20 h-20"
-              />
+              <img src="../../../assets/search-icon.png" alt="search-icon" class="w-20 h-20" />
             </i>
             Search
           </button>
           <button class="upload-btn header-btn h-40 p-4-16">
             <i class="btn-inner m-r-4">
-              <img
-                src="../../../assets/upload-cloud-data.png"
-                alt="upload-icon"
-                class="w-20 h-20"
-              />
+              <img src="../../../assets/upload-cloud-data.png" alt="upload-icon" class="w-20 h-20" />
             </i>
             Upload
           </button>
@@ -92,12 +82,12 @@
             to developing your sound and building your fanbase.
           </p>
           <b>Next Pro Subcribers get unlimited uploads </b>
-          <div class="add-btn m-t-b-12">
-            <button>Add your first track</button>
+          <div class="add-btn m-t-b-12" (click)="navigateToAddMusic()">
+            <button>Add your newest track</button>
           </div>
         </div>
         <div class="upload-content-logo">
-          <img src="../../../assets/souncloud.jpg" alt="souncloud" />
+          <img src="../../../assets/hcmut.png" alt="souncloud" />
         </div>
       </div>
     </div>
