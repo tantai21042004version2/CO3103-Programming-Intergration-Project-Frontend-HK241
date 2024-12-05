@@ -110,7 +110,6 @@
 .dashed {
   border: 1px dashed #ccc;
   border-radius: 4px;
-  height: 416px;
 }
 
 .flex-align-center {
@@ -194,7 +193,7 @@ body {
 .main-content {
   width: 100%;
   padding: 20px 0;
-  @include flex(none, center);
+  @include flex(space-between, center);
   flex-direction: column;
 }
 
@@ -233,13 +232,15 @@ body {
 .loading-stripes {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg,
-      #fff 25%,
-      #ccc 25%,
-      #ccc 50%,
-      #fff 50%,
-      #fff 75%,
-      #ccc 75%);
+  background: linear-gradient(
+    135deg,
+    #fff 25%,
+    #ccc 25%,
+    #ccc 50%,
+    #fff 50%,
+    #fff 75%,
+    #ccc 75%
+  );
   background-size: 40px 40px;
   /* Kích thước từng ô trắng và xám */
   animation: move-stripes 1s linear infinite;
@@ -258,15 +259,13 @@ body {
 }
 
 .main-content-body {
-  margin-top: 40px;
-  height: 85%;
-  gap: 40px;
-  @include flex(space-between, none);
+  width: 60%;
+  @include flex(space-between, center);
 }
 
 .body-left {
   position: relative;
-  width: 416px;
+  width: 40%;
 }
 
 .artwork-avt {
@@ -284,14 +283,30 @@ body {
   @include flex(center, center);
 }
 
-.options {
-  bottom: 4px;
-  font-weight: 700;
-  position: absolute;
+.line {
+  height: 100%;
+  width: 2px;
+  background-color: #ddd;
+}
+
+.body-right {
+  background-color: #ddd;
+  width: 50%;
+  padding: 12px 32px;
+  border-radius: 20px;
+}
+
+.btn-upload button {
+  background: orange;
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 12px;
 }
 
 .main-content-footage {
   width: 100%;
+  height: 10%;
+  @include flex(center, center);
 }
 
 .main-content-footage-inner {
@@ -306,8 +321,4 @@ body {
   padding: 4px 52px;
   border-radius: 20px;
   right: 20px;
-}
-
-.body-right {
-  background-color: rebeccapurple;
 }

@@ -38,32 +38,28 @@
     </div>
     <div class="main-content-body">
       <div class="body-left">
-        <div class="dashed avt m-t-44">
+        <div class="dashed avt">
           <div class="artwork-avt">
             <img src="../../../assets/meta-data.webp" alt="imageicon" />
           </div>
         </div>
       </div>
-
+      <div class="line"></div>
       <div class="body-right">
-
         <div class="track-title m-t-b-12">
-          <label for="tracktitle" class="fw-700 flex-align-center m-b-8">Track title<span class="c-red">*</span>
-            <img src="../../../assets/questionmark.png" alt="question-mark" class="w-16 h-16 m-l-4" /></label>
-          <input type="text" id="tracktitle" placeholder="anh hẹn em pickleball" class="input" />
-        </div>
-
-        <div class="track-link m-t-b-12">
-          <label for="tracklink" class="fw-700 m-b-8">Track link</label>
-          <input type="text" id="tracklink" placeholder="https://chatgpt.com/c/6749e29a-b6bc-8002-b797-87bf73d36b10"
-            class="input m-t-8" />
-        </div>
-
-        <div class="main-artist m-t-b-12">
-          <label for="mainartist" class="fw-700 flex-align-center m-b-8">Main artist(s) <span class="c-red">*</span>
-            <img src="../../../assets/questionmark.png" alt="questionmark" class="w-16 h-16 m-l-4" /></label>
-          <input type="text" name="" id="mainartist" placeholder="Jack và những người bạn" class="input" />
-          <i class="c-ccc">Tip: Use commas to add multiple artist names</i>
+          <label for="tracktitle" class="fw-700 flex-align-center m-b-8"
+            >Track title<span class="c-red">*</span>
+            <img
+              src="../../../assets/questionmark.png"
+              alt="question-mark"
+              class="w-16 h-16 m-l-4"
+          /></label>
+          <input
+            type="text"
+            id="tracktitle"
+            placeholder="anh hẹn em pickleball"
+            class="input"
+          />
         </div>
 
         <div class="genre m-t-b-12 flex-dir-col">
@@ -76,26 +72,27 @@
             <option value="Option 4"></option>
           </datalist>
         </div>
-        <div class="tags m-t-b-12">
-          <label for="tags" class="fw-700 flex-align-center m-b-8">Tags
-            <img src="../../../assets/questionmark.png" alt="questionmark" class="w-16 h-16 m-l-4" /></label>
-          <input type="text" id="tags" placeholder="Add styles, mood, tempo" class="input" />
+        <div class="realease-date m-t-b-12">
+          <label for="realease-date" class="fw-700 flex-align-center m-b-8"
+            >Realease Date
+            <img
+              src="../../../assets/questionmark.png"
+              alt="questionmark"
+              class="w-16 h-16 m-l-4"
+          /></label>
+          <input type="date" id="realease-date" class="input" />
         </div>
         <div class="description m-t-b-12">
           <label for="description" class="fw-700 m-b-8">Description</label>
-          <input type="text" name="" id="description"
-            placeholder="Tracks with description tend to get more plays and engaments" class="input m-t-8" />
+          <input
+            type="text"
+            name=""
+            id="description"
+            placeholder="Tracks with description tend to get more plays and engaments"
+            class="input m-t-8"
+          />
         </div>
-        <div class="track-privacy m-t-b-12">
-          <label for="trackprivacy" class="fw-700 m-b-8">Track Privacy</label>
-          <div class="box-radio">
-            <label for="public"><input type="radio" id="public" name="trackprivacy" />Public</label>
-            <label for="private"><input type="radio" id="private" name="trackprivacy" class="m-l-60" />Private</label>
-            <label for="schedule"><input type="radio" id="schedule" name="trackprivacy"
-                class="m-l-60" />Schedule</label>
-          </div>
-        </div>
-        <button>Upload</button>
+        <div class="btn-upload text-center"><button>Upload</button></div>
       </div>
     </div>
 
