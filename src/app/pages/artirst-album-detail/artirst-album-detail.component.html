@@ -1,1 +1,116 @@
-<p>artirst-album-detail works!</p>
+<div class="container">
+  <!-- sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <img src="../../../assets/souncloud-black.png" alt="SoundCloud Logo" />
+    </div>
+    <nav class="menu">
+      <ul>
+        <li (click)="navigateToOverview()">Overview</li>
+        <li (click)="navigateToTracks()">Tracks</li>
+        <li (click)="navigateToNewTrack()">New Track</li>
+        <li>Comments</li>
+        <li>Albums</li>
+        <li>Earnings</li>
+        <li>Insights</li>
+        <li>Benefits</li>
+        <li>Membership</li>
+        <li>Profile Control</li>
+      </ul>
+    </nav>
+  </aside>
+  <div class="main-content">
+    <!-- header content -->
+    <div class="header-content">
+      <div class="left-header">
+        <h1 class="fz-40">My track</h1>
+      </div>
+      <div class="right-header">
+        <div class="right-header-inner">
+          <button class="notification-btn header-btn">
+            <i class="btn-inner">
+              <img src="../../../assets/bell.png" alt="bell-icon" />
+            </i>
+          </button>
+          <button class="message-btn header-btn">
+            <i class="btn-inner">
+              <img src="../../../assets/envelope.png" alt="envelope-icon" />
+            </i>
+          </button>
+          <div class="account-avt header-btn">
+            <i class="btn-inner">
+              <img src="../../../assets/jack.jpg" alt="jackbentreimg" />
+            </i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- body content -->
+    <div class="body-content">
+      <div class="body-content-top">
+        <img
+          src="../../../assets/jackbanner.jpg"
+          alt="jackbanner"
+          class="banner-img"
+        />
+      </div>
+      <div class="body-content-bot">
+        <div class="bot-left">
+          <div class="song-card">
+            <img src="../../../assets/jack.jpg" alt="Song 1" class="song-img" />
+            <div class="song-info">
+              <div class="song-and-description">
+                <h3>Song Name 1</h3>
+                <p>Description of the song 1.</p>
+              </div>
+              <p>Status: <span>Available</span></p>
+            </div>
+          </div>
+          <div class="song-card">
+            <img src="../../../assets/jack.jpg" alt="Song 2" class="song-img" />
+            <div class="song-info">
+              <div class="song-and-description">
+                <h3>Song Name 2</h3>
+                <p>Description of the song 2.</p>
+              </div>
+              <p>Status: <span>Unavailable</span></p>
+            </div>
+          </div>
+          <div class="song-card">
+            <img src="../../../assets/jack.jpg" alt="Song 3" class="song-img" />
+            <div class="song-info">
+              <div class="song-and-description">
+                <h3>Song Name 3</h3>
+                <p>Description of the song 3.</p>
+              </div>
+              <p>Status: <span>Coming Soon</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="bot-right">
+          <div class="comment-card">
+            <div class="user-and-comment">
+              <h4>John Doe</h4>
+              <p>This song is amazing!</p>
+            </div>
+            <p>❤️ 120 likes</p>
+          </div>
+          <div class="comment-card">
+            <div class="user-and-comment">
+              <h4>Jane Smith</h4>
+              <p>Great track, love it!</p>
+            </div>
+            <p>❤️ 98 likes</p>
+          </div>
+          <div class="comment-card">
+            <div class="user-and-comment">
+              <h4>Alex Brown</h4>
+              <p>Can't wait for more!</p>
+            </div>
+            <p>❤️ 75 likes</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
