@@ -45,8 +45,7 @@
 }
 
 .header {
-  padding: 16px 60px;
-  height: 75px;
+  padding: 16px 100px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -82,7 +81,6 @@
 
 //  ---- Right Container ----
 .right-container {
-  height: 80%;
   font-size: 14px !important;
   font-weight: 500;
   @include flex(center, center);
@@ -108,10 +106,11 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: none;
   z-index: 10;
-  min-width: 150px;
+  min-width: 100px;
 }
 
 .sign-in-container {
+  margin: 12px 0;
   @include flex(space-evenly, center);
 }
 
