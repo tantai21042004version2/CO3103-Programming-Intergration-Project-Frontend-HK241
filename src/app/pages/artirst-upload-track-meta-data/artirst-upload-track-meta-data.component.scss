@@ -216,48 +216,6 @@ body {
   height: 20px;
 }
 
-.loading-bar {
-  width: 100%;
-  /* Chiều rộng của thanh loading */
-  height: 10px;
-  /* Chiều cao của thanh loading */
-  background-color: #ddd;
-  /* Màu nền xám nhạt */
-  overflow: hidden;
-  position: relative;
-  border-radius: 5px;
-  /* Bo tròn các góc */
-}
-
-.loading-stripes {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    135deg,
-    #fff 25%,
-    #ccc 25%,
-    #ccc 50%,
-    #fff 50%,
-    #fff 75%,
-    #ccc 75%
-  );
-  background-size: 40px 40px;
-  /* Kích thước từng ô trắng và xám */
-  animation: move-stripes 1s linear infinite;
-  /* Hiệu ứng chuyển động */
-}
-
-/* Hiệu ứng chuyển động */
-@keyframes move-stripes {
-  from {
-    background-position: 0 0;
-  }
-
-  to {
-    background-position: 40px 0;
-  }
-}
-
 .main-content-body {
   width: 60%;
   @include flex(space-between, center);

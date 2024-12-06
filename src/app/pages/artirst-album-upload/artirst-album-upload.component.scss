@@ -1,0 +1,313 @@
+// Common
+// mixin flexBox
+@mixin flex($justify: center, $align: center, $direction: none) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+
+.fz-40 {
+  font-size: 40px;
+}
+
+.fz-12 {
+  font-size: 12px;
+}
+
+.fw-700 {
+  font-weight: 700;
+}
+
+.br-20 {
+  border-radius: 20px;
+}
+
+.w-60-percent {
+  width: 60% !important;
+}
+
+.w-20 {
+  width: 20px !important;
+}
+
+.h-20 {
+  height: 20px !important;
+}
+
+.w-16 {
+  width: 16px !important;
+}
+
+.h-16 {
+  height: 16px !important;
+}
+
+.w-100 {
+  width: 100px !important;
+}
+
+.h-auto {
+  height: auto !important;
+}
+
+.p-4-16 {
+  padding: 4px 16px;
+}
+
+.p-l-4 {
+  padding-left: 4px;
+}
+
+.m-b-8 {
+  margin-bottom: 8px;
+}
+
+.m-t-8 {
+  margin-top: 8px;
+}
+
+.m-t-44 {
+  margin-top: 44px;
+}
+
+.m-t-b-12 {
+  margin: 12px 0;
+}
+
+.m-r-4 {
+  margin-right: 4px;
+}
+
+.m-l-4 {
+  margin-left: 4px;
+}
+
+.m-l-100 {
+  margin-left: 100px;
+}
+
+.m-l-60 {
+  margin-left: 60px;
+}
+
+.c-ccc {
+  color: #ccc;
+}
+
+.c-gray {
+  color: gray;
+}
+
+.c-red {
+  color: red;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.flex-align-center {
+  display: flex;
+  align-items: center;
+}
+
+.flex-dir-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  border: 1px solid gray;
+  border-radius: 4px;
+  padding: 4px 12px;
+  width: 100%;
+}
+
+.header-btn {
+  margin-right: 12px;
+  border-radius: 20px;
+  border: 1px solid #000;
+  @include flex(center, center);
+}
+
+// Private
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.container {
+  @include flex(none, none);
+}
+
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #fff;
+  border-right: 1px solid #e0e0e0;
+  padding: 20px;
+}
+
+.sidebar .logo img {
+  width: 100%;
+  min-height: 160px;
+  margin-bottom: 20px;
+}
+
+.sidebar .menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar .menu ul li {
+  padding: 10px 0;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.sidebar .menu ul li:hover {
+  color: #f50;
+}
+
+.beta {
+  font-size: 10px;
+  color: #ff5a5a;
+  font-weight: bold;
+}
+
+// Main content
+.main-content {
+  width: 100%;
+  @include flex(space-between, center);
+  flex-direction: column;
+}
+.header-content {
+  width: 100%;
+  padding: 20px 20px 0;
+  min-height: 100px;
+  @include flex(space-between, flex-end);
+  overflow: hidden;
+  border-bottom: 1px solid #000;
+}
+
+.left-header h1 {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.right-header {
+  min-width: 300px;
+  min-height: 100px;
+  margin-right: 20px;
+  @include flex(space-between, center);
+  justify-content: flex-end;
+}
+
+.right-header-inner {
+  @include flex(space-evenly, flex-end);
+}
+
+.right-header-inner img {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+}
+
+.account-avt {
+  display: inline-block;
+  user-select: none;
+}
+
+.main-content-body {
+  width: 60%;
+  @include flex(space-between, center);
+}
+
+.body-left {
+  width: 35%;
+}
+
+.dashed {
+  width: 250px;
+  height: 250px;
+  border: 1px dashed #ccc;
+  border-radius: 4px;
+}
+
+.artwork-avt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+}
+
+.artwork-avt img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.add-artwork {
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+.add-artwork label {
+  cursor: pointer;
+  color: #000;
+  text-decoration: underline;
+  font-size: 13px;
+  transition: color 0.3s ease;
+}
+.add-artwork input[type="file"] {
+  display: none; /* Hide the file input */
+}
+
+.avt {
+  flex-direction: column;
+  @include flex(center, center);
+}
+.body-right {
+  width: 60%;
+  padding: 12px 32px;
+  border-left: 1px solid #ddd;
+}
+
+.btn-upload button {
+  background: #000;
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 12px;
+}
+
+.main-content-footage {
+  width: 100%;
+  height: 10%;
+  @include flex(center, center);
+}
+
+.main-content-footage-inner {
+  position: relative;
+  @include flex(center, center);
+}
+
+.main-content-footage-inner button {
+  position: absolute;
+  color: #fff;
+  background-color: #1ed760;
+  padding: 4px 52px;
+  border-radius: 20px;
+  right: 20px;
+}
