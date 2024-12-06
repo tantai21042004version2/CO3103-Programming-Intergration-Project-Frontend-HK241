@@ -11,6 +11,7 @@ import { ArtirstUploadTrackCloudinaryComponent } from './pages/artirst-upload-tr
 import { ArtirstUploadTrackMetaDataComponent } from './pages/artirst-upload-track-meta-data/artirst-upload-track-meta-data.component';
 import { DetailComponent } from './pages/detail/detail.component';
 import { ArtirstAlbumUploadComponent } from './pages/artirst-album-upload/artirst-album-upload.component';
+import { ArtirstAlbumsComponent } from './pages/artirst-albums/artirst-albums.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -18,6 +19,7 @@ const routes: Routes = [
     { path: 'signup', component: SignupComponent },
     { path: 'signin', component: SigninComponent },
     { path: 'song/:id', component: DetailComponent },
+    { path: 'artist-album', component: ArtirstAlbumsComponent },
     { path: 'artist-album-upload', component: ArtirstAlbumUploadComponent },
     { path: 'artist/overview', component: ArtirstoverviewComponent },
     { path: 'artist/tracks', component: ArtirstTracksComponent },

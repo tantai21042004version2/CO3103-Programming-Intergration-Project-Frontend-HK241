@@ -1,1 +1,142 @@
-<p>artirst-albums works!</p>
+<div class="container">
+  <!-- sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <img src="../../../assets/souncloud-black.png" alt="SoundCloud Logo" />
+    </div>
+    <nav class="menu">
+      <ul>
+        <li (click)="navigateToOverview()">Overview</li>
+        <li (click)="navigateToTracks()">Tracks</li>
+        <li (click)="navigateToNewTrack()">New Track</li>
+        <li>Comments</li>
+        <li>Albums</li>
+        <li>Earnings</li>
+        <li>Insights</li>
+        <li>Benefits</li>
+        <li>Membership</li>
+        <li>Profile Control</li>
+      </ul>
+    </nav>
+  </aside>
+  <!-- main-content -->
+  <div class="main-content">
+    <!-- header content -->
+    <div class="header-content">
+      <div class="left-header">
+        <h1 class="fz-40">My track</h1>
+      </div>
+      <div class="right-header">
+        <div class="right-header-inner">
+          <button class="notification-btn header-btn">
+            <i class="btn-inner">
+              <img src="../../../assets/bell.png" alt="bell-icon" />
+            </i>
+          </button>
+          <button class="message-btn header-btn">
+            <i class="btn-inner">
+              <img src="../../../assets/envelope.png" alt="envelope-icon" />
+            </i>
+          </button>
+          <div class="account-avt header-btn">
+            <i class="btn-inner">
+              <img src="../../../assets/jack.jpg" alt="jackbentreimg" />
+            </i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- body-content -->
+    <div class="body-content">
+      <div class="body-content-header">
+        <div class="body-content-header-left">
+          <img src="../../../assets/musicnote.png" alt="musicnote" />
+        </div>
+        <div class="body-content-header-right">
+          <div>
+            <p class="fw-700">Upload your album vì một tương lai tươi sáng</p>
+          </div>
+          <div><button class="common-btn">Upload</button></div>
+        </div>
+      </div>
+      <div class="album-container">
+        <div class="boxtrack">
+          <div class="track-img-container">
+            <img
+              src="../../../assets/jack.jpg"
+              alt="Track Image"
+              class="track-img"
+            />
+          </div>
+          <div class="track-info">
+            <h3 class="track-name">Track Name 1</h3>
+            <p class="track-description">
+              This is the description for track 1.
+            </p>
+            <p class="track-status">
+              Status: <span class="status">Available</span>
+            </p>
+            <p class="track-date">Release Date: <span>2024-01-01</span></p>
+          </div>
+        </div>
+        <div class="boxtrack">
+          <div class="track-img-container">
+            <img
+              src="../../../assets/jack.jpg"
+              alt="Track Image"
+              class="track-img"
+            />
+          </div>
+          <div class="track-info">
+            <h3 class="track-name">Track Name 2</h3>
+            <p class="track-description">
+              This is the description for track 2.
+            </p>
+            <p class="track-status">
+              Status: <span class="status">Unavailable</span>
+            </p>
+            <p class="track-date">Release Date: <span>2024-05-15</span></p>
+          </div>
+        </div>
+        <div class="boxtrack">
+          <div class="track-img-container">
+            <img
+              src="../../../assets/jack.jpg"
+              alt="Track Image"
+              class="track-img"
+            />
+          </div>
+          <div class="track-info">
+            <h3 class="track-name">Track Name 3</h3>
+            <p class="track-description">
+              This is the description for track 3.
+            </p>
+            <p class="track-status">
+              Status: <span class="status">Coming Soon</span>
+            </p>
+            <p class="track-date">Release Date: <span>2024-10-01</span></p>
+          </div>
+        </div>
+        <div class="boxtrack">
+          <div class="track-img-container">
+            <img
+              src="../../../assets/jack.jpg"
+              alt="Track Image"
+              class="track-img"
+            />
+          </div>
+          <div class="track-info">
+            <h3 class="track-name">Track Name 4</h3>
+            <p class="track-description">
+              This is the description for track 4.
+            </p>
+            <p class="track-status">
+              Status: <span class="status">Available</span>
+            </p>
+            <p class="track-date">Release Date: <span>2024-12-25</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

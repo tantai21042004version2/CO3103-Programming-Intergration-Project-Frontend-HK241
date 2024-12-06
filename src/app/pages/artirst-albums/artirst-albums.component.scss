@@ -1,0 +1,358 @@
+// Common
+// mixin flexBox
+@mixin flex($justify: center, $align: center, $direction: none) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+
+.fz-40 {
+  font-size: 40px;
+}
+
+.fz-12 {
+  font-size: 12px;
+}
+
+.fw-700 {
+  font-weight: 700;
+}
+
+.br-20 {
+  border-radius: 20px;
+}
+
+.w-60-percent {
+  width: 60% !important;
+}
+
+.w-20 {
+  width: 20px !important;
+}
+
+.h-20 {
+  height: 20px !important;
+}
+
+.w-16 {
+  width: 16px !important;
+}
+
+.h-16 {
+  height: 16px !important;
+}
+
+.w-100 {
+  width: 100px !important;
+}
+
+.h-auto {
+  height: auto !important;
+}
+
+.p-4-16 {
+  padding: 4px 16px;
+}
+
+.p-l-4 {
+  padding-left: 4px;
+}
+
+.m-b-8 {
+  margin-bottom: 8px;
+}
+
+.m-t-8 {
+  margin-top: 8px;
+}
+
+.m-t-44 {
+  margin-top: 44px;
+}
+
+.m-t-b-12 {
+  margin: 12px 0;
+}
+
+.m-r-4 {
+  margin-right: 4px;
+}
+
+.m-l-4 {
+  margin-left: 4px;
+}
+
+.m-l-100 {
+  margin-left: 100px;
+}
+
+.m-l-60 {
+  margin-left: 60px;
+}
+
+.c-ccc {
+  color: #ccc;
+}
+
+.c-gray {
+  color: gray;
+}
+
+.c-red {
+  color: red;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.dashed {
+  border: 1px dashed #ccc;
+  border-radius: 4px;
+}
+
+.flex-align-center {
+  display: flex;
+  align-items: center;
+}
+
+.flex-dir-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  border: 1px solid gray;
+  border-radius: 4px;
+  padding: 4px 12px;
+  width: 100%;
+}
+
+.header-btn {
+  margin-right: 12px;
+  border-radius: 20px;
+  border: 1px solid #000;
+  @include flex(center, center);
+}
+
+.common-btn {
+  background: black;
+  color: white;
+  padding: 4px 16px;
+  border-radius: 12px;
+}
+
+// Private
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.container {
+  @include flex(none, none);
+}
+
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #fff;
+  border-right: 1px solid #e0e0e0;
+  padding: 20px;
+}
+
+.sidebar .logo img {
+  width: 100%;
+  min-height: 160px;
+  margin-bottom: 20px;
+}
+
+.sidebar .menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar .menu ul li {
+  padding: 10px 0;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.sidebar .menu ul li:hover {
+  color: #f50;
+}
+
+.beta {
+  font-size: 10px;
+  color: #ff5a5a;
+  font-weight: bold;
+}
+// Main content
+.main-content {
+  width: 100%;
+  @include flex(none, center);
+  flex-direction: column;
+}
+// header   content
+.header-content {
+  width: 100%;
+  padding: 20px 20px 0;
+  min-height: 100px;
+  @include flex(space-between, flex-end);
+  overflow: hidden;
+  border-bottom: 1px solid #000;
+}
+
+.left-header h1 {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.right-header {
+  min-width: 300px;
+  min-height: 100px;
+  margin-right: 20px;
+  @include flex(space-between, center);
+  justify-content: flex-end;
+}
+
+.right-header-inner {
+  @include flex(space-evenly, flex-end);
+}
+
+.right-header-inner img {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+}
+
+.account-avt {
+  display: inline-block;
+  user-select: none;
+}
+
+//body content
+.body-content {
+  padding: 20px 60px;
+  width: 100%;
+}
+.body-content-header {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  @include flex(space-between, center);
+}
+.body-content-header-left {
+  @include flex(center, center);
+  flex: 0 0 auto;
+  height: auto;
+  max-width: 150px;
+}
+.body-content-header-left img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.body-content-header-right {
+  @include flex(space-between, flex-end);
+  flex-direction: column;
+  gap: 12px;
+}
+
+// Album container
+
+.album-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.boxtrack {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.boxtrack:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.track-img-container {
+  flex: 0 0 100px; /* Đặt chiều rộng cố định cho ảnh */
+  margin-right: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.track-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.track-info {
+  flex: 1;
+}
+
+.track-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.track-description {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.track-status {
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 2px;
+}
+
+.track-status .status {
+  font-weight: 600;
+  color: #007bff;
+}
+
+.track-date {
+  font-size: 12px;
+  color: #999;
+}
+
+@media (max-width: 768px) {
+  .album-container {
+    grid-template-columns: 1fr; /* Chuyển sang 1 cột trên màn hình nhỏ */
+  }
+
+  .boxtrack {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .track-img-container {
+    margin-bottom: 10px;
+  }
+}
