@@ -5,11 +5,11 @@ import { Album } from 'src/app/models/album';
 import { convertResponseToAlbum } from 'src/app/utils/to.album';
 
 @Component({
-  selector: 'app-admin-user-list',
-  templateUrl: './admin-user-list.component.html',
-  styleUrls: ['./admin-user-list.component.scss']
+  selector: 'app-admin-dashboard',
+  templateUrl: './admin-dashboard.component.html',
+  styleUrls: ['./admin-dashboard.component.scss']
 })
-export class AdminUserListComponent extends BaseComponent implements OnInit {
+export class AdminDashboardComponent extends BaseComponent implements OnInit {
   adminInfor: Artist = {
     id: 0,
     username: '',

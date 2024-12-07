@@ -20,7 +20,7 @@
     <div class="main-content">
         <div class="header-content">
             <div class="left-header">
-                <h1 class="fz-40">All Users</h1>
+                <h1 class="fz-40">Approved Tracks</h1>
             </div>
             <div class="right-header">
                 <div class="right-header-inner">
@@ -44,6 +44,38 @@
         </div>
         <div class="line"></div>
         <div class="upload-track-box">
+            <!-- <div class="upload-bar m-t-b-12">
+        <div class="upload-bar-left">
+          <div class="logo m-r-4">
+            <img src="../../../assets/cu1.png" alt="upload-cloud-data" />
+          </div>
+          <p class="fw-700"><span class="fw-700">0</span>% of uploads used</p>
+          <div class="loading"></div>
+          <p><span>0</span> of 180 minutes</p>
+        </div>
+        <div class="upload-bar-right">
+          <button>Get unlimited uploads</button>
+        </div>
+      </div> -->
+            <!-- <div class="upload-content">
+                <div class="upload-content-text">
+                    <h1 class="fw-700 fz-40 m-t-b-12">
+                        Upload your newest track to SoundCloud
+                    </h1>
+                    <p class="fz-12 m-t-b-12">
+                        Upload your tracks to SoundCloud to get heard by milions of fans
+                        around the world. Getting your music on SoundCloud is the first step
+                        to developing your sound and building your fanbase.
+                    </p>
+                    <b>Next Pro Subcribers get unlimited uploads </b>
+                    <div class="add-btn m-t-b-12" (click)="navigateToAddMusic()">
+                        <button>Add your newest track</button>
+                    </div>
+                </div>
+                <div class="upload-content-logo">
+                    <img src="../../../assets/souncloud-black.png" alt="souncloud" />
+                </div>
+            </div> -->
         </div>
 
         <div class="notification" *ngIf="notificationMessage">
@@ -53,26 +85,23 @@
         </div>
 
         <div class="track-list-container">
-            <div class="track-card" *ngFor="let album of albums">
+            <div class="track-card" *ngFor="let track of tracks">
                 <div class="track-image">
-                    <img [src]="album.cover_url" alt="Track Cover" class="track-cover" />
+                    <img [src]="track.image_url" alt="Track Cover" class="track-cover" />
                 </div>
                 <div class="track-info">
-                    <h3>{{ album.name }}</h3>
-                    <p>Description: {{ album.description }}</p>
-                    <p>Status: {{ album.status }}</p>
-                    <p>Release Date: {{ album.release_date }}</p>
+                    <h3>{{ track.name }}</h3>
+                    <p>Status: {{ track.status }}</p>
+                    <audio controls>
+                        <source [src]="track.secure_url" type="audio/mpeg" />
+                        Your browser does not support the audio element.
+                    </audio>
                 </div>
                 <div class="action-container">
-                    <div class="send-approve-container" (click)="goToDetail(album.id)">
-                        Album Page
+                    <div class="send-approve-container" (click)="goToDetail(track.id)">
+                        Page
                     </div>
-
-                    <div class="reject-container" (click)="openConfirmModal('approve', album)">
-                        Approve
-                    </div>
-
-                    <div class="reject-container" (click)="openConfirmModal('reject', album)">
+                    <div class="reject-container" (click)="openConfirmModal('reject', track)">
                         Reject
                     </div>
                 </div>

@@ -5,11 +5,11 @@ import { Album } from 'src/app/models/album';
 import { convertResponseToAlbum } from 'src/app/utils/to.album';
 
 @Component({
-  selector: 'app-admin-user-list',
-  templateUrl: './admin-user-list.component.html',
-  styleUrls: ['./admin-user-list.component.scss']
+  selector: 'app-admin-approve-album',
+  templateUrl: './admin-approve-album.component.html',
+  styleUrls: ['./admin-approve-album.component.scss']
 })
-export class AdminUserListComponent extends BaseComponent implements OnInit {
+export class AdminApproveAlbumComponent extends BaseComponent implements OnInit {
   adminInfor: Artist = {
     id: 0,
     username: '',
@@ -24,7 +24,7 @@ export class AdminUserListComponent extends BaseComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserInfor();
-    this.getAllPendingAlbums();
+    this.getAllApprovedAlbums();
   }
 
   getUserInfor() {
@@ -33,8 +33,8 @@ export class AdminUserListComponent extends BaseComponent implements OnInit {
     this.adminInfor.image_url = this.tokenService.getImageUrl();
   }
 
-  getAllPendingAlbums() {
-    this.albumService.getAllPendingAlbum({ page: 1, limit: 100, keyword: '' }, this.token).subscribe({
+  getAllApprovedAlbums() {
+    this.albumService.getAllAlbum({ page: 1, limit: 100, keyword: '', status: 'APPROVED' }).subscribe({
       next: (apiResponse) => {
         if (apiResponse.status === 'OK') {
           this.albums = apiResponse.data.albums.map(convertResponseToAlbum);
@@ -77,11 +77,10 @@ export class AdminUserListComponent extends BaseComponent implements OnInit {
 
   confirmAction() {
     if (this.actionType === 'reject') {
-      console.log(this.selectedTrack);
-      this.albumService.approveAlbum(this.selectedTrack.id, this.token, { "is_approved": 0, description: this.description }).subscribe({
+      this.albumService.deleteAlbum(this.selectedTrack.id, this.token).subscribe({
         next: (apiResponse) => {
           if (apiResponse.status === 'OK') {
-            this.showNotification('Album rejected', true);
+            this.showNotification('Album deleted', true);
           }
         },
         error: (error) => {
@@ -89,17 +88,10 @@ export class AdminUserListComponent extends BaseComponent implements OnInit {
         }
       });
     }
-    else if (this.actionType === 'approve') {
-      this.albumService.approveAlbum(this.selectedTrack.id, this.token, { "is_approved": 1, description: this.description }).subscribe({
-        next: (apiResponse) => {
-          this.showNotification('Album approved', true);
-        },
-        error: (error) => {
-          this.showNotification('Failed to approve album', false);
-        }
-      });
-    }
+    this.closeConfirmModal();
   }
+
+
 
   cancelAction() {
     this.closeConfirmModal();
@@ -110,16 +102,8 @@ export class AdminUserListComponent extends BaseComponent implements OnInit {
     this.isSuccess = success;
     setTimeout(() => {
       this.notificationMessage = null;
-      window.location.reload();
+      // window.location.reload();
     }, 2000);
-  }
-
-  navigateToDashboard() {
-    this.router.navigate(['/admin/dashboard']);
-  }
-
-  navigateToUserList() {
-    this.router.navigate(['/admin/user-list']);
   }
 
   goToDetail(id: number) {
@@ -140,6 +124,14 @@ export class AdminUserListComponent extends BaseComponent implements OnInit {
 
   navigateToPendingAlbums() {
     this.router.navigate(['/admin/albums/pending']);
+  }
+
+  navigateToDashboard() {
+    this.router.navigate(['/admin/dashboard']);
+  }
+
+  navigateToUserList() {
+    this.router.navigate(['/admin/user-list']);
   }
 
   navigateToAddMusic() {

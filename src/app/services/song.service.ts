@@ -17,6 +17,15 @@ export class SongService {
     }
 
     private apiGetAllSong = `${environment.apiBaseUrl}/songs`;
+    private apiGetArtistTracks = `${environment.apiBaseUrl}/songs/artist`;
+    private apiDetailSong = `${environment.apiBaseUrl}/songs/detail`;
+    private apiUploadToCloudinary = `${environment.apiBaseUrl}/songs/cloudinary`;
+    private apiCreateSong = `${environment.apiBaseUrl}/songs`;
+    private apiSubmitSong = `${environment.apiBaseUrl}/songs/submit`;
+    private apiApproveSong = `${environment.apiBaseUrl}/songs/approve`;
+    private apiRejectSong = `${environment.apiBaseUrl}/songs/reject`;
+    private apiGetPendingTracks = `${environment.apiBaseUrl}/songs/pending`;
+
     getAllSong(params: { page: number, limit: number, keyword: string, album_id: string })
         : Observable<ApiResponse> {
         return this.http.get<ApiResponse>(
@@ -25,7 +34,6 @@ export class SongService {
         );
     }
 
-    private apiGetArtistTracks = `${environment.apiBaseUrl}/songs/artist`;
     getArtistTracks(token: string): Observable<ApiResponse> {
         return this.http.get<ApiResponse>(this.apiGetArtistTracks,
             {
@@ -36,12 +44,20 @@ export class SongService {
         );
     }
 
-    private apiDetailSong = `${environment.apiBaseUrl}/songs/detail`;
+    getPendingTracks(token: string): Observable<ApiResponse> {
+        return this.http.get<ApiResponse>(this.apiGetPendingTracks,
+            {
+                headers: new HttpHeaders({
+                    Authorization: `Bearer ${token}`
+                })
+            }
+        );
+    }
+
     detail(id: number): Observable<ApiResponse> {
         return this.http.get<ApiResponse>(`${this.apiDetailSong}/${id}`);
     }
 
-    private apiUploadToCloudinary = `${environment.apiBaseUrl}/songs/cloudinary`;
     uploadToCloudinary(file: File, token: string): Observable<ApiResponse> {
         const formData = new FormData();
         formData.append('file', file);
@@ -57,8 +73,6 @@ export class SongService {
         );
     }
 
-
-    private apiCreateSong = `${environment.apiBaseUrl}/songs`;
     createSong(uploadSongDTO: UploadSongDTO, token: string): Observable<ApiResponse> {
         return this.http.post<ApiResponse>(this.apiCreateSong, uploadSongDTO, {
             headers: new HttpHeaders({
@@ -68,22 +82,22 @@ export class SongService {
         });
     }
 
-    private apiSubmitSong = `${environment.apiBaseUrl}/songs/submit`;
     submitSong(id: number, token: string): Observable<ApiResponse> {
         return this.http.post<ApiResponse>(`${this.apiSubmitSong}/${id}`, {}, {
             headers: new HttpHeaders({ Authorization: `Bearer ${token}` })
         });
     }
 
-    private apiDeleteSong = `${environment.apiBaseUrl}/songs/delete`;
-    deleteSong(id: number, token: string): Observable<ApiResponse> {
-        return this.http.delete<ApiResponse>(`${this.apiDeleteSong}/${id}`,
-            {
-                headers: new HttpHeaders({
-                    Authorization: `Bearer ${token}`
-                })
-            }
-        );
+    approveSong(id: number, token: string): Observable<ApiResponse> {
+        return this.http.patch<ApiResponse>(`${this.apiApproveSong}/${id}`, {}, {
+            headers: new HttpHeaders({ Authorization: `Bearer ${token}` })
+        });
+    }
+
+    rejectSong(id: number, token: string): Observable<ApiResponse> {
+        return this.http.patch<ApiResponse>(`${this.apiRejectSong}/${id}`, {}, {
+            headers: new HttpHeaders({ Authorization: `Bearer ${token}` })
+        });
     }
 }
 

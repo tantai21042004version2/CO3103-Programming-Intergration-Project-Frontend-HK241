@@ -20,7 +20,7 @@
     <div class="main-content">
         <div class="header-content">
             <div class="left-header">
-                <h1 class="fz-40">All Users</h1>
+                <h1 class="fz-40">Approved Albums</h1>
             </div>
             <div class="right-header">
                 <div class="right-header-inner">
@@ -67,13 +67,8 @@
                     <div class="send-approve-container" (click)="goToDetail(album.id)">
                         Album Page
                     </div>
-
-                    <div class="reject-container" (click)="openConfirmModal('approve', album)">
-                        Approve
-                    </div>
-
                     <div class="reject-container" (click)="openConfirmModal('reject', album)">
-                        Reject
+                        Delete it
                     </div>
                 </div>
             </div>

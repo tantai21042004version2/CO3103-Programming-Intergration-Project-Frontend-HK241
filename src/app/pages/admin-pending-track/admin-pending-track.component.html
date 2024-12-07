@@ -20,7 +20,7 @@
     <div class="main-content">
         <div class="header-content">
             <div class="left-header">
-                <h1 class="fz-40">All Users</h1>
+                <h1 class="fz-40">Pending Tracks</h1>
             </div>
             <div class="right-header">
                 <div class="right-header-inner">
@@ -34,9 +34,11 @@
                             <img src="../../../assets/envelope.png" alt="envelope-icon" />
                         </i>
                     </button>
-                    <div class="account-avt header-btn">
+                    <div class="account-avt header-btn" style="cursor: pointer; overflow: hidden;"
+                        (click)="navigateToProfile()">
                         <i class="btn-inner">
-                            <img [src]="adminInfor.image_url" alt="jackbentreimg" />
+                            <img [src]="adminInfor.image_url ? adminInfor.image_url : '../../../assets/jackbentre.jpg'"
+                                alt="jackbentreimg" />
                         </i>
                     </div>
                 </div>
@@ -53,26 +55,23 @@
         </div>
 
         <div class="track-list-container">
-            <div class="track-card" *ngFor="let album of albums">
+            <div class="track-card" *ngFor="let track of tracks">
                 <div class="track-image">
-                    <img [src]="album.cover_url" alt="Track Cover" class="track-cover" />
+                    <img [src]="track.image_url" alt="Track Cover" class="track-cover" />
                 </div>
                 <div class="track-info">
-                    <h3>{{ album.name }}</h3>
-                    <p>Description: {{ album.description }}</p>
-                    <p>Status: {{ album.status }}</p>
-                    <p>Release Date: {{ album.release_date }}</p>
+                    <h3>{{ track.name }}</h3>
+                    <p>Status: {{ track.status }}</p>
+                    <audio controls>
+                        <source [src]="track.secure_url" type="audio/mpeg" />
+                        Your browser does not support the audio element.
+                    </audio>
                 </div>
                 <div class="action-container">
-                    <div class="send-approve-container" (click)="goToDetail(album.id)">
-                        Album Page
-                    </div>
-
-                    <div class="reject-container" (click)="openConfirmModal('approve', album)">
+                    <div class="send-approve-container" (click)="openConfirmModal('approve', track)">
                         Approve
                     </div>
-
-                    <div class="reject-container" (click)="openConfirmModal('reject', album)">
+                    <div class="reject-container" (click)="openConfirmModal('reject', track)">
                         Reject
                     </div>
                 </div>

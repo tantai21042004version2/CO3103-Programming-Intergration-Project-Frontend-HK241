@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from '../base/base.component';
 import { Artist } from 'src/app/models/artirst';
+import { Song } from 'src/app/models/song';
 import { Album } from 'src/app/models/album';
+import { Genre } from 'src/app/models/genre';
 import { convertResponseToAlbum } from 'src/app/utils/to.album';
 
 @Component({
-  selector: 'app-admin-user-list',
-  templateUrl: './admin-user-list.component.html',
-  styleUrls: ['./admin-user-list.component.scss']
+  selector: 'app-admin-pending-album',
+  templateUrl: './admin-pending-album.component.html',
+  styleUrls: ['./admin-pending-album.component.scss']
 })
-export class AdminUserListComponent extends BaseComponent implements OnInit {
+export class AdminPendingAlbumComponent extends BaseComponent implements OnInit {
   adminInfor: Artist = {
     id: 0,
     username: '',
@@ -114,14 +116,6 @@ export class AdminUserListComponent extends BaseComponent implements OnInit {
     }, 2000);
   }
 
-  navigateToDashboard() {
-    this.router.navigate(['/admin/dashboard']);
-  }
-
-  navigateToUserList() {
-    this.router.navigate(['/admin/user-list']);
-  }
-
   goToDetail(id: number) {
     this.router.navigate(['/song', id]);
   }
@@ -140,6 +134,14 @@ export class AdminUserListComponent extends BaseComponent implements OnInit {
 
   navigateToPendingAlbums() {
     this.router.navigate(['/admin/albums/pending']);
+  }
+
+  navigateToDashboard() {
+    this.router.navigate(['/admin/dashboard']);
+  }
+
+  navigateToUserList() {
+    this.router.navigate(['/admin/user-list']);
   }
 
   navigateToAddMusic() {

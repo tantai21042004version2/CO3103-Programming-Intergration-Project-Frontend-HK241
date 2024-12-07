@@ -43,7 +43,7 @@ export class BannerComponent extends BaseComponent implements OnInit {
   }
 
   logout() {
-    this.tokenService.removeToken();
+    this.tokenService.logout();
     window.location.reload();
   }
 }

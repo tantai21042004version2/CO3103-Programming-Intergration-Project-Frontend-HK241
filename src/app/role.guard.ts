@@ -13,7 +13,7 @@ export class RoleGuard implements CanActivate {
         next: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
         const requiredRoles = next.data['roles'] as Array<string>;
-        const userResponse = this.userService.getUserResponseTLS(); // Sử dụng phương thức đã được định nghĩa trong UserService
+        const userResponse = this.userService.getUserResponseTLS();
 
         debugger;
         if (userResponse && requiredRoles.includes(userResponse.role.name.toString())) {

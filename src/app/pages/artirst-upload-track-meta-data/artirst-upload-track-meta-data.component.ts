@@ -53,4 +53,8 @@ export class ArtirstUploadTrackMetaDataComponent extends BaseComponent implement
   navigateToNewTrack() {
     this.router.navigate(['/artist/tracks/upload-track-cloudinary']);
   }
+
+  navigateToAlbums() {
+    this.router.navigate(['/artist/albums']);
+  }
 }

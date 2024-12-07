@@ -100,4 +100,8 @@ export class ArtirstUploadTrackCloudinaryComponent extends BaseComponent impleme
   navigateToNewTrack() {
     this.router.navigate(['/artist/tracks/upload-track-cloudinary']);
   }
+
+  navigateToAlbums() {
+    this.router.navigate(['/artist/albums']);
+  }
 }

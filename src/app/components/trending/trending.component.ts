@@ -33,7 +33,7 @@ export class TrendingComponent extends BaseComponent implements OnInit {
   }
 
   navigateToDetail(id: number) {
-    this.router.navigate(['/detail', id]);
+    this.router.navigate(['/song', id]);
   }
 }
 // import { Component, OnInit } from '@angular/core';

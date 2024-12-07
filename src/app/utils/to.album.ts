@@ -7,7 +7,7 @@ export function convertResponseToAlbum(albumResponse: any): Album {
     album.name = albumResponse.name;
     album.artist_id = albumResponse.artist_id;
     album.release_date = albumResponse.release_date;
-    album.cover_url = albumResponse.cover_url;
+    album.cover_url = albumResponse.cover_image_url;
     album.status = albumResponse.status;
     album.created_at = albumResponse.created_at;
     album.updated_at = albumResponse.updated_at;

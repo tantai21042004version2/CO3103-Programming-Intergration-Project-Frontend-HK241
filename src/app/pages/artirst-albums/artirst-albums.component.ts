@@ -6,7 +6,7 @@ import { BaseComponent } from '../base/base.component';
   templateUrl: './artirst-albums.component.html',
   styleUrls: ['./artirst-albums.component.scss']
 })
-export class ArtirstAlbumsComponent extends BaseComponent{
+export class ArtirstAlbumsComponent extends BaseComponent {
   navigateToOverview() {
     this.router.navigate(['/artist/overview']);
   }
@@ -18,4 +18,8 @@ export class ArtirstAlbumsComponent extends BaseComponent{
   navigateToNewTrack() {
     this.router.navigate(['/artist/tracks/upload-track-cloudinary']);
   }
-}
+
+  navigateToAlbums() {
+    this.router.navigate(['/artist/albums']);
+  }
+} 

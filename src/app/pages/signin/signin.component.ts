@@ -79,7 +79,11 @@ export class SigninComponent extends BaseComponent implements OnInit {
         };
         this.userService.saveUserResponseTLS(this.userResponse);
 
-        this.router.navigate(['/home']);
+        if (this.userResponse?.role.name === 'ADMIN') {
+          this.router.navigate(['/admin/dashboard']);
+        } else {
+          this.router.navigate(['/home']);
+        }
       },
       error: (error: HttpErrorResponse) => {
         this.validationMessage = 'Login failed. Please check your credentials.';

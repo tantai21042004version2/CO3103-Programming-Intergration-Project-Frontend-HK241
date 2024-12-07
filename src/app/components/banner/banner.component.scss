@@ -2,6 +2,7 @@
 .btn {
   border-radius: 8px;
 }
+
 // mixin flexBox
 @mixin flex($justify: flex-start, $align: stretch, $direction: row) {
   display: flex;
@@ -45,11 +46,11 @@
 }
 
 .header {
-  padding: 16px 100px;
+  padding: 0px 100px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #fc9400;
+  background: #f9a024;
 }
 
 .brand-container {

@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from '../base/base.component';
-import { Artist } from 'src/app/models/artirst';
-import { Album } from 'src/app/models/album';
-import { convertResponseToAlbum } from 'src/app/utils/to.album';
+import { Artist } from '../../models/artirst';
+import { Song } from '../../models/song';
 
 @Component({
-  selector: 'app-admin-user-list',
-  templateUrl: './admin-user-list.component.html',
-  styleUrls: ['./admin-user-list.component.scss']
+  selector: 'app-admin-pending-track',
+  templateUrl: './admin-pending-track.component.html',
+  styleUrls: ['./admin-pending-track.component.scss']
 })
-export class AdminUserListComponent extends BaseComponent implements OnInit {
+export class AdminPendingTrackComponent extends BaseComponent implements OnInit {
   adminInfor: Artist = {
     id: 0,
     username: '',
@@ -19,12 +18,11 @@ export class AdminUserListComponent extends BaseComponent implements OnInit {
   };
   token: string = '';
 
-  albums: Album[] = [];
-
+  tracks: Song[] = [];
 
   ngOnInit(): void {
     this.getUserInfor();
-    this.getAllPendingAlbums();
+    this.getPendingTracks();
   }
 
   getUserInfor() {
@@ -33,18 +31,17 @@ export class AdminUserListComponent extends BaseComponent implements OnInit {
     this.adminInfor.image_url = this.tokenService.getImageUrl();
   }
 
-  getAllPendingAlbums() {
-    this.albumService.getAllPendingAlbum({ page: 1, limit: 100, keyword: '' }, this.token).subscribe({
+  getPendingTracks() {
+    this.songService.getPendingTracks(this.token).subscribe({
       next: (apiResponse) => {
-        if (apiResponse.status === 'OK') {
-          this.albums = apiResponse.data.albums.map(convertResponseToAlbum);
+        if (apiResponse.status === "OK") {
+          this.tracks = apiResponse.data.songs;
         }
       },
       complete: () => {
-        console.log(this.albums);
+        console.log(this.tracks);
       },
       error: (error) => {
-        this.showNotification('Failed to get all approved albums', false);
         console.log(error);
       }
     });
@@ -64,9 +61,10 @@ export class AdminUserListComponent extends BaseComponent implements OnInit {
     this.confirmMessage =
       action === 'approve'
         ? `Description for "${track.name}" for approval?`
-        : `Description for "${track.name}"? for delete`;
+        : `Description for "${track.name}"? for reject`;
     this.showConfirmModal = true;
   }
+
 
   closeConfirmModal() {
     this.showConfirmModal = false;
@@ -76,33 +74,52 @@ export class AdminUserListComponent extends BaseComponent implements OnInit {
   }
 
   confirmAction() {
-    if (this.actionType === 'reject') {
-      console.log(this.selectedTrack);
-      this.albumService.approveAlbum(this.selectedTrack.id, this.token, { "is_approved": 0, description: this.description }).subscribe({
-        next: (apiResponse) => {
-          if (apiResponse.status === 'OK') {
-            this.showNotification('Album rejected', true);
-          }
-        },
-        error: (error) => {
-          this.showNotification('Failed to delete album', false);
-        }
-      });
+    if (this.actionType === 'approve') {
+      this.approveTrack(this.selectedTrack);
+    } else if (this.actionType === 'reject') {
+      this.rejectTrack(this.selectedTrack);
     }
-    else if (this.actionType === 'approve') {
-      this.albumService.approveAlbum(this.selectedTrack.id, this.token, { "is_approved": 1, description: this.description }).subscribe({
-        next: (apiResponse) => {
-          this.showNotification('Album approved', true);
-        },
-        error: (error) => {
-          this.showNotification('Failed to approve album', false);
-        }
-      });
-    }
+    this.closeConfirmModal();
   }
+
 
   cancelAction() {
     this.closeConfirmModal();
+  }
+
+  approveTrack(track: Song) {
+    if (track.status === 'PENDING') {
+      debugger;
+      this.songService.approveSong(track.id, this.token).subscribe({
+        next: (apiResponse) => {
+          if (apiResponse.status === 'OK') {
+            this.showNotification('Track approved', true);
+          }
+        },
+        error: (error) => {
+          this.showNotification(`Failed to approve track: ${error.error.message}`, false);
+        }
+      });
+    } else {
+      this.showNotification('Track is already approved', false);
+    }
+  }
+
+  rejectTrack(track: Song) {
+    if (track.status === 'PENDING') {
+      this.songService.rejectSong(track.id, this.token).subscribe({
+        next: (apiResponse) => {
+          if (apiResponse.status === 'OK') {
+            this.showNotification('Track rejected', true);
+          }
+        },
+        error: (error) => {
+          this.showNotification(`Failed to reject track: ${error.error.message}`, false);
+        }
+      });
+    } else {
+      this.showNotification('Track is already rejected', false);
+    }
   }
 
   showNotification(message: string, success: boolean) {
@@ -112,18 +129,6 @@ export class AdminUserListComponent extends BaseComponent implements OnInit {
       this.notificationMessage = null;
       window.location.reload();
     }, 2000);
-  }
-
-  navigateToDashboard() {
-    this.router.navigate(['/admin/dashboard']);
-  }
-
-  navigateToUserList() {
-    this.router.navigate(['/admin/user-list']);
-  }
-
-  goToDetail(id: number) {
-    this.router.navigate(['/song', id]);
   }
 
   navigateToApprovedTracks() {
@@ -140,6 +145,19 @@ export class AdminUserListComponent extends BaseComponent implements OnInit {
 
   navigateToPendingAlbums() {
     this.router.navigate(['/admin/albums/pending']);
+  }
+
+
+  navigateToDashboard() {
+    this.router.navigate(['/admin/dashboard']);
+  }
+
+  navigateToUserList() {
+    this.router.navigate(['/admin/user-list']);
+  }
+
+  navigateToProfile() {
+    this.router.navigate(['/profile']);
   }
 
   navigateToAddMusic() {

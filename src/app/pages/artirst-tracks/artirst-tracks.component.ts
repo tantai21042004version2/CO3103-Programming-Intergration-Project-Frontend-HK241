@@ -184,14 +184,14 @@ export class ArtirstTracksComponent extends BaseComponent implements OnInit {
         });
       }
     } else if (this.actionType === 'delete') {
-      this.songService.deleteSong(this.selectedTrack.id, this.token).subscribe({
+      this.songService.rejectSong(this.selectedTrack.id, this.token).subscribe({
         next: (apiResponse) => {
           if (apiResponse.status === 'OK') {
-            this.showNotification('Track deleted', true);
+            this.showNotification('Track rejected', true);
           }
         },
         error: (error) => {
-          this.showNotification('Failed to delete track', false);
+          this.showNotification(`Failed to delete track: ${error.error.message}`, false);
         }
       });
     }

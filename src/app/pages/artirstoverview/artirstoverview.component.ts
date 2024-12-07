@@ -18,4 +18,8 @@ export class ArtirstoverviewComponent extends BaseComponent {
   navigateToOverview() {
     this.router.navigate(['/artist/overview']);
   }
+
+  navigateToAlbums() {
+    this.router.navigate(['/artist/albums']);
+  }
 }
