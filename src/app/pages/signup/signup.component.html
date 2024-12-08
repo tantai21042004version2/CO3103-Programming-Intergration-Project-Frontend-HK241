@@ -2,7 +2,6 @@
 
 <div class="signup-container">
   <div class="inner-container">
-
     <!-- Signup Section -->
     <section class="main-container">
       <!-- Signup Form -->
@@ -13,16 +12,28 @@
               <!-- Username -->
               <div class="form-group">
                 <label for="username">User name</label>
-                <input type="text" placeholder="User name..." id="username" name="username" [(ngModel)]="username"
-                  required />
+                <input
+                  type="text"
+                  placeholder="User name..."
+                  id="username"
+                  name="username"
+                  [(ngModel)]="username"
+                  required
+                />
               </div>
 
               <!-- Password -->
               <div class="form-group">
                 <label for="password">Password</label>
                 <div class="password-container">
-                  <input type="password" placeholder="Password..." id="password" name="password" [(ngModel)]="password"
-                    required />
+                  <input
+                    type="password"
+                    placeholder="Password..."
+                    id="password"
+                    name="password"
+                    [(ngModel)]="password"
+                    required
+                  />
                   <i class="fa-solid fa-eye-slash toggle-password"></i>
                 </div>
               </div>
@@ -30,31 +41,49 @@
               <!-- Country -->
               <div class="form-group">
                 <label for="country">Country</label>
-                <select id="country" name="country" [(ngModel)]="country" required>
-                  <option value="" disabled selected>Select your country</option>
+                <select
+                  id="country"
+                  name="country"
+                  [(ngModel)]="country"
+                  required
+                >
+                  <option value="" disabled selected>
+                    Select your country
+                  </option>
                   <option value="USA">USA</option>
                   <option value="UK">UK</option>
                   <option value="Vietnam">Vietnam</option>
                   <option value="Canada">Canada</option>
                 </select>
               </div>
-
             </div>
 
             <div class="right-input-form width-100-percent flex-box">
               <!-- Email Address -->
               <div class="form-group">
                 <label for="email">Email address</label>
-                <input type="email" placeholder="Email address..." id="email" name="email" [(ngModel)]="email"
-                  required />
+                <input
+                  type="email"
+                  placeholder="Email address..."
+                  id="email"
+                  name="email"
+                  [(ngModel)]="email"
+                  required
+                />
               </div>
 
               <!-- Retype Password -->
               <div class="form-group">
                 <label for="retypePassword">Retype Password</label>
                 <div class="password-container">
-                  <input type="password" placeholder="Retype password..." id="retypePassword" name="retypePassword"
-                    [(ngModel)]="retypePassword" required />
+                  <input
+                    type="password"
+                    placeholder="Retype password..."
+                    id="retypePassword"
+                    name="retypePassword"
+                    [(ngModel)]="retypePassword"
+                    required
+                  />
                   <i class="fa-solid fa-eye-slash toggle-password"></i>
                 </div>
               </div>
@@ -62,7 +91,13 @@
               <!-- Date of Birth -->
               <div class="form-group">
                 <label for="dateOfBirth">Date of Birth</label>
-                <input type="date" id="dateOfBirth" name="dateOfBirth" [(ngModel)]="dateOfBirth" required />
+                <input
+                  type="date"
+                  id="dateOfBirth"
+                  name="dateOfBirth"
+                  [(ngModel)]="dateOfBirth"
+                  required
+                />
               </div>
             </div>
           </div>
@@ -83,9 +118,7 @@
       <div class="login-section">
         <h3 class="margin-top-bottom-12">Already have an account?</h3>
         <div class="login-btn-container" (click)="navigateToSignin()">
-          <button id="login-btn" class="flex-box">
-            Log In
-          </button>
+          <button id="login-btn" class="flex-box">Log In</button>
           <i><img src="../../../assets/hcmut.png" alt="hcmut-logo" /></i>
         </div>
       </div>

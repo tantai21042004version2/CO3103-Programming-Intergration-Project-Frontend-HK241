@@ -19,9 +19,11 @@
   align-items: center;
   justify-content: center;
 
-  background: linear-gradient(132deg,
-      rgb(255, 127, 56) 0%,
-      rgb(255, 196, 108) 100%);
+  background: linear-gradient(
+    132deg,
+    rgb(255, 127, 56) 0%,
+    rgb(255, 196, 108) 100%
+  );
 }
 
 /* Signup Section */
@@ -66,7 +68,6 @@
 .margin-top-bottom-12 {
   margin: 12px 0;
 }
-
 
 .ng-pristine {
   width: 80%;
