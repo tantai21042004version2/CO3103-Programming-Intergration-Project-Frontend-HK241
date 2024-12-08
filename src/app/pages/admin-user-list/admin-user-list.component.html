@@ -1,92 +1,100 @@
 <div class="container">
-    <!-- sidebar -->
-    <aside class="sidebar">
-        <div class="logo">
-            <img src="../../../assets/admin.jpg" alt="SoundCloud Logo" />
-        </div>
-        <nav class="menu">
-            <ul>
-                <li (click)="navigateToDashboard()">Dashboard</li>
-                <li (click)="navigateToUserList()">All Users</li>
-                <li (click)="navigateToApprovedTracks()">Approved Tracks</li>
-                <li (click)="navigateToPendingTracks()">Pending Tracks</li>
-                <li (click)="navigateToApprovedAlbums()">Approved Albums</li>
-                <li (click)="navigateToPendingAlbums()">Pending Albums</li>
-                <li>Playlist (Beta)</li>
-            </ul>
-        </nav>
-    </aside>
-
-    <div class="main-content">
-        <div class="header-content">
-            <div class="left-header">
-                <h1 class="fz-40">All Users</h1>
-            </div>
-            <div class="right-header">
-                <div class="right-header-inner">
-                    <button class="notification-btn header-btn">
-                        <i class="btn-inner">
-                            <img src="../../../assets/bell.png" alt="bell-icon" />
-                        </i>
-                    </button>
-                    <button class="message-btn header-btn">
-                        <i class="btn-inner">
-                            <img src="../../../assets/envelope.png" alt="envelope-icon" />
-                        </i>
-                    </button>
-                    <div class="account-avt header-btn">
-                        <i class="btn-inner">
-                            <img [src]="adminInfor.image_url" alt="jackbentreimg" />
-                        </i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="line"></div>
-        <div class="upload-track-box">
-        </div>
-
-        <div class="notification" *ngIf="notificationMessage">
-            <p [class.success]="isSuccess" [class.error]="!isSuccess">
-                {{ notificationMessage }}
-            </p>
-        </div>
-
-        <div class="filter-container">
-            <div class="filter-item">
-                <input type="text" placeholder="Search by name" />
-            </div>
-        </div>
-
-        <div class="user-list-container">
-            <div class="user-card" *ngFor="let user of users">
-                <div class="user-image">
-                    <img [src]="user.image_url" alt="user-image" />
-                </div>
-                <div class="user-info">
-                    <p>{{ user.username }}</p>
-                    <p>{{ user.email }}</p>
-                    <p>{{ user.role.name }}</p>
-                </div>
-                <div class="action-container">
-                    <button (click)="openConfirmModal('approve', user)">To Artist</button>
-                    <!-- <button (click)="openConfirmModal('delete', user)"></button> -->
-                </div>
-            </div>
-        </div>
+  <!-- sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <img src="../../../assets/admin.jpg" alt="SoundCloud Logo" />
     </div>
+    <nav class="menu">
+      <ul>
+        <li (click)="navigateToDashboard()">Dashboard</li>
+        <li (click)="navigateToUserList()">All Users</li>
+        <li (click)="navigateToApprovedTracks()">Approved Tracks</li>
+        <li (click)="navigateToPendingTracks()">Pending Tracks</li>
+        <li (click)="navigateToApprovedAlbums()">Approved Albums</li>
+        <li (click)="navigateToPendingAlbums()">Pending Albums</li>
+        <li>Playlist (Beta)</li>
+      </ul>
+    </nav>
+  </aside>
+
+  <div class="main-content">
+    <div class="header-content">
+      <div class="left-header">
+        <h1 class="fz-40">All Users</h1>
+      </div>
+      <div class="right-header">
+        <div class="right-header-inner">
+          <button class="notification-btn header-btn">
+            <i class="btn-inner">
+              <img src="../../../assets/bell.png" alt="bell-icon" />
+            </i>
+          </button>
+          <button class="message-btn header-btn">
+            <i class="btn-inner">
+              <img src="../../../assets/envelope.png" alt="envelope-icon" />
+            </i>
+          </button>
+          <div class="account-avt header-btn">
+            <i class="btn-inner">
+              <img [src]="adminInfor.image_url" alt="jackbentreimg" />
+            </i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="line"></div>
+    <div class="upload-track-box"></div>
+
+    <div class="notification" *ngIf="notificationMessage">
+      <p [class.success]="isSuccess" [class.error]="!isSuccess">
+        {{ notificationMessage }}
+      </p>
+    </div>
+
+    <div class="filter-container">
+      <div class="filter-item w-50-percent">
+        <input type="text" placeholder="Search by name" />
+      </div>
+    </div>
+
+    <div class="user-list-container">
+      <div class="user-list-header">
+        <div class="user-card-title fw-700">
+          <div class="avt border-bottom-black">Avatar</div>
+          <div class="username border-bottom-black">Username</div>
+          <div class="email border-bottom-black">Email</div>
+          <div class="role border-bottom-black">Role</div>
+          <div class="delcozy">Delcozy</div>
+        </div>
+      </div>
+      <div class="user-card" *ngFor="let user of users">
+        <div class="user-image">
+          <img [src]="user.image_url" alt="user-image" />
+        </div>
+        <div class="user-info">
+          <p>{{ user.username }}</p>
+          <p>{{ user.email }}</p>
+          <p>{{ user.role.name }}</p>
+        </div>
+        <div class="action-container">
+          <button (click)="openConfirmModal('approve', user)">To Artist</button>
+          <!-- <button (click)="openConfirmModal('delete', user)"></button> -->
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Modal Confirm -->
 <div class="confirm-modal" *ngIf="showConfirmModal">
-    <div class="confirm-modal-content fw-700">
-        <p>{{ confirmMessage }}</p>
-        <div class="text-container">
-            <input type="text" [(ngModel)]="description" />
-        </div>
-        <div class="confirm-actions">
-            <button (click)="confirmAction()">Confirm</button>
-            <button (click)="cancelAction()">Cancel</button>
-        </div>
+  <div class="confirm-modal-content fw-700">
+    <p>{{ confirmMessage }}</p>
+    <div class="text-container">
+      <input type="text" [(ngModel)]="description" />
     </div>
+    <div class="confirm-actions">
+      <button (click)="confirmAction()">Confirm</button>
+      <button (click)="cancelAction()">Cancel</button>
+    </div>
+  </div>
 </div>
