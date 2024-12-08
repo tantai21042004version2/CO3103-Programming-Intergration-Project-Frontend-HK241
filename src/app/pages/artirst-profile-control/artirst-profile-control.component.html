@@ -1,1 +1,81 @@
-<p>artirst-profile-control works!</p>
+<div class="container">
+  <!-- sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <img src="../../../assets/souncloud-black.png" alt="SoundCloud Logo" />
+    </div>
+    <nav class="menu">
+      <ul>
+        <li (click)="navigateToOverview()">Overview</li>
+        <li (click)="navigateToTracks()">Tracks</li>
+        <li (click)="navigateToNewTrack()">New Track</li>
+        <li>Comments</li>
+        <li>Albums</li>
+        <li>Earnings</li>
+        <li>Insights</li>
+        <li>Benefits</li>
+        <li>Membership</li>
+        <li>Profile Control</li>
+      </ul>
+    </nav>
+  </aside>
+  <!-- Main content  -->
+  <div class="main-content">
+    <!-- header content -->
+    <div class="header-content">
+      <div class="left-header">
+        <h1 class="fz-40">My track</h1>
+      </div>
+      <div class="right-header">
+        <div class="right-header-inner">
+          <button class="notification-btn header-btn">
+            <i class="btn-inner">
+              <img src="../../../assets/bell.png" alt="bell-icon" />
+            </i>
+          </button>
+          <button class="message-btn header-btn">
+            <i class="btn-inner">
+              <img src="../../../assets/envelope.png" alt="envelope-icon" />
+            </i>
+          </button>
+          <div class="account-avt header-btn">
+            <i class="btn-inner">
+              <img src="../../../assets/jack.jpg" alt="jackbentreimg" />
+            </i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- body content  -->
+    <div class="body-content">
+      <div class="avt-box">
+        <div class="avt-inner">
+          <div class="image">
+            <img src="../../../assets/jack.jpg" alt="jackbentre" />
+          </div>
+          <div class="cam-icon">
+            <img src="../../../assets/cam-icon.png" alt="cam-icon" />
+          </div>
+        </div>
+      </div>
+      <div class="info-box">
+        <div class="info-inner">
+          <div class="artist-name w-70-percent">
+            <input type="text" placeholder="Artist Name" />
+          </div>
+          <div class="artist-bio w-70-percent">
+            <textarea
+              name=""
+              id=""
+              placeholder="Bio"
+              class="m-t-b-32"
+            ></textarea>
+          </div>
+          <div class="artist-upt-btn w-70-percent">
+            <button class="float-right">Update</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

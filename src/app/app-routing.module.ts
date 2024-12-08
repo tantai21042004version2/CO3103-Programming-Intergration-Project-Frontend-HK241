@@ -20,6 +20,7 @@ import { AdminApproveAlbumComponent } from './pages/admin-approve-album/admin-ap
 import { AdminUserListComponent } from './pages/admin-user-list/admin-user-list.component';
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { ArtirstProfileControlComponent } from './pages/artirst-profile-control/artirst-profile-control.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -30,6 +31,7 @@ const routes: Routes = [
     { path: 'artist/albums', component: ArtirstAlbumsComponent },
     { path: 'artist/album-upload', component: ArtirstAlbumUploadComponent },
     { path: 'artist/album-detail/:id', component: ArtirstAlbumDetailComponent },
+    { path: 'artist/artist-profile-control', component: ArtirstProfileControlComponent },
     { path: 'artist/overview', component: ArtirstoverviewComponent },
     { path: 'artist/tracks', component: ArtirstTracksComponent },
     { path: 'artist/tracks/upload-track-cloudinary', component: ArtirstUploadTrackCloudinaryComponent },
