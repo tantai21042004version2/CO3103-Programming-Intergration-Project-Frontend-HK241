@@ -52,29 +52,25 @@
             </p>
         </div>
 
-        <div class="track-list-container">
-            <div class="track-card" *ngFor="let album of albums">
-                <div class="track-image">
-                    <img [src]="album.cover_url" alt="Track Cover" class="track-cover" />
+        <div class="filter-container">
+            <div class="filter-item">
+                <input type="text" placeholder="Search by name" />
+            </div>
+        </div>
+
+        <div class="user-list-container">
+            <div class="user-card" *ngFor="let user of users">
+                <div class="user-image">
+                    <img [src]="user.image_url" alt="user-image" />
                 </div>
-                <div class="track-info">
-                    <h3>{{ album.name }}</h3>
-                    <p>Description: {{ album.description }}</p>
-                    <p>Status: {{ album.status }}</p>
-                    <p>Release Date: {{ album.release_date }}</p>
+                <div class="user-info">
+                    <p>{{ user.username }}</p>
+                    <p>{{ user.email }}</p>
+                    <p>{{ user.role.name }}</p>
                 </div>
                 <div class="action-container">
-                    <div class="send-approve-container" (click)="goToDetail(album.id)">
-                        Album Page
-                    </div>
-
-                    <div class="reject-container" (click)="openConfirmModal('approve', album)">
-                        Approve
-                    </div>
-
-                    <div class="reject-container" (click)="openConfirmModal('reject', album)">
-                        Reject
-                    </div>
+                    <button (click)="openConfirmModal('approve', user)">To Artist</button>
+                    <!-- <button (click)="openConfirmModal('delete', user)"></button> -->
                 </div>
             </div>
         </div>

@@ -82,6 +82,8 @@ body {
 
 .sidebar {
     width: 250px;
+    height: 100vh;
+
     overflow: hidden;
     background-color: #fff;
     border-right: 1px solid #e0e0e0;
@@ -120,6 +122,9 @@ body {
 // Main content
 .main-content {
     width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
 }
 
 img {
@@ -218,66 +223,11 @@ img {
     font-weight: bold;
 }
 
-.track-list-container {
-    min-height: 45vh;
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    /* Khoảng cách giữa các bài hát */
-}
 
-.track-card {
-    height: fit-content;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    background-color: white;
-    border-radius: 8px;
-    padding: 16px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
-}
-
-// .track-card:hover {
-//     transform: translateY(-4px);
-// }
-
-.track-image {
-    width: 10%;
-    height: 100%;
-}
-
-.track-image img {
+.dashboard-container {
     width: 100%;
     height: 100%;
-}
-
-.track-cover {
-    width: 80px;
-    height: 80px;
-    border-radius: 8px;
-}
-
-.track-info {
-    flex: 1;
-}
-
-.track-info h3 {
-    font-size: 18px;
-    margin: 0;
-    color: #333;
-}
-
-.track-info p {
-    font-size: 14px;
-    color: #666;
-    margin: 4px 0;
-}
-
-audio {
-    width: 100%;
-    margin-top: 8px;
+    background-color: rebeccapurple;
 }
 
 .action-container {

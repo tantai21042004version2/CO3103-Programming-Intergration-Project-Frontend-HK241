@@ -27,9 +27,24 @@ export class UserService {
         this.localStorage = document.defaultView?.localStorage;
     }
 
+    private apiAdminDashboard = `${environment.apiBaseUrl}/users/admin-dashboard`;
+    getAdminDashboard(token: string): Observable<ApiResponse> {
+        return this.http.get<ApiResponse>(this.apiAdminDashboard, {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
+            })
+        });
+    }
+
     private apiGetAllUser = `${environment.apiBaseUrl}/users`;
-    getAllUser(params: { page: number, limit: number, keyword: string }): Observable<ApiResponse> {
-        return this.http.get<ApiResponse>(this.apiGetAllUser, { params: params });
+    getAllUser(params: { page: number, limit: number, keyword: string }, token: string): Observable<ApiResponse> {
+        return this.http.get<ApiResponse>(this.apiGetAllUser, {
+            params: params, headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
+            })
+        });
     }
 
     private apiRegister = `${environment.apiBaseUrl}/users/register`;
@@ -55,6 +70,17 @@ export class UserService {
     private apiUserDetail = `${environment.apiBaseUrl}/users/details`;
     getUserDetail(token: string): Observable<ApiResponse> {
         return this.http.get<ApiResponse>(this.apiUserDetail, {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
+            })
+        });
+    }
+
+    private apiToArtist = `${environment.apiBaseUrl}/users/update-role`;
+    toArtist(userId: number, token: string): Observable<ApiResponse> {
+        this.apiToArtist += `/${userId}`;
+        return this.http.patch<ApiResponse>(this.apiToArtist, null, {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`

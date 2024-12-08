@@ -52,30 +52,17 @@
             </p>
         </div>
 
-        <div class="track-list-container">
-            <div class="track-card" *ngFor="let album of albums">
-                <div class="track-image">
-                    <img [src]="album.cover_url" alt="Track Cover" class="track-cover" />
-                </div>
-                <div class="track-info">
-                    <h3>{{ album.name }}</h3>
-                    <p>Description: {{ album.description }}</p>
-                    <p>Status: {{ album.status }}</p>
-                    <p>Release Date: {{ album.release_date }}</p>
-                </div>
-                <div class="action-container">
-                    <div class="send-approve-container" (click)="goToDetail(album.id)">
-                        Album Page
-                    </div>
-
-                    <div class="reject-container" (click)="openConfirmModal('approve', album)">
-                        Approve
-                    </div>
-
-                    <div class="reject-container" (click)="openConfirmModal('reject', album)">
-                        Reject
-                    </div>
-                </div>
+        <div class="dashboard-container">
+            <div class="dashboard-item">
+                <p>Total Users: {{ adminDashboard.total_users }}</p>
+                <p>Total Artists: {{ adminDashboard.total_artists }}</p>
+                <p>Total Active Users: {{ adminDashboard.total_active_users }}</p>
+                <p>Total Albums: {{ adminDashboard.total_albums }}</p>
+                <p>Total Approved Albums: {{ adminDashboard.total_approved_albums }}</p>
+                <p>Total Pending Albums: {{ adminDashboard.total_pending_albums }}</p>
+                <p>Total Songs: {{ adminDashboard.total_songs }}</p>
+                <p>Total Approved Songs: {{ adminDashboard.total_approved_songs }}</p>
+                <p>Total Pending Songs: {{ adminDashboard.total_pending_songs }}</p>
             </div>
         </div>
     </div>

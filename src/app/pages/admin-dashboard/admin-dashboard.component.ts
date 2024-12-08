@@ -3,6 +3,7 @@ import { BaseComponent } from '../base/base.component';
 import { Artist } from 'src/app/models/artirst';
 import { Album } from 'src/app/models/album';
 import { convertResponseToAlbum } from 'src/app/utils/to.album';
+import { AdminDashboard } from 'src/app/models/admin.dashboard';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -19,12 +20,21 @@ export class AdminDashboardComponent extends BaseComponent implements OnInit {
   };
   token: string = '';
 
-  albums: Album[] = [];
-
+  adminDashboard: AdminDashboard = {
+    total_users: 0,
+    total_artists: 0,
+    total_active_users: 0,
+    total_albums: 0,
+    total_approved_albums: 0,
+    total_pending_albums: 0,
+    total_songs: 0,
+    total_approved_songs: 0,
+    total_pending_songs: 0,
+  }
 
   ngOnInit(): void {
     this.getUserInfor();
-    this.getAllPendingAlbums();
+    this.getAdminDashboard();
   }
 
   getUserInfor() {
@@ -33,21 +43,17 @@ export class AdminDashboardComponent extends BaseComponent implements OnInit {
     this.adminInfor.image_url = this.tokenService.getImageUrl();
   }
 
-  getAllPendingAlbums() {
-    this.albumService.getAllPendingAlbum({ page: 1, limit: 100, keyword: '' }, this.token).subscribe({
+  getAdminDashboard() {
+    this.userService.getAdminDashboard(this.token).subscribe({
       next: (apiResponse) => {
         if (apiResponse.status === 'OK') {
-          this.albums = apiResponse.data.albums.map(convertResponseToAlbum);
+          this.adminDashboard = apiResponse.data;
         }
       },
-      complete: () => {
-        console.log(this.albums);
-      },
       error: (error) => {
-        this.showNotification('Failed to get all approved albums', false);
-        console.log(error);
+        this.showNotification('Failed to get admin dashboard', false);
       }
-    });
+    })
   }
 
   showConfirmModal = false;
@@ -75,31 +81,7 @@ export class AdminDashboardComponent extends BaseComponent implements OnInit {
     this.actionType = '';
   }
 
-  confirmAction() {
-    if (this.actionType === 'reject') {
-      console.log(this.selectedTrack);
-      this.albumService.approveAlbum(this.selectedTrack.id, this.token, { "is_approved": 0, description: this.description }).subscribe({
-        next: (apiResponse) => {
-          if (apiResponse.status === 'OK') {
-            this.showNotification('Album rejected', true);
-          }
-        },
-        error: (error) => {
-          this.showNotification('Failed to delete album', false);
-        }
-      });
-    }
-    else if (this.actionType === 'approve') {
-      this.albumService.approveAlbum(this.selectedTrack.id, this.token, { "is_approved": 1, description: this.description }).subscribe({
-        next: (apiResponse) => {
-          this.showNotification('Album approved', true);
-        },
-        error: (error) => {
-          this.showNotification('Failed to approve album', false);
-        }
-      });
-    }
-  }
+  confirmAction() { }
 
   cancelAction() {
     this.closeConfirmModal();

@@ -19,6 +19,7 @@ import { AdminPendingAlbumComponent } from './pages/admin-pending-album/admin-pe
 import { AdminApproveAlbumComponent } from './pages/admin-approve-album/admin-approve-album.component';
 import { AdminUserListComponent } from './pages/admin-user-list/admin-user-list.component';
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -28,17 +29,18 @@ const routes: Routes = [
     { path: 'song/:id', component: DetailComponent },
     { path: 'artist/albums', component: ArtirstAlbumsComponent },
     { path: 'artist/album-upload', component: ArtirstAlbumUploadComponent },
-    { path: 'artist/album-detail', component: ArtirstAlbumDetailComponent },
+    { path: 'artist/album-detail/:id', component: ArtirstAlbumDetailComponent },
     { path: 'artist/overview', component: ArtirstoverviewComponent },
     { path: 'artist/tracks', component: ArtirstTracksComponent },
     { path: 'artist/tracks/upload-track-cloudinary', component: ArtirstUploadTrackCloudinaryComponent },
     { path: 'artist/tracks/upload-track-meta-data', component: ArtirstUploadTrackMetaDataComponent },
-    { path: 'admin/songs/pending', component: AdminPendingTrackComponent, canActivate: [RoleGuard], data: { roles: ['ADMIN'] } },
-    { path: 'admin/songs/approved', component: AdminApproveTrackComponent, canActivate: [RoleGuard], data: { roles: ['ADMIN'] } },
-    { path: 'admin/albums/pending', component: AdminPendingAlbumComponent, canActivate: [RoleGuard], data: { roles: ['ADMIN'] } },
-    { path: 'admin/albums/approved', component: AdminApproveAlbumComponent, canActivate: [RoleGuard], data: { roles: ['ADMIN'] } },
-    { path: 'admin/user-list', component: AdminUserListComponent, canActivate: [RoleGuard], data: { roles: ['ADMIN'] } },
-    { path: 'admin/dashboard', component: AdminDashboardComponent, canActivate: [RoleGuard], data: { roles: ['ADMIN'] } },
+    { path: 'admin/songs/pending', component: AdminPendingTrackComponent },
+    { path: 'admin/songs/approved', component: AdminApproveTrackComponent },
+    { path: 'admin/albums/pending', component: AdminPendingAlbumComponent },
+    { path: 'admin/albums/approved', component: AdminApproveAlbumComponent },
+    { path: 'admin/user-list', component: AdminUserListComponent },
+    { path: 'admin/dashboard', component: AdminDashboardComponent },
+    { path: 'user/profile', component: UserProfileComponent },
     { path: 'no-access', component: NoaccessComponent },
 ];
 

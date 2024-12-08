@@ -24,13 +24,13 @@ import { ArtirstAlbumsComponent } from './pages/artirst-albums/artirst-albums.co
 import { ArtirstAlbumUploadComponent } from './pages/artirst-album-upload/artirst-album-upload.component';
 import { ArtirstAlbumDetailComponent } from './pages/artirst-album-detail/artirst-album-detail.component';
 import { ArtirstProfileControlComponent } from './pages/artirst-profile-control/artirst-profile-control.component';
-import { ArtirstAboutComponent } from './pages/artirst-about/artirst-about.component';
 import { AdminUserListComponent } from './pages/admin-user-list/admin-user-list.component';
 import { AdminPendingTrackComponent } from './pages/admin-pending-track/admin-pending-track.component';
 import { AdminApproveTrackComponent } from './pages/admin-approve-track/admin-approve-track.component';
 import { AdminPendingAlbumComponent } from './pages/admin-pending-album/admin-pending-album.component';
 import { AdminApproveAlbumComponent } from './pages/admin-approve-album/admin-approve-album.component';
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 
 @NgModule({
@@ -56,13 +56,13 @@ import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard
     ArtirstAlbumUploadComponent,
     ArtirstAlbumDetailComponent,
     ArtirstProfileControlComponent,
-    ArtirstAboutComponent,
     AdminUserListComponent,
     AdminPendingTrackComponent,
     AdminApproveTrackComponent,
     AdminPendingAlbumComponent,
     AdminApproveAlbumComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
