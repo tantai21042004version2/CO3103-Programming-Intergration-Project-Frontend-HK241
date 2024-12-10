@@ -2,20 +2,17 @@
   <!-- sidebar -->
   <aside class="sidebar">
     <div class="logo">
-      <img src="../../../assets/souncloud-black.png" alt="SoundCloud Logo" />
+      <img src="../../../assets/admin.jpg" alt="SoundCloud Logo" />
     </div>
     <nav class="menu">
       <ul>
-        <li (click)="navigateToOverview()">Overview</li>
-        <li (click)="navigateToTracks()">Tracks</li>
-        <li (click)="navigateToNewTrack()">New Track</li>
-        <li>Comments</li>
-        <li>Albums</li>
-        <li>Earnings</li>
-        <li>Insights</li>
-        <li>Benefits</li>
-        <li>Membership</li>
-        <li>Profile Control</li>
+        <li (click)="navigateToDashboard()">Dashboard</li>
+        <li (click)="navigateToUserList()">All Users</li>
+        <li (click)="navigateToApprovedTracks()">Approved Tracks</li>
+        <li (click)="navigateToPendingTracks()">Pending Tracks</li>
+        <li (click)="navigateToApprovedAlbums()">Approved</li>
+        <li (click)="navigateToPendingAlbums()">Pending Albums</li>
+        <li>Playlist (Beta)</li>
       </ul>
     </nav>
   </aside>
@@ -23,7 +20,7 @@
     <!-- header content -->
     <div class="header-content">
       <div class="left-header">
-        <h1 class="fz-40">My track</h1>
+        <h1 class="fz-40">{{ album.name }}</h1>
       </div>
       <div class="right-header">
         <div class="right-header-inner">
@@ -39,11 +36,11 @@
           </button>
           <div class="account-avt header-btn">
             <i class="btn-inner">
-              <img src="../../../assets/jack.jpg" alt="jackbentreimg" />
+              <img src="{{ artirstInfor.image_url }}" alt="jackbentreimg" />
             </i>
             <ul class="artist-dropdown-menu">
-              <li><a>Profile</a></li>
-              <li><a>Logout</a></li>
+              <li (click)="navigateToProfile()"><a>Profile</a></li>
+              <li (click)="logout()"><a>Logout</a></li>
             </ul>
           </div>
         </div>
@@ -52,43 +49,20 @@
     <!-- body content -->
     <div class="body-content">
       <div class="body-content-top">
-        <img
-          src="../../../assets/jackbanner.jpg"
-          alt="jackbanner"
-          class="banner-img"
-        />
+        <img [src]="album.cover_url" alt="jackbanner" class="banner-img" />
       </div>
       <div class="body-content-bot">
         <div class="bot-left">
-          <div class="song-card">
-            <img src="../../../assets/jack.jpg" alt="Song 1" class="song-img" />
+          <div class="song-card" *ngFor="let song of songs">
+            <img [src]="song.image_url" alt="Song 1" class="song-img" />
             <div class="song-info">
               <div class="song-and-description">
-                <h3>Song Name 1</h3>
-                <p>Description of the song 1.</p>
+                <h3>{{ song.name }}</h3>
+                <p>{{ song.description }}</p>
               </div>
-              <p>Status: <span>Available</span></p>
+              <p>Status: <span>{{ song.status }}</span></p>
             </div>
-          </div>
-          <div class="song-card">
-            <img src="../../../assets/jack.jpg" alt="Song 2" class="song-img" />
-            <div class="song-info">
-              <div class="song-and-description">
-                <h3>Song Name 2</h3>
-                <p>Description of the song 2.</p>
-              </div>
-              <p>Status: <span>Unavailable</span></p>
-            </div>
-          </div>
-          <div class="song-card">
-            <img src="../../../assets/jack.jpg" alt="Song 3" class="song-img" />
-            <div class="song-info">
-              <div class="song-and-description">
-                <h3>Song Name 3</h3>
-                <p>Description of the song 3.</p>
-              </div>
-              <p>Status: <span>Coming Soon</span></p>
-            </div>
+            <audio [src]="song.secure_url" controls></audio>
           </div>
         </div>
         <div class="bot-right">

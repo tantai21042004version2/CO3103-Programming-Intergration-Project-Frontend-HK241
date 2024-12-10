@@ -9,7 +9,7 @@
         <li (click)="navigateToOverview()">Overview</li>
         <li (click)="navigateToTracks()">Tracks</li>
         <li (click)="navigateToNewTrack()">New Track</li>
-        <li>Albums</li>
+        <li (click)="navigateToAlbums()">Albums</li>
         <li>Earnings (demo)</li>
         <li>Benefits (demo)</li>
         <li>Membership (demo)</li>
@@ -23,7 +23,7 @@
     <!-- header content -->
     <div class="header-content">
       <div class="left-header">
-        <h1 class="fz-40">My track</h1>
+        <h1 class="fz-40">Upload Album</h1>
       </div>
       <div class="right-header">
         <div class="right-header-inner">
@@ -39,11 +39,11 @@
           </button>
           <div class="account-avt header-btn">
             <i class="btn-inner">
-              <img src="../../../assets/jack.jpg" alt="jackbentreimg" />
+              <img src="{{ artirstInfor.image_url }}" alt="jackbentreimg" />
             </i>
             <ul class="artist-dropdown-menu">
-              <li><a>Profile</a></li>
-              <li><a>Logout</a></li>
+              <li (click)="navigateToProfile()"><a>Profile</a></li>
+              <li (click)="logout()"><a>Logout</a></li>
             </ul>
           </div>
         </div>
@@ -52,14 +52,15 @@
     <!-- body content -->
     <div class="main-content-body">
       <div class="body-left">
-        <div class="dashed avt p-12">
-          <div class="artwork-avt">
-            <img src="../../../assets/img.png" alt="imageicon" />
+        <div class="dashed avt p-12" [style.backgroundImage]="'url(' + imageSrc + ')'"
+          [class.image-uploaded]="imageSrc">
+          <div *ngIf="!imageSrc" class="artwork-avt">
+            <img src="../../../assets/img.png" alt="Default Image" />
           </div>
-          <div class="add-artwork">
-            <label for="addartwork">
+          <div *ngIf="!imageSrc" class="add-artwork">
+            <label for="addartwork" style="cursor: pointer;">
               Add your new artwork
-              <input type="file" name="" id="addartwork" />
+              <input type="file" id="addartwork" (change)="onFileSelected($event)" style="display: none;" />
             </label>
           </div>
         </div>
@@ -67,99 +68,51 @@
     </div>
 
     <div class="main-content-footage">
-      <div class="body-right">
-        <div class="track-title m-t-b-12">
-          <label for="tracktitle" class="fw-700 flex-align-center m-b-8"
-            >Track title<span class="c-red">*</span>
-            <img
-              src="../../../assets/questionmark.png"
-              alt="question-mark"
-              class="w-16 h-16 m-l-4"
-          /></label>
-          <input type="text" id="tracktitle" class="input" />
-        </div>
-        <div class="description m-t-b-12">
-          <label for="description" class="fw-700 m-b-8">Description</label>
-          <input type="text" name="" id="description" class="input m-t-8" />
-        </div>
+      <form class="upload-form" #uploadForm="ngForm" (ngSubmit)="uploadAll()">
+        <div class="body-right">
+          <div class="track-title m-t-b-12">
+            <label for="tracktitle" class="fw-700 flex-align-center m-b-8">Album title<span class="c-red">*</span>
+              <img src="../../../assets/questionmark.png" alt="question-mark" class="w-16 h-16 m-l-4" /></label>
+            <input type="text" id="tracktitle" class="input" [(ngModel)]="name" name="name" />
+          </div>
+          <div class="description m-t-b-12">
+            <label for="description" class="fw-700 m-b-8">Description</label>
+            <input type="text" name="" id="description" class="input m-t-8" [(ngModel)]="description"
+              name="description" />
+          </div>
 
-        <div class="genre m-t-b-12 flex-dir-col">
-          <label for="genre" class="fw-700 m-b-8">Genre</label>
-          <input list="options" name="" id="genre" class="input" />
-          <datalist id="options">
-            <option value="Option 1"></option>
-            <option value="Option 2"></option>
-            <option value="Option 3"></option>
-            <option value="Option 4"></option>
-          </datalist>
+          <div class="genre m-t-b-12 flex-dir-col">
+            <label for="genre" class="fw-700 m-b-8">Genre</label>
+            <select id="genre" [(ngModel)]="genre_id" name="genre_id" class="role-select">
+              <option *ngFor="let genre of genres" [ngValue]="genre.id">
+                {{ genre.name }}
+              </option>
+            </select>
+          </div>
+          <div class="realease-date m-t-b-12">
+            <label for="realease-date" class="fw-700 flex-align-center m-b-8">Realease Date
+              <img src="../../../assets/questionmark.png" alt="questionmark" class="w-16 h-16 m-l-4" /></label>
+            <input type="date" id="realease-date" class="input" [(ngModel)]="release_date" name="release_date" />
+          </div>
+          <div class="btn-upload text-center">
+            <button class="float-right" (click)="uploadAll()">Upload</button>
+          </div>
         </div>
-        <div class="realease-date m-t-b-12">
-          <label for="realease-date" class="fw-700 flex-align-center m-b-8"
-            >Realease Date
-            <img
-              src="../../../assets/questionmark.png"
-              alt="questionmark"
-              class="w-16 h-16 m-l-4"
-          /></label>
-          <input type="date" id="realease-date" class="input" />
-        </div>
-        <div class="btn-upload text-center">
-          <button class="float-right">Upload</button>
-        </div>
-      </div>
+      </form>
       <div class="main-content-footage-inner">
         <div class="playlist-box-title">
           <h3 class="fw-700 fz-32">Song List</h3>
         </div>
-        <div class="playlist-box-outter w-100-percent">
+        <div class="playlist-box-outter w-100-percent" *ngFor="let track of artistTracks">
           <!-- Playlist Box -->
           <div class="playlist-box">
             <div class="playlist-header">
-              <h3>Playlist 1</h3>
+              <h3>{{ track.name}}</h3>
             </div>
-            <button class="add-btn">+</button>
-          </div>
-          <div class="playlist-box">
-            <div class="playlist-header">
-              <h3>Playlist 2</h3>
+            <div class="action-btn">
+              <button class="add-btn" (click)="addSong(track.id)">+</button>
+              <button class="remove-btn" (click)="removeSong(track.id)">-</button>
             </div>
-            <button class="add-btn">+</button>
-          </div>
-          <div class="playlist-box">
-            <div class="playlist-header">
-              <h3>Playlist 1</h3>
-            </div>
-            <button class="add-btn">+</button>
-          </div>
-          <div class="playlist-box">
-            <div class="playlist-header">
-              <h3>Playlist 2</h3>
-            </div>
-            <button class="add-btn">+</button>
-          </div>
-          <div class="playlist-box">
-            <div class="playlist-header">
-              <h3>Playlist 1</h3>
-            </div>
-            <button class="add-btn">+</button>
-          </div>
-          <div class="playlist-box">
-            <div class="playlist-header">
-              <h3>Playlist 2</h3>
-            </div>
-            <button class="add-btn">+</button>
-          </div>
-          <div class="playlist-box">
-            <div class="playlist-header">
-              <h3>Playlist 1</h3>
-            </div>
-            <button class="add-btn">+</button>
-          </div>
-          <div class="playlist-box">
-            <div class="playlist-header">
-              <h3>Playlist 2</h3>
-            </div>
-            <button class="add-btn">+</button>
           </div>
         </div>
       </div>

@@ -38,7 +38,7 @@
           </button>
           <div class="account-avt header-btn">
             <i class="btn-inner">
-              <img src="../../../assets/jack.jpg" alt="jackbentreimg" />
+              <img [src]="artirstInfor.image_url" alt="jackbentreimg" />
             </i>
             <ul class="artist-dropdown-menu">
               <li><a>Profile</a></li>
@@ -58,84 +58,26 @@
           <div>
             <p class="fw-700">Upload your album vì một tương lai tươi sáng</p>
           </div>
-          <div><button class="common-btn">Upload</button></div>
+          <div><button class="common-btn" (click)="navigateToAlbumUpload()">Upload</button></div>
         </div>
       </div>
       <div class="album-container">
-        <div class="boxtrack">
+        <div class="boxtrack" *ngFor="let album of albums">
           <div class="track-img-container">
-            <img
-              src="../../../assets/jack.jpg"
-              alt="Track Image"
-              class="track-img"
-            />
+            <img [src]="album.cover_url" alt="Track Image" class="track-img" />
           </div>
           <div class="track-info">
-            <h3 class="track-name">Track Name 1</h3>
+            <h3 class="track-name">{{ album.name }}</h3>
             <p class="track-description">
-              This is the description for track 1.
+              {{ album.description }}
             </p>
             <p class="track-status">
-              Status: <span class="status">Available</span>
+              Status: <span class="status">{{ album.status }}</span>
             </p>
-            <p class="track-date">Release Date: <span>2024-01-01</span></p>
+            <p class="track-date">Release Date: <span>{{ album.release_date }}</span></p>
           </div>
-        </div>
-        <div class="boxtrack">
-          <div class="track-img-container">
-            <img
-              src="../../../assets/jack.jpg"
-              alt="Track Image"
-              class="track-img"
-            />
-          </div>
-          <div class="track-info">
-            <h3 class="track-name">Track Name 2</h3>
-            <p class="track-description">
-              This is the description for track 2.
-            </p>
-            <p class="track-status">
-              Status: <span class="status">Unavailable</span>
-            </p>
-            <p class="track-date">Release Date: <span>2024-05-15</span></p>
-          </div>
-        </div>
-        <div class="boxtrack">
-          <div class="track-img-container">
-            <img
-              src="../../../assets/jack.jpg"
-              alt="Track Image"
-              class="track-img"
-            />
-          </div>
-          <div class="track-info">
-            <h3 class="track-name">Track Name 3</h3>
-            <p class="track-description">
-              This is the description for track 3.
-            </p>
-            <p class="track-status">
-              Status: <span class="status">Coming Soon</span>
-            </p>
-            <p class="track-date">Release Date: <span>2024-10-01</span></p>
-          </div>
-        </div>
-        <div class="boxtrack">
-          <div class="track-img-container">
-            <img
-              src="../../../assets/jack.jpg"
-              alt="Track Image"
-              class="track-img"
-            />
-          </div>
-          <div class="track-info">
-            <h3 class="track-name">Track Name 4</h3>
-            <p class="track-description">
-              This is the description for track 4.
-            </p>
-            <p class="track-status">
-              Status: <span class="status">Available</span>
-            </p>
-            <p class="track-date">Release Date: <span>2024-12-25</span></p>
+          <div class="track-action">
+            <button class="common-btn" (click)="sendToApprove(album.id)">Send to approve</button>
           </div>
         </div>
       </div>

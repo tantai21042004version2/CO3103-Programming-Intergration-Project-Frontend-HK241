@@ -117,7 +117,7 @@ export class AdminPendingAlbumComponent extends BaseComponent implements OnInit 
   }
 
   goToDetail(id: number) {
-    this.router.navigate(['/song', id]);
+    this.router.navigate(['/artist/album-detail', id]);
   }
 
   navigateToApprovedTracks() {
