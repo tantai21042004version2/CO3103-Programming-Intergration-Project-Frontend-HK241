@@ -1,0 +1,168 @@
+<div class="container">
+  <!-- sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <img src="../../../assets/souncloud-black.png" alt="SoundCloud Logo" />
+    </div>
+    <nav class="menu">
+      <ul>
+        <li (click)="navigateToOverview()">Overview</li>
+        <li (click)="navigateToTracks()">Tracks</li>
+        <li (click)="navigateToNewTrack()">New Track</li>
+        <li>Albums</li>
+        <li>Earnings (demo)</li>
+        <li>Benefits (demo)</li>
+        <li>Membership (demo)</li>
+        <li>Profile Control</li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- main content -->
+  <div class="main-content">
+    <!-- header content -->
+    <div class="header-content">
+      <div class="left-header">
+        <h1 class="fz-40">My track</h1>
+      </div>
+      <div class="right-header">
+        <div class="right-header-inner">
+          <button class="notification-btn header-btn">
+            <i class="btn-inner">
+              <img src="../../../assets/bell.png" alt="bell-icon" />
+            </i>
+          </button>
+          <button class="message-btn header-btn">
+            <i class="btn-inner">
+              <img src="../../../assets/envelope.png" alt="envelope-icon" />
+            </i>
+          </button>
+          <div class="account-avt header-btn">
+            <i class="btn-inner">
+              <img src="../../../assets/jack.jpg" alt="jackbentreimg" />
+            </i>
+            <ul class="artist-dropdown-menu">
+              <li><a>Profile</a></li>
+              <li><a>Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- body content -->
+    <div class="main-content-body">
+      <div class="body-left">
+        <div class="dashed avt p-12">
+          <div class="artwork-avt">
+            <img src="../../../assets/img.png" alt="imageicon" />
+          </div>
+          <div class="add-artwork">
+            <label for="addartwork">
+              Add your new artwork
+              <input type="file" name="" id="addartwork" />
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-content-footage">
+      <div class="body-right">
+        <div class="track-title m-t-b-12">
+          <label for="tracktitle" class="fw-700 flex-align-center m-b-8"
+            >Track title<span class="c-red">*</span>
+            <img
+              src="../../../assets/questionmark.png"
+              alt="question-mark"
+              class="w-16 h-16 m-l-4"
+          /></label>
+          <input type="text" id="tracktitle" class="input" />
+        </div>
+        <div class="description m-t-b-12">
+          <label for="description" class="fw-700 m-b-8">Description</label>
+          <input type="text" name="" id="description" class="input m-t-8" />
+        </div>
+
+        <div class="genre m-t-b-12 flex-dir-col">
+          <label for="genre" class="fw-700 m-b-8">Genre</label>
+          <input list="options" name="" id="genre" class="input" />
+          <datalist id="options">
+            <option value="Option 1"></option>
+            <option value="Option 2"></option>
+            <option value="Option 3"></option>
+            <option value="Option 4"></option>
+          </datalist>
+        </div>
+        <div class="realease-date m-t-b-12">
+          <label for="realease-date" class="fw-700 flex-align-center m-b-8"
+            >Realease Date
+            <img
+              src="../../../assets/questionmark.png"
+              alt="questionmark"
+              class="w-16 h-16 m-l-4"
+          /></label>
+          <input type="date" id="realease-date" class="input" />
+        </div>
+        <div class="btn-upload text-center">
+          <button class="float-right">Upload</button>
+        </div>
+      </div>
+      <div class="main-content-footage-inner">
+        <div class="playlist-box-title">
+          <h3 class="fw-700 fz-32">Song List</h3>
+        </div>
+        <div class="playlist-box-outter w-100-percent">
+          <!-- Playlist Box -->
+          <div class="playlist-box">
+            <div class="playlist-header">
+              <h3>Playlist 1</h3>
+            </div>
+            <button class="add-btn">+</button>
+          </div>
+          <div class="playlist-box">
+            <div class="playlist-header">
+              <h3>Playlist 2</h3>
+            </div>
+            <button class="add-btn">+</button>
+          </div>
+          <div class="playlist-box">
+            <div class="playlist-header">
+              <h3>Playlist 1</h3>
+            </div>
+            <button class="add-btn">+</button>
+          </div>
+          <div class="playlist-box">
+            <div class="playlist-header">
+              <h3>Playlist 2</h3>
+            </div>
+            <button class="add-btn">+</button>
+          </div>
+          <div class="playlist-box">
+            <div class="playlist-header">
+              <h3>Playlist 1</h3>
+            </div>
+            <button class="add-btn">+</button>
+          </div>
+          <div class="playlist-box">
+            <div class="playlist-header">
+              <h3>Playlist 2</h3>
+            </div>
+            <button class="add-btn">+</button>
+          </div>
+          <div class="playlist-box">
+            <div class="playlist-header">
+              <h3>Playlist 1</h3>
+            </div>
+            <button class="add-btn">+</button>
+          </div>
+          <div class="playlist-box">
+            <div class="playlist-header">
+              <h3>Playlist 2</h3>
+            </div>
+            <button class="add-btn">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,83 +1,147 @@
 <div class="container">
-    <!-- sidebar -->
-    <aside class="sidebar">
-        <div class="logo">
-            <img src="../../../assets/admin.jpg" alt="SoundCloud Logo" />
-        </div>
-        <nav class="menu">
-            <ul>
-                <li (click)="navigateToDashboard()">Dashboard</li>
-                <li (click)="navigateToUserList()">All Users</li>
-                <li (click)="navigateToApprovedTracks()">Approved Tracks</li>
-                <li (click)="navigateToPendingTracks()">Pending Tracks</li>
-                <li (click)="navigateToApprovedAlbums()">Approved Albums</li>
-                <li (click)="navigateToPendingAlbums()">Pending Albums</li>
-                <li>Playlist (Beta)</li>
-            </ul>
-        </nav>
-    </aside>
-
-    <div class="main-content">
-        <div class="header-content">
-            <div class="left-header">
-                <h1 class="fz-40">Dashboard</h1>
-            </div>
-            <div class="right-header">
-                <div class="right-header-inner">
-                    <button class="notification-btn header-btn">
-                        <i class="btn-inner">
-                            <img src="../../../assets/bell.png" alt="bell-icon" />
-                        </i>
-                    </button>
-                    <button class="message-btn header-btn">
-                        <i class="btn-inner">
-                            <img src="../../../assets/envelope.png" alt="envelope-icon" />
-                        </i>
-                    </button>
-                    <div class="account-avt header-btn">
-                        <i class="btn-inner">
-                            <img [src]="adminInfor.image_url" alt="jackbentreimg" />
-                        </i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="line"></div>
-        <div class="upload-track-box">
-        </div>
-
-        <div class="notification" *ngIf="notificationMessage">
-            <p [class.success]="isSuccess" [class.error]="!isSuccess">
-                {{ notificationMessage }}
-            </p>
-        </div>
-
-        <div class="dashboard-container">
-            <div class="dashboard-item">
-                <p>Total Users: {{ adminDashboard.total_users }}</p>
-                <p>Total Artists: {{ adminDashboard.total_artists }}</p>
-                <p>Total Active Users: {{ adminDashboard.total_active_users }}</p>
-                <p>Total Albums: {{ adminDashboard.total_albums }}</p>
-                <p>Total Approved Albums: {{ adminDashboard.total_approved_albums }}</p>
-                <p>Total Pending Albums: {{ adminDashboard.total_pending_albums }}</p>
-                <p>Total Songs: {{ adminDashboard.total_songs }}</p>
-                <p>Total Approved Songs: {{ adminDashboard.total_approved_songs }}</p>
-                <p>Total Pending Songs: {{ adminDashboard.total_pending_songs }}</p>
-            </div>
-        </div>
+  <!-- sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <img src="../../../assets/admin.jpg" alt="SoundCloud Logo" />
     </div>
+    <nav class="menu">
+      <ul>
+        <li (click)="navigateToDashboard()">Dashboard</li>
+        <li (click)="navigateToUserList()">All Users</li>
+        <li (click)="navigateToApprovedTracks()">Approved Tracks</li>
+        <li (click)="navigateToPendingTracks()">Pending Tracks</li>
+        <li (click)="navigateToApprovedAlbums()">Approved</li>
+        <li (click)="navigateToPendingAlbums()">Pending Albums</li>
+        <li>Playlist (Beta)</li>
+      </ul>
+    </nav>
+  </aside>
+
+  <div class="main-content">
+    <div class="header-content">
+      <div class="left-header">
+        <h1 class="fz-40">Dashboard</h1>
+      </div>
+      <div class="right-header">
+        <div class="right-header-inner">
+          <button class="notification-btn header-btn">
+            <i class="btn-inner">
+              <img src="../../../assets/bell.png" alt="bell-icon" />
+            </i>
+          </button>
+          <button class="message-btn header-btn">
+            <i class="btn-inner">
+              <img src="../../../assets/envelope.png" alt="envelope-icon" />
+            </i>
+          </button>
+          <div class="account-avt header-btn">
+            <i class="btn-inner">
+              <img [src]="adminInfor.image_url" alt="jackbentreimg" />
+            </i>
+            <ul class="artist-dropdown-menu">
+              <li><a>Profile</a></li>
+              <li><a>Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="line"></div>
+    <div class="upload-track-box"></div>
+
+    <div class="notification" *ngIf="notificationMessage">
+      <p [class.success]="isSuccess" [class.error]="!isSuccess">
+        {{ notificationMessage }}
+      </p>
+    </div>
+
+    <div class="dashboard-container">
+      <!-- <div class="dashboard-item">
+        <p>Total Users: {{ adminDashboard.total_users }}</p>
+        <p>Total Artists: {{ adminDashboard.total_artists }}</p>
+        <p>Total Active Users: {{ adminDashboard.total_active_users }}</p>
+        <p>Total Albums: {{ adminDashboard.total_albums }}</p>
+        <p>Total Approved Albums: {{ adminDashboard.total_approved_albums }}</p>
+        <p>Total Pending Albums: {{ adminDashboard.total_pending_albums }}</p>
+        <p>Total: {{ adminDashboard.total_songs }}</p>
+        <p>Total Approved Songs: {{ adminDashboard.total_approved_songs }}</p>
+        <p>Total Pending Songs: {{ adminDashboard.total_pending_songs }}</p>
+      </div> -->
+      <div class="dashboard-inner">
+        <!-- User Box -->
+        <div class="user-box">
+          <div class="total-user-box main-box">
+            <div class="total-user total-box">
+              <span class="label">Users</span>
+              <span class="value">7</span>
+            </div>
+            <div class="status-user-box status-box">
+              <div class="approved">
+                <span class="label">Users</span>
+                <span class="value">4</span>
+              </div>
+              <div class="pending">
+                <span class="label">Artists</span>
+                <span class="value">3</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Album Box -->
+        <div class="album-box">
+          <div class="total-album-box main-box">
+            <div class="total-album total-box">
+              <span class="label">Albums</span>
+              <span class="value">5</span>
+            </div>
+            <div class="status-album-box status-box">
+              <div class="approved">
+                <span class="label">Approved</span>
+                <span class="value">3</span>
+              </div>
+              <div class="pending">
+                <span class="label">Pending</span>
+                <span class="value">2</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Song Box -->
+        <div class="song-box">
+          <div class="total-song-box main-box">
+            <div class="total-song total-box">
+              <span class="label">Songs</span>
+              <span class="value">10</span>
+            </div>
+            <div class="status-song-box status-box">
+              <div class="approved">
+                <span class="label">Approved</span>
+                <span class="value">6</span>
+              </div>
+              <div class="pending">
+                <span class="label">Pending</span>
+                <span class="value">4</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Modal Confirm -->
 <div class="confirm-modal" *ngIf="showConfirmModal">
-    <div class="confirm-modal-content fw-700">
-        <p>{{ confirmMessage }}</p>
-        <div class="text-container">
-            <input type="text" [(ngModel)]="description" />
-        </div>
-        <div class="confirm-actions">
-            <button (click)="confirmAction()">Confirm</button>
-            <button (click)="cancelAction()">Cancel</button>
-        </div>
+  <div class="confirm-modal-content fw-700">
+    <p>{{ confirmMessage }}</p>
+    <div class="text-container">
+      <input type="text" [(ngModel)]="description" />
     </div>
+    <div class="confirm-actions">
+      <button (click)="confirmAction()">Confirm</button>
+      <button (click)="cancelAction()">Cancel</button>
+    </div>
+  </div>
 </div>
