@@ -1,95 +1,113 @@
 <div class="container">
-    <!-- sidebar -->
-    <aside class="sidebar">
-        <div class="logo">
-            <img src="../../../assets/admin.jpg" alt="SoundCloud Logo" />
-        </div>
-        <nav class="menu">
-            <ul>
-                <li (click)="navigateToDashboard()">Dashboard</li>
-                <li (click)="navigateToUserList()">All Users</li>
-                <li (click)="navigateToApprovedTracks()">Approved Tracks</li>
-                <li (click)="navigateToPendingTracks()">Pending Tracks</li>
-                <li (click)="navigateToApprovedAlbums()">Approved Albums</li>
-                <li (click)="navigateToPendingAlbums()">Pending Albums</li>
-                <li>Playlist (Beta)</li>
-            </ul>
-        </nav>
-    </aside>
-
-    <div class="main-content">
-        <div class="header-content">
-            <div class="left-header">
-                <h1 class="fz-40">Pending Tracks</h1>
-            </div>
-            <div class="right-header">
-                <div class="right-header-inner">
-                    <button class="notification-btn header-btn">
-                        <i class="btn-inner">
-                            <img src="../../../assets/bell.png" alt="bell-icon" />
-                        </i>
-                    </button>
-                    <button class="message-btn header-btn">
-                        <i class="btn-inner">
-                            <img src="../../../assets/envelope.png" alt="envelope-icon" />
-                        </i>
-                    </button>
-                    <div class="account-avt header-btn" style="cursor: pointer; overflow: hidden;"
-                        (click)="navigateToProfile()">
-                        <i class="btn-inner">
-                            <img [src]="adminInfor.image_url ? adminInfor.image_url : '../../../assets/jackbentre.jpg'"
-                                alt="jackbentreimg" />
-                        </i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="line"></div>
-        <div class="upload-track-box">
-        </div>
-
-        <div class="notification" *ngIf="notificationMessage">
-            <p [class.success]="isSuccess" [class.error]="!isSuccess">
-                {{ notificationMessage }}
-            </p>
-        </div>
-
-        <div class="track-list-container">
-            <div class="track-card" *ngFor="let track of tracks">
-                <div class="track-image">
-                    <img [src]="track.image_url" alt="Track Cover" class="track-cover" />
-                </div>
-                <div class="track-info">
-                    <h3>{{ track.name }}</h3>
-                    <p>Status: {{ track.status }}</p>
-                    <audio controls>
-                        <source [src]="track.secure_url" type="audio/mpeg" />
-                        Your browser does not support the audio element.
-                    </audio>
-                </div>
-                <div class="action-container">
-                    <div class="send-approve-container" (click)="openConfirmModal('approve', track)">
-                        Approve
-                    </div>
-                    <div class="reject-container" (click)="openConfirmModal('reject', track)">
-                        Reject
-                    </div>
-                </div>
-            </div>
-        </div>
+  <!-- sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <img src="../../../assets/admin.jpg" alt="SoundCloud Logo" />
     </div>
+    <nav class="menu">
+      <ul>
+        <li (click)="navigateToDashboard()">Dashboard</li>
+        <li (click)="navigateToUserList()">All Users</li>
+        <li (click)="navigateToApprovedTracks()">Approved Tracks</li>
+        <li (click)="navigateToPendingTracks()">Pending Tracks</li>
+        <li (click)="navigateToApprovedAlbums()">Approved Albums</li>
+        <li (click)="navigateToPendingAlbums()">Pending Albums</li>
+        <li>Playlist (Beta)</li>
+      </ul>
+    </nav>
+  </aside>
+
+  <div class="main-content">
+    <div class="header-content">
+      <div class="left-header">
+        <h1 class="fz-40">Pending Tracks</h1>
+      </div>
+      <div class="right-header">
+        <div class="right-header-inner">
+          <button class="notification-btn header-btn">
+            <i class="btn-inner">
+              <img src="../../../assets/bell.png" alt="bell-icon" />
+            </i>
+          </button>
+          <button class="message-btn header-btn">
+            <i class="btn-inner">
+              <img src="../../../assets/envelope.png" alt="envelope-icon" />
+            </i>
+          </button>
+          <div
+            class="account-avt header-btn"
+            style="cursor: pointer; overflow: hidden"
+            (click)="navigateToProfile()"
+          >
+            <i class="btn-inner">
+              <img
+                [src]="
+                  adminInfor.image_url
+                    ? adminInfor.image_url
+                    : '../../../assets/jackbentre.jpg'
+                "
+                alt="jackbentreimg"
+              />
+            </i>
+            <ul class="artist-dropdown-menu">
+              <li><a>Profile</a></li>
+              <li><a>Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="line"></div>
+    <div class="upload-track-box"></div>
+
+    <div class="notification" *ngIf="notificationMessage">
+      <p [class.success]="isSuccess" [class.error]="!isSuccess">
+        {{ notificationMessage }}
+      </p>
+    </div>
+
+    <div class="track-list-container">
+      <div class="track-card" *ngFor="let track of tracks">
+        <div class="track-image">
+          <img [src]="track.image_url" alt="Track Cover" class="track-cover" />
+        </div>
+        <div class="track-info">
+          <h3>{{ track.name }}</h3>
+          <p>Status: {{ track.status }}</p>
+          <audio controls>
+            <source [src]="track.secure_url" type="audio/mpeg" />
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+        <div class="action-container">
+          <div
+            class="send-approve-container"
+            (click)="openConfirmModal('approve', track)"
+          >
+            Approve
+          </div>
+          <div
+            class="reject-container"
+            (click)="openConfirmModal('reject', track)"
+          >
+            Reject
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Modal Confirm -->
 <div class="confirm-modal" *ngIf="showConfirmModal">
-    <div class="confirm-modal-content fw-700">
-        <p>{{ confirmMessage }}</p>
-        <div class="text-container">
-            <input type="text" [(ngModel)]="description" />
-        </div>
-        <div class="confirm-actions">
-            <button (click)="confirmAction()">Confirm</button>
-            <button (click)="cancelAction()">Cancel</button>
-        </div>
+  <div class="confirm-modal-content fw-700">
+    <p>{{ confirmMessage }}</p>
+    <div class="text-container">
+      <input type="text" [(ngModel)]="description" />
     </div>
+    <div class="confirm-actions">
+      <button (click)="confirmAction()">Confirm</button>
+      <button (click)="cancelAction()">Cancel</button>
+    </div>
+  </div>
 </div>

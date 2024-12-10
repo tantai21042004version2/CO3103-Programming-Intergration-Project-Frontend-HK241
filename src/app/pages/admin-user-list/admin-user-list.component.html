@@ -38,6 +38,10 @@
             <i class="btn-inner">
               <img [src]="adminInfor.image_url" alt="jackbentreimg" />
             </i>
+            <ul class="artist-dropdown-menu">
+              <li><a>Profile</a></li>
+              <li><a>Logout</a></li>
+            </ul>
           </div>
         </div>
       </div>
@@ -61,10 +65,12 @@
       <div class="user-list-header">
         <div class="user-card-title fw-700">
           <div class="avt border-bottom-black">Avatar</div>
-          <div class="username border-bottom-black">Username</div>
-          <div class="email border-bottom-black">Email</div>
-          <div class="role border-bottom-black">Role</div>
-          <div class="delcozy">Delcozy</div>
+          <div class="user-info-title">
+            <div class="username border-bottom-black">Username</div>
+            <div class="email border-bottom-black">Email</div>
+            <div class="role border-bottom-black">Role</div>
+          </div>
+          <div class="delcozy"></div>
         </div>
       </div>
       <div class="user-card" *ngFor="let user of users">
