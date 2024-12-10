@@ -22,17 +22,6 @@
 
   <!-- main content  -->
   <div class="main-content">
-    <!-- <div class="main-content-header">
-      <div class="header-top">
-        <p>porn.mp3</p>
-        <p>We're uploading your track...<span>3%</span></p>
-      </div>
-      <div class="header-bot">
-        <div class="loading-bar">
-          <div class="loading-stripes"></div>
-        </div>
-      </div>
-    </div> -->
     <div class="cloudinary-response-container">
       {{ message }}
     </div>
@@ -40,60 +29,37 @@
       <div class="body-left">
         <div class="dashed avt">
           <div class="artwork-avt">
-            <img src="../../../assets/meta-data.webp" alt="imageicon" />
+            <img src="../../../assets/meta-song-upload.jpg" alt="imageicon" />
           </div>
         </div>
       </div>
       <div class="line"></div>
-      <div class="body-right">
-        <div class="track-title m-t-b-12">
-          <label for="tracktitle" class="fw-700 flex-align-center m-b-8"
-            >Track title<span class="c-red">*</span>
-            <img
-              src="../../../assets/questionmark.png"
-              alt="question-mark"
-              class="w-16 h-16 m-l-4"
-          /></label>
-          <input
-            type="text"
-            id="tracktitle"
-            placeholder="anh hẹn em pickleball"
-            class="input"
-          />
-        </div>
+      <form class="form-container" #uploadForm="ngForm" (ngSubmit)="upload()" novalidate>
+        <div class="body-right">
+          <div class="track-title m-t-b-12">
+            <label for="tracktitle" class="fw-700 flex-align-center m-b-8">Track title<span class="c-red">*</span>
+              <img src="../../../assets/questionmark.png" alt="question-mark" class="w-16 h-16 m-l-4" /></label>
+            <input type="text" id="tracktitle" class="input" [(ngModel)]="name" name="name" />
+          </div>
+          <div class="description m-t-b-12">
+            <label for="description" class="fw-700 m-b-8">Description</label>
+            <input type="text" name="description" id="description" class="input m-t-8" [(ngModel)]="description" />
+          </div>
+          <div class="genre m-t-b-12 flex-dir-col">
+            <label for="genre" class="fw-700 m-b-8">Genre</label>
+            <select id="genre" class="input" [(ngModel)]="genre_id" name="genre_id">
+              <option *ngFor="let genre of genres" [ngValue]="genre.id"> {{ genre.name }} </option>
+            </select>
+          </div>
+          <div class="realease-date m-t-b-12">
+            <label for="realease-date" class="fw-700 flex-align-center m-b-8">Realease Date
+              <img src="../../../assets/questionmark.png" alt="questionmark" class="w-16 h-16 m-l-4" /></label>
+            <input type="date" id="realease-date" class="input" [(ngModel)]="release_date" name="release_date" />
+          </div>
 
-        <div class="genre m-t-b-12 flex-dir-col">
-          <label for="genre" class="fw-700 m-b-8">Genre</label>
-          <input list="options" name="" id="genre" class="input" />
-          <datalist id="options">
-            <option value="Option 1"></option>
-            <option value="Option 2"></option>
-            <option value="Option 3"></option>
-            <option value="Option 4"></option>
-          </datalist>
+          <div class="btn-upload text-center"><button type="submit">Upload</button></div>
         </div>
-        <div class="realease-date m-t-b-12">
-          <label for="realease-date" class="fw-700 flex-align-center m-b-8"
-            >Realease Date
-            <img
-              src="../../../assets/questionmark.png"
-              alt="questionmark"
-              class="w-16 h-16 m-l-4"
-          /></label>
-          <input type="date" id="realease-date" class="input" />
-        </div>
-        <div class="description m-t-b-12">
-          <label for="description" class="fw-700 m-b-8">Description</label>
-          <input
-            type="text"
-            name=""
-            id="description"
-            placeholder="Tracks with description tend to get more plays and engaments"
-            class="input m-t-8"
-          />
-        </div>
-        <div class="btn-upload text-center"><button>Upload</button></div>
-      </div>
+      </form>
     </div>
 
     <div class="main-content-footage">

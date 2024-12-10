@@ -83,7 +83,7 @@ export class SongService {
     }
 
     submitSong(id: number, token: string): Observable<ApiResponse> {
-        return this.http.post<ApiResponse>(`${this.apiSubmitSong}/${id}`, {}, {
+        return this.http.patch<ApiResponse>(`${this.apiSubmitSong}/${id}`, {}, {
             headers: new HttpHeaders({ Authorization: `Bearer ${token}` })
         });
     }

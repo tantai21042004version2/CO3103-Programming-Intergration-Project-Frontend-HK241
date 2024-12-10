@@ -6,6 +6,7 @@ import { UserService } from "src/app/services/user.service";
 import { SongService } from "src/app/services/song.service";
 import { CommentService } from "src/app/services/comment.service";
 import { AlbumService } from "src/app/services/album.service";
+import { GenreService } from "src/app/services/gerne.service";
 
 export class BaseComponent {
     userService: UserService = inject(UserService);
@@ -14,6 +15,6 @@ export class BaseComponent {
     songService: SongService = inject(SongService);
     commentService: CommentService = inject(CommentService);
     albumService: AlbumService = inject(AlbumService);
-
+    genreService: GenreService = inject(GenreService);
     router: Router = inject(Router);
 }

@@ -9,12 +9,10 @@
         <li (click)="navigateToOverview()">Overview</li>
         <li (click)="navigateToTracks()">Tracks</li>
         <li (click)="navigateToNewTrack()">New Track</li>
-        <li>Comments</li>
-        <li>Albums</li>
-        <li>Earnings</li>
-        <li>Insights</li>
-        <li>Benefits</li>
-        <li>Membership</li>
+        <li (click)="navigateToAlbums()">Albums</li>
+        <li>Earnings (demo)</li>
+        <li>Benefits (demo)</li>
+        <li>Membership (demo)</li>
         <li>Profile Control</li>
       </ul>
     </nav>
@@ -105,16 +103,10 @@
           </audio>
         </div>
         <div class="action-container">
-          <div
-            class="send-approve-container"
-            (click)="openConfirmModal('approve', track)"
-          >
+          <div class="send-approve-container" (click)="openConfirmModal('approve', track)">
             Send To Approve
           </div>
-          <div
-            class="delete-container"
-            (click)="openConfirmModal('delete', track)"
-          >
+          <div class="delete-container" (click)="openConfirmModal('delete', track)">
             Delete
           </div>
         </div>

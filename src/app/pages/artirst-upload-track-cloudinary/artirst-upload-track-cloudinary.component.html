@@ -41,8 +41,8 @@
               <img [src]="artirstInfor.image_url" alt="jackbentreimg" />
             </i>
             <ul class="artist-dropdown-menu">
-              <li><a>Profile</a></li>
-              <li><a>Logout</a></li>
+              <li><a (click)="navigateToProfile()">Profile</a></li>
+              <li><a (click)="logout()">Logout</a></li>
             </ul>
           </div>
         </div>
@@ -65,13 +65,7 @@
         </div>
         <p class="fw-700 m-t-b-12">Drop and drag audio files to get started.</p>
         <!-- Input để chọn file -->
-        <input
-          type="file"
-          id="fileInput"
-          (change)="onFileSelected($event)"
-          accept="audio/*"
-          style="display: none"
-        />
+        <input type="file" id="fileInput" (change)="onFileSelected($event)" accept="audio/*" style="display: none" />
         <button class="fw-700" (click)="triggerFileInput()">
           Choose files
         </button>

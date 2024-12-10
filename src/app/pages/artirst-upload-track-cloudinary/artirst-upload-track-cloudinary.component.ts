@@ -104,4 +104,13 @@ export class ArtirstUploadTrackCloudinaryComponent extends BaseComponent impleme
   navigateToAlbums() {
     this.router.navigate(['/artist/albums']);
   }
+
+  navigateToProfile() {
+    this.router.navigate(['/artist/artist-profile-control']);
+  }
+
+  logout() {
+    this.tokenService.removeToken();
+    this.router.navigate(['/signin']);
+  }
 }

@@ -18,80 +18,7 @@ export class ArtirstTracksComponent extends BaseComponent implements OnInit {
   };
   token: string = '';
 
-  tracks: Song[] = [
-    {
-      id: 12, name: 'Anh Vẫn Đợi', secure_url: 'https://res.cloudinary.com/tantai21042004/video/upload/v1732704551/songs/zdhim46gztezz7j5zsyb.mp3', image_url: 'https://res.cloudinary.com/tantai21042004/image/upload/v1732880370/albums/nwdo0m9f6gxbxaaq2ido.jpg', status: 'APPROVED',
-      artist_id: 0,
-      album_id: 0,
-      duration: 0,
-      public_id: '',
-      genre_id: 0,
-      description: '',
-      release_date: '',
-      created_at: '',
-      updated_at: ''
-    },
-    {
-      id: 12, name: 'Anh Vẫn Đợi', secure_url: 'https://res.cloudinary.com/tantai21042004/video/upload/v1732704551/songs/zdhim46gztezz7j5zsyb.mp3', image_url: 'https://res.cloudinary.com/tantai21042004/image/upload/v1732880370/albums/nwdo0m9f6gxbxaaq2ido.jpg', status: 'APPROVED',
-      artist_id: 0,
-      album_id: 0,
-      duration: 0,
-      public_id: '',
-      genre_id: 0,
-      description: '',
-      release_date: '',
-      created_at: '',
-      updated_at: ''
-    },
-    {
-      id: 12, name: 'Anh Vẫn Đợi', secure_url: 'https://res.cloudinary.com/tantai21042004/video/upload/v1732704551/songs/zdhim46gztezz7j5zsyb.mp3', image_url: 'https://res.cloudinary.com/tantai21042004/image/upload/v1732880370/albums/nwdo0m9f6gxbxaaq2ido.jpg', status: 'APPROVED',
-      artist_id: 0,
-      album_id: 0,
-      duration: 0,
-      public_id: '',
-      genre_id: 0,
-      description: '',
-      release_date: '',
-      created_at: '',
-      updated_at: ''
-    },
-    {
-      id: 12, name: 'Anh Vẫn Đợi', secure_url: 'https://res.cloudinary.com/tantai21042004/video/upload/v1732704551/songs/zdhim46gztezz7j5zsyb.mp3', image_url: 'https://res.cloudinary.com/tantai21042004/image/upload/v1732880370/albums/nwdo0m9f6gxbxaaq2ido.jpg', status: 'APPROVED',
-      artist_id: 0,
-      album_id: 0,
-      duration: 0,
-      public_id: '',
-      genre_id: 0,
-      description: '',
-      release_date: '',
-      created_at: '',
-      updated_at: ''
-    },
-    {
-      id: 12, name: 'Anh Vẫn Đợi', secure_url: 'https://res.cloudinary.com/tantai21042004/video/upload/v1732704551/songs/zdhim46gztezz7j5zsyb.mp3', image_url: 'https://res.cloudinary.com/tantai21042004/image/upload/v1732880370/albums/nwdo0m9f6gxbxaaq2ido.jpg', status: 'APPROVED',
-      artist_id: 0,
-      album_id: 0,
-      duration: 0,
-      public_id: '',
-      genre_id: 0,
-      description: '',
-      release_date: '',
-      created_at: '',
-      updated_at: ''
-    },
-    {
-      id: 12, name: 'Anh Vẫn Đợi', secure_url: 'https://res.cloudinary.com/tantai21042004/video/upload/v1732704551/songs/zdhim46gztezz7j5zsyb.mp3', image_url: 'https://res.cloudinary.com/tantai21042004/image/upload/v1732880370/albums/nwdo0m9f6gxbxaaq2ido.jpg', status: 'APPROVED',
-      artist_id: 0,
-      album_id: 0,
-      duration: 0,
-      public_id: '',
-      genre_id: 0,
-      description: '',
-      release_date: '',
-      created_at: '',
-      updated_at: ''
-    },
-  ];
+  tracks: Song[] = [];
 
   getUserInfor() {
     this.token = this.tokenService.getToken();
@@ -100,20 +27,20 @@ export class ArtirstTracksComponent extends BaseComponent implements OnInit {
   }
 
   getArtistTracks() {
-    // this.songService.getArtistTracks(this.token).subscribe({
-    //   next: (apiResponse) => {
-    //     if (apiResponse.status === "OK") {
-    //       this.tracks = apiResponse.data.songs;
-    //       debugger;
-    //     }
-    //   },
-    //   complete: () => {
-    //     console.log('complete');
-    //   },
-    //   error: (error) => {
-    //     console.log(error);
-    //   }
-    // });
+    this.songService.getArtistTracks(this.token).subscribe({
+      next: (apiResponse) => {
+        if (apiResponse.status === "OK") {
+          this.tracks = apiResponse.data.songs;
+          debugger;
+        }
+      },
+      complete: () => {
+        console.log('complete');
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -135,6 +62,10 @@ export class ArtirstTracksComponent extends BaseComponent implements OnInit {
 
   navigateToTracks() {
     this.router.navigate(['/artist/tracks']);
+  }
+
+  navigateToAlbums() {
+    this.router.navigate(['/artist/albums']);
   }
 
   showConfirmModal = false;

@@ -1,9 +1,11 @@
 export interface UploadSongDTO {
-    title: string;
+    name: string;
 
     description: string;
 
     release_date: string;
+
+    genre_id: number;
 
     secure_url: string;
 
