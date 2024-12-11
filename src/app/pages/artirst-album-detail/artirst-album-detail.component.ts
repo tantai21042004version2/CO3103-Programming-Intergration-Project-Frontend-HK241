@@ -6,6 +6,10 @@ import { ApiResponse } from 'src/app/responses/api.response';
 import { Artist } from 'src/app/models/artirst';
 import { TokenService } from 'src/app/services/token.service';
 import { Song } from 'src/app/models/song';
+import { forkJoin } from 'rxjs';
+import { switchMap, tap } from 'rxjs/operators';
+import { Comment } from 'src/app/models/comment';
+import { convertResponseToComment } from 'src/app/utils/to.comment';
 
 @Component({
   selector: 'app-artirst-album-detail',
@@ -37,6 +41,7 @@ export class ArtirstAlbumDetailComponent extends BaseComponent implements OnInit
     cover_url: '',
   };
   songs: Song[] = [];
+  comments: Comment[] = [];
 
   getUserInfor() {
     this.token = this.tokenService.getToken();
@@ -51,25 +56,46 @@ export class ArtirstAlbumDetailComponent extends BaseComponent implements OnInit
 
   ngOnInit() {
     this.getUserInfor();
-    this.getAlbumDetail();
+    this.getAlbumDetail().pipe(
+      switchMap(() => this.getComments())
+    ).subscribe({
+      next: () => console.log('Album details and comments loaded'),
+      error: (error) => console.log(error)
+    });
   }
 
   getAlbumDetail() {
-    this.albumService.getAlbumDetail(this.token, this.albumId).subscribe((res: ApiResponse) => {
-      this.album = res.data;
-      this.album.cover_url = res.data.cover_image_url;
-      this.songs = res.data.songs;
-    });
-    console.log(this.album);
+    return this.albumService.getAlbumDetail(this.token, this.albumId).pipe(
+      tap((res: ApiResponse) => {
+        this.album = res.data;
+        this.album.cover_url = res.data.cover_image_url;
+        this.songs = res.data.songs;
+      })
+    );
+  }
+
+  getComments() {
+    if (this.songs.length === 0) {
+      return forkJoin([]);
+    }
+    return forkJoin(
+      this.songs.map(song =>
+        this.commentService.getBySongId(song.id, { page: 1, limit: 10 }).pipe(
+          tap((res: ApiResponse) => {
+            this.comments = this.comments.concat(res.data.comments.map((comment: any) => convertResponseToComment(comment)));
+          })
+        )
+      )
+    );
   }
 
   navigateToProfile() {
-    this.router.navigate(['/artist/profile']);
+    this.router.navigate(['/user/profile']);
   }
 
   logout() {
     this.tokenService.removeToken();
-    this.router.navigate(['/signin']);
+    this.router.navigate(['/']);
   }
 
 
@@ -103,10 +129,6 @@ export class ArtirstAlbumDetailComponent extends BaseComponent implements OnInit
 
   navigateToAddMusic() {
     this.router.navigate(['/artist/tracks/upload-track-cloudinary']);
-  }
-
-  navigateToOverview() {
-    this.router.navigate(['/artist/overview']);
   }
 
   navigateToNewTrack() {

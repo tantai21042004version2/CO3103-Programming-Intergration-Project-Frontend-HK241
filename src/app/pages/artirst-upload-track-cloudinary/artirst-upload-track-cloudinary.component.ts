@@ -93,10 +93,6 @@ export class ArtirstUploadTrackCloudinaryComponent extends BaseComponent impleme
     this.router.navigate(['/artist/tracks']);
   }
 
-  navigateToOverview() {
-    this.router.navigate(['/artist/overview']);
-  }
-
   navigateToNewTrack() {
     this.router.navigate(['/artist/tracks/upload-track-cloudinary']);
   }
@@ -106,11 +102,12 @@ export class ArtirstUploadTrackCloudinaryComponent extends BaseComponent impleme
   }
 
   navigateToProfile() {
-    this.router.navigate(['/artist/artist-profile-control']);
+    this.router.navigate(['/user/profile']);
   }
 
   logout() {
     this.tokenService.removeToken();
-    this.router.navigate(['/signin']);
+    this.router.navigate(['/']);
   }
 }
+

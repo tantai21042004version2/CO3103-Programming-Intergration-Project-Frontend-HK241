@@ -7,10 +7,6 @@ import { BaseComponent } from '../base/base.component';
   styleUrls: ['./artirst-profile-control.component.scss']
 })
 export class ArtirstProfileControlComponent extends BaseComponent {
-  navigateToOverview() {
-    this.router.navigate(['/artist/overview']);
-  }
-
   navigateToTracks() {
     this.router.navigate(['/artist/tracks']);
   }

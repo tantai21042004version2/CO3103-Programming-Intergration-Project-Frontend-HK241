@@ -161,15 +161,20 @@ export class AdminUserListComponent extends BaseComponent implements OnInit {
     this.router.navigate(['/artist/tracks/upload-track-cloudinary']);
   }
 
-  navigateToOverview() {
-    this.router.navigate(['/artist/overview']);
-  }
-
   navigateToNewTrack() {
     this.router.navigate(['/artist/tracks/upload-track-cloudinary']);
   }
 
   navigateToTracks() {
     this.router.navigate(['/artist/tracks']);
+  }
+
+  navigateToProfile() {
+    this.router.navigate(['/user/profile']);
+  }
+
+  logout() {
+    this.tokenService.removeToken();
+    this.router.navigate(['/']);
   }
 }

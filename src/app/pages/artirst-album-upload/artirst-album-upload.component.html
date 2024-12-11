@@ -6,7 +6,6 @@
     </div>
     <nav class="menu">
       <ul>
-        <li (click)="navigateToOverview()">Overview</li>
         <li (click)="navigateToTracks()">Tracks</li>
         <li (click)="navigateToNewTrack()">New Track</li>
         <li>Albums</li>
@@ -66,19 +65,9 @@
       </div>
       <div class="body-right">
         <div class="track-title m-t-b-12">
-          <label for="tracktitle" class="fw-700 flex-align-center m-b-8"
-            >Track title<span class="c-red">*</span>
-            <img
-              src="../../../assets/questionmark.png"
-              alt="question-mark"
-              class="w-16 h-16 m-l-4"
-          /></label>
-          <input
-            type="text"
-            id="tracktitle"
-            placeholder="anh hẹn em pickleball"
-            class="input"
-          />
+          <label for="tracktitle" class="fw-700 flex-align-center m-b-8">Track title<span class="c-red">*</span>
+            <img src="../../../assets/questionmark.png" alt="question-mark" class="w-16 h-16 m-l-4" /></label>
+          <input type="text" id="tracktitle" placeholder="anh hẹn em pickleball" class="input" />
         </div>
 
         <div class="genre m-t-b-12 flex-dir-col">
@@ -92,24 +81,14 @@
           </datalist>
         </div>
         <div class="realease-date m-t-b-12">
-          <label for="realease-date" class="fw-700 flex-align-center m-b-8"
-            >Realease Date
-            <img
-              src="../../../assets/questionmark.png"
-              alt="questionmark"
-              class="w-16 h-16 m-l-4"
-          /></label>
+          <label for="realease-date" class="fw-700 flex-align-center m-b-8">Realease Date
+            <img src="../../../assets/questionmark.png" alt="questionmark" class="w-16 h-16 m-l-4" /></label>
           <input type="date" id="realease-date" class="input" />
         </div>
         <div class="description m-t-b-12">
           <label for="description" class="fw-700 m-b-8">Description</label>
-          <input
-            type="text"
-            name=""
-            id="description"
-            placeholder="Tracks with description tend to get more plays and engaments"
-            class="input m-t-8"
-          />
+          <input type="text" name="" id="description"
+            placeholder="Tracks with description tend to get more plays and engaments" class="input m-t-8" />
         </div>
         <div class="btn-upload text-center"><button>Upload</button></div>
       </div>

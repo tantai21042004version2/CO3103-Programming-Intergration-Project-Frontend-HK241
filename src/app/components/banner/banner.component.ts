@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from 'src/app/pages/base/base.component';
-import { ApiResponse } from 'src/app/responses/api.response';
-import { UserDetailResponse } from 'src/app/responses/user/user.detail.response';
-import { HttpErrorResponse } from '@angular/common/http';
+import { User } from 'src/app/models/user';
+import { UserInfor } from 'src/app/models/user.infor';
+
 
 @Component({
   selector: 'app-banner',
@@ -10,7 +10,12 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./banner.component.scss']
 })
 export class BannerComponent extends BaseComponent implements OnInit {
-  userResponse: UserDetailResponse | null = null;
+  token: string = '';
+  userInfor: UserInfor = {
+    id: 0,
+    image_url: '',
+    username: ''
+  }
 
   goToSignIn() {
     this.router.navigate(['/signin']);
@@ -24,26 +29,31 @@ export class BannerComponent extends BaseComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
-  ngOnInit(): void {
-    debugger;
+  goToForArtists() {
+    this.router.navigate(['artist/tracks']);
+  }
 
-    this.userService.getUserDetail(this.tokenService.getToken()).subscribe({
-      next: (apiResponse: ApiResponse) => {
-        this.userResponse = apiResponse.data;
-      },
-      error: (error: HttpErrorResponse) => {
-        debugger;
-        console.log(error);
-      }
-    });
+  goToForAdmin() {
+    this.router.navigate(['admin/dashboard']);
+  }
+
+  getUserInfor() {
+    this.token = this.tokenService.getToken();
+    this.userInfor.id = this.tokenService.getUserId();
+    this.userInfor.image_url = this.tokenService.getImageUrl();
+  }
+
+  ngOnInit(): void {
+    this.getUserInfor();
+    console.log(this.userInfor);
   }
 
   goToProfile() {
-    this.router.navigate(['/profile']);
+    this.router.navigate(['/user/profile']);
   }
 
   logout() {
     this.tokenService.logout();
-    window.location.reload();
+    this.router.navigate(['/']);
   }
 }

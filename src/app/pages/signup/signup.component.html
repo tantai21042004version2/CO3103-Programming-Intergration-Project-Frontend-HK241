@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-default-header></app-default-header>
 
 <div class="signup-container">
   <div class="inner-container">
@@ -12,28 +12,16 @@
               <!-- Username -->
               <div class="form-group">
                 <label for="username">User name</label>
-                <input
-                  type="text"
-                  placeholder="User name..."
-                  id="username"
-                  name="username"
-                  [(ngModel)]="username"
-                  required
-                />
+                <input type="text" placeholder="User name..." id="username" name="username" [(ngModel)]="username"
+                  required />
               </div>
 
               <!-- Password -->
               <div class="form-group">
                 <label for="password">Password</label>
                 <div class="password-container">
-                  <input
-                    type="password"
-                    placeholder="Password..."
-                    id="password"
-                    name="password"
-                    [(ngModel)]="password"
-                    required
-                  />
+                  <input type="password" placeholder="Password..." id="password" name="password" [(ngModel)]="password"
+                    required />
                   <i class="fa-solid fa-eye-slash toggle-password"></i>
                 </div>
               </div>
@@ -41,12 +29,7 @@
               <!-- Country -->
               <div class="form-group">
                 <label for="country">Country</label>
-                <select
-                  id="country"
-                  name="country"
-                  [(ngModel)]="country"
-                  required
-                >
+                <select id="country" name="country" [(ngModel)]="country" required>
                   <option value="" disabled selected>
                     Select your country
                   </option>
@@ -62,28 +45,16 @@
               <!-- Email Address -->
               <div class="form-group">
                 <label for="email">Email address</label>
-                <input
-                  type="email"
-                  placeholder="Email address..."
-                  id="email"
-                  name="email"
-                  [(ngModel)]="email"
-                  required
-                />
+                <input type="email" placeholder="Email address..." id="email" name="email" [(ngModel)]="email"
+                  required />
               </div>
 
               <!-- Retype Password -->
               <div class="form-group">
                 <label for="retypePassword">Retype Password</label>
                 <div class="password-container">
-                  <input
-                    type="password"
-                    placeholder="Retype password..."
-                    id="retypePassword"
-                    name="retypePassword"
-                    [(ngModel)]="retypePassword"
-                    required
-                  />
+                  <input type="password" placeholder="Retype password..." id="retypePassword" name="retypePassword"
+                    [(ngModel)]="retypePassword" required />
                   <i class="fa-solid fa-eye-slash toggle-password"></i>
                 </div>
               </div>
@@ -91,13 +62,7 @@
               <!-- Date of Birth -->
               <div class="form-group">
                 <label for="dateOfBirth">Date of Birth</label>
-                <input
-                  type="date"
-                  id="dateOfBirth"
-                  name="dateOfBirth"
-                  [(ngModel)]="dateOfBirth"
-                  required
-                />
+                <input type="date" id="dateOfBirth" name="dateOfBirth" [(ngModel)]="dateOfBirth" required />
               </div>
             </div>
           </div>

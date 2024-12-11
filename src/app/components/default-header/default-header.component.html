@@ -1,0 +1,33 @@
+<header class="navbar header">
+    <div class="brand-container">
+        <div class="logo" style="width: 65px" (click)="goToHome()">
+            <img src="assets/souncloud-orange.png" alt="SoundCloud Logo" />
+        </div>
+    </div>
+
+    <div class="right-container">
+        <!-- Nếu người dùng null, hiển thị các nút -->
+        <div class="sign-in-container" *ngIf="token == ''">
+            <div class="btn btn-sm sign-in-btn" (click)="goToSignIn()">Sign In</div>
+            <div class="btn btn-sm create-account-btn" (click)="goToSignUp()">
+                Create Account
+            </div>
+        </div>
+
+        <!-- Nếu người dùng không null, hiển thị avatar và tên -->
+        <div *ngIf="token != ''" class="user-info">
+            <div class="avatar-container">
+                <img [src]="userInfor.image_url || 'assets/default-avatar.png'" alt="User Avatar" class="avatar-img" />
+                <!-- Dropdown menu -->
+                <ul class="dropdown-menu">
+                    <li><a (click)="goToProfile()">Profile</a></li>
+                    <li><a (click)="logout()">Logout</a></li>
+                </ul>
+            </div>
+            <div class="user-name">
+                <h5>{{ userInfor.username }}</h5>
+
+            </div>
+        </div>
+    </div>
+</header>

@@ -1,16 +1,28 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UserInfor } from 'src/app/models/user.infor';
 import { BaseComponent } from 'src/app/pages/base/base.component';
 import { ApiResponse } from 'src/app/responses/api.response';
 import { UserDetailResponse } from 'src/app/responses/user/user.detail.response';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  selector: 'app-default-header',
+  templateUrl: './default-header.component.html',
+  styleUrls: ['./default-header.component.scss']
 })
-export class HeaderComponent extends BaseComponent {
-  userResponse: UserDetailResponse | null = null;
+export class DefaultHeaderComponent extends BaseComponent implements OnInit {
+  userInfor: UserInfor = {
+    id: 0,
+    image_url: '',
+    username: ''
+  }
+  token: string = '';
+
+  getUserInfor() {
+    this.token = this.tokenService.getToken();
+    this.userInfor.id = this.tokenService.getUserId();
+    this.userInfor.image_url = this.tokenService.getImageUrl();
+  }
 
   goToSignIn() {
     this.router.navigate(['/signin']);
@@ -25,16 +37,7 @@ export class HeaderComponent extends BaseComponent {
   }
 
   ngOnInit(): void {
-    if (this.tokenService.getToken() !== null) {
-      this.userService.getUserDetail(this.tokenService.getToken()).subscribe({
-        next: (apiResponse: ApiResponse) => {
-          this.userResponse = apiResponse.data;
-        },
-        error: (error: HttpErrorResponse) => {
-          console.log(error);
-        }
-      });
-    }
+    this.getUserInfor();
   }
 
   goToProfile() {

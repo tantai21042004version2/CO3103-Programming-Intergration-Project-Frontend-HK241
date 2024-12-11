@@ -15,10 +15,6 @@ export class ArtirstoverviewComponent extends BaseComponent {
     this.router.navigate(['/artist/tracks/upload-track-cloudinary']);
   }
 
-  navigateToOverview() {
-    this.router.navigate(['/artist/overview']);
-  }
-
   navigateToAlbums() {
     this.router.navigate(['/artist/albums']);
   }

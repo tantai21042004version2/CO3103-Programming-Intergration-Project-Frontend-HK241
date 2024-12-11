@@ -66,26 +66,11 @@
           </div>
         </div>
         <div class="bot-right">
-          <div class="comment-card">
+          <div class="comment-card" *ngFor="let comment of comments">
             <div class="user-and-comment">
-              <h4>John Doe</h4>
-              <p>This song is amazing!</p>
+              <h4>{{ comment.user }}</h4>
+              <p>{{ comment.content }}</p>
             </div>
-            <p>❤️ 120 likes</p>
-          </div>
-          <div class="comment-card">
-            <div class="user-and-comment">
-              <h4>Jane Smith</h4>
-              <p>Great track, love it!</p>
-            </div>
-            <p>❤️ 98 likes</p>
-          </div>
-          <div class="comment-card">
-            <div class="user-and-comment">
-              <h4>Alex Brown</h4>
-              <p>Can't wait for more!</p>
-            </div>
-            <p>❤️ 75 likes</p>
           </div>
         </div>
       </div>

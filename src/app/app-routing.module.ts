@@ -4,7 +4,6 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { NoaccessComponent } from './pages/noaccess/noaccess.component';
-import { ArtirstoverviewComponent } from './pages/artirstoverview/artirstoverview.component';
 import { RoleGuard } from './role.guard';
 import { ArtirstTracksComponent } from './pages/artirst-tracks/artirst-tracks.component';
 import { ArtirstUploadTrackCloudinaryComponent } from './pages/artirst-upload-track-cloudinary/artirst-upload-track-cloudinary.component';
@@ -22,29 +21,30 @@ import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { ArtirstProfileControlComponent } from './pages/artirst-profile-control/artirst-profile-control.component';
 import { ArtistAlbumUploadDetailComponent } from './pages/artist-album-upload-detail/artist-album-upload-detail.component';
+import { UserResetPasswordComponent } from './pages/user-reset-password/user-reset-password.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: HomepageComponent },
     { path: 'signup', component: SignupComponent },
     { path: 'signin', component: SigninComponent },
-    { path: 'song/:id', component: DetailComponent },
-    { path: 'artist/albums', component: ArtirstAlbumsComponent },
-    { path: 'artist/album-upload', component: ArtirstAlbumUploadComponent },
-    { path: 'artist/album-upload-detail', component: ArtistAlbumUploadDetailComponent},
-    { path: 'artist/album-detail/:id', component: ArtirstAlbumDetailComponent },
-    { path: 'artist/artist-profile-control', component: ArtirstProfileControlComponent },
-    { path: 'artist/overview', component: ArtirstoverviewComponent },
-    { path: 'artist/tracks', component: ArtirstTracksComponent },
-    { path: 'artist/tracks/upload-track-cloudinary', component: ArtirstUploadTrackCloudinaryComponent },
-    { path: 'artist/tracks/upload-track-meta-data', component: ArtirstUploadTrackMetaDataComponent },
-    { path: 'admin/songs/pending', component: AdminPendingTrackComponent },
-    { path: 'admin/songs/approved', component: AdminApproveTrackComponent },
-    { path: 'admin/albums/pending', component: AdminPendingAlbumComponent },
-    { path: 'admin/albums/approved', component: AdminApproveAlbumComponent },
-    { path: 'admin/user-list', component: AdminUserListComponent },
-    { path: 'admin/dashboard', component: AdminDashboardComponent },
-    { path: 'user/profile', component: UserProfileComponent },
+    { path: 'song/:id', component: DetailComponent, canActivate: [RoleGuard], data: { roles: ['LISTENER', 'ARTIST', 'ADMIN'] } },
+    { path: 'artist/albums', component: ArtirstAlbumsComponent, canActivate: [RoleGuard], data: { roles: ['ARTIST'] } },
+    { path: 'artist/album-upload', component: ArtirstAlbumUploadComponent, canActivate: [RoleGuard], data: { roles: ['ARTIST'] } },
+    { path: 'artist/album-upload-detail', component: ArtistAlbumUploadDetailComponent, canActivate: [RoleGuard], data: { roles: ['ARTIST', 'ADMIN'] } },
+    { path: 'artist/album-detail/:id', component: ArtirstAlbumDetailComponent, canActivate: [RoleGuard], data: { roles: ['ARTIST', 'ADMIN'] } },
+    { path: 'artist/artist-profile-control', component: ArtirstProfileControlComponent, canActivate: [RoleGuard], data: { roles: ['ARTIST'] } },
+    { path: 'artist/tracks', component: ArtirstTracksComponent, canActivate: [RoleGuard], data: { roles: ['ARTIST'] } },
+    { path: 'artist/tracks/upload-track-cloudinary', component: ArtirstUploadTrackCloudinaryComponent, canActivate: [RoleGuard], data: { roles: ['ARTIST'] } },
+    { path: 'artist/tracks/upload-track-meta-data', component: ArtirstUploadTrackMetaDataComponent, canActivate: [RoleGuard], data: { roles: ['ARTIST'] } },
+    { path: 'admin/songs/pending', component: AdminPendingTrackComponent, canActivate: [RoleGuard], data: { roles: ['ADMIN'] } },
+    { path: 'admin/songs/approved', component: AdminApproveTrackComponent, canActivate: [RoleGuard], data: { roles: ['ADMIN'] } },
+    { path: 'admin/albums/pending', component: AdminPendingAlbumComponent, canActivate: [RoleGuard], data: { roles: ['ADMIN'] } },
+    { path: 'admin/albums/approved', component: AdminApproveAlbumComponent, canActivate: [RoleGuard], data: { roles: ['ADMIN'] } },
+    { path: 'admin/user-list', component: AdminUserListComponent, canActivate: [RoleGuard], data: { roles: ['ADMIN'] } },
+    { path: 'admin/dashboard', component: AdminDashboardComponent, canActivate: [RoleGuard], data: { roles: ['ADMIN'] } },
+    { path: 'user/profile', component: UserProfileComponent, canActivate: [RoleGuard], data: { roles: ['LISTENER', 'ARTIST', 'ADMIN'] } },
+    { path: 'user/profile/change-password', component: UserResetPasswordComponent, canActivate: [RoleGuard], data: { roles: ['LISTENER', 'ARTIST', 'ADMIN'] } },
     { path: 'no-access', component: NoaccessComponent },
 ];
 

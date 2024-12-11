@@ -200,7 +200,7 @@ export class ArtistAlbumUploadDetailComponent extends BaseComponent implements O
 
   logout() {
     this.tokenService.removeToken();
-    this.router.navigate(['/signin']);
+    this.router.navigate(['/']);
   }
 
   removeSong(songId: number) {
@@ -211,9 +211,6 @@ export class ArtistAlbumUploadDetailComponent extends BaseComponent implements O
     this.router.navigate(['/artist/tracks']);
   }
 
-  navigateToOverview() {
-    this.router.navigate(['/artist/overview']);
-  }
 
   navigateToNewTrack() {
     this.router.navigate(['/artist/tracks/upload-track-cloudinary']);

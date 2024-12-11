@@ -1,1 +1,122 @@
 <app-header></app-header>
+
+<div class="page-container">
+
+    <div class="user-form-container">
+        <div class="user-form-header">
+            <h1>User Profile</h1>
+        </div>
+        <div class="user-form-image-container">
+            <div class="user-form-image-wrapper">
+                <img [src]="imagePreview || userDetail.image_url" alt="User Image">
+            </div>
+            <div class="user-form-image-change-button-container">
+                <input type="file" accept="image/*" (change)="onImageChange($event)" id="fileInput"
+                    style="display: none;" />
+                <button class="user-form-image-change-button" (click)="triggerFileInput()">
+                    Change
+                </button>
+            </div>
+        </div>
+
+        <div class="user-form-input-container">
+            <div class="user-form-input-wrapper">
+                <div class="user-form-input-wrapper-label">
+                    <label for="username">Username</label>
+                </div>
+                <div class="user-form-input-wrapper-input">
+                    <input disabled type="text" id="username" name="username" [(ngModel)]="userDetail.username">
+                </div>
+            </div>
+
+            <div class="user-form-input-wrapper">
+                <div class="user-form-input-wrapper-label">
+                    <label for="email">Email</label>
+                </div>
+                <div class="user-form-input-wrapper-input">
+                    <input disabled type="text" id="email" name="email" [(ngModel)]="userDetail.email">
+                </div>
+            </div>
+
+            <div class="user-form-input-wrapper">
+                <div class="user-form-input-wrapper-label">
+                    <label for="role">Role</label>
+                </div>
+                <div class="user-form-input-wrapper-input">
+                    <input disabled type="text" id="role" name="role" [(ngModel)]="userDetail.role.name">
+                </div>
+            </div>
+
+            <div class="user-form-input-wrapper">
+                <div class="user-form-input-wrapper-label">
+                    <label for="country">Country</label>
+                </div>
+                <div class="user-form-input-wrapper-input">
+                    <input disabled type="text" id="country" name="country" [(ngModel)]="userDetail.country">
+                </div>
+            </div>
+
+            <div class="user-form-input-wrapper">
+                <div class="user-form-input-wrapper-label">
+                    <label for="date_of_birth">Date of Birth</label>
+                </div>
+                <div class="user-form-input-wrapper-input">
+                    <input disabled type="text" id="date_of_birth" name="date_of_birth"
+                        [(ngModel)]="userDetail.date_of_birth">
+                </div>
+            </div>
+
+            <div class="user-form-input-wrapper">
+                <div class="user-form-input-wrapper-label">
+                    <label for="first_login">First Login</label>
+                </div>
+                <div class="user-form-input-wrapper-input">
+                    <input disabled type="text" id="created_at" name="created_at" [(ngModel)]="userDetail.created_at">
+                </div>
+            </div>
+
+            <div class="user-form-input-wrapper">
+                <div class="user-form-input-wrapper-label">
+                    <label for="last_login">Last Update</label>
+                </div>
+                <div class="user-form-input-wrapper-input">
+                    <input disabled type="text" id="updated_at" name="updated_at" [(ngModel)]="userDetail.updated_at">
+                </div>
+            </div>
+
+            <!-- <div class="user-form-input-wrapper">
+                <div class="user-form-input-wrapper-label">
+                    <label for="old_password">Old Password</label>
+                </div>
+                <div class="user-form-input-wrapper-input">
+                    <input disabled type="text" id="old_password" name="old_password" [(ngModel)]="old_password">
+                </div>
+            </div>
+
+            <div class="user-form-input-wrapper">
+                <div class="user-form-input-wrapper-label">
+                    <label for="new_password">New Password</label>
+                </div>
+                <div class="user-form-input-wrapper-input">
+                    <input type="text" id="new_password" name="new_password" [(ngModel)]="new_password">
+                </div>
+            </div>
+
+            <div class="user-form-input-wrapper">
+                <div class="user-form-input-wrapper-label">
+                    <label for="confirm_password">Confirm Password</label>
+                </div>
+                <div class="user-form-input-wrapper-input">
+                    <input type="text" id="confirm_password" name="confirm_password" [(ngModel)]="confirm_password">
+                </div>
+            </div> -->
+
+            <div class="user-form-change-password-button-container">
+                <div class="user-form-change-password-button-wrapper">
+                    <button class="user-form-change-password-button" (click)="navigateToChangePassword()">Change
+                        Password</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

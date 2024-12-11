@@ -70,12 +70,12 @@
             <div class="user-avatar-container">
               <img class="user-avatar" [src]="listener.image_url" alt="User Avatar" />
             </div>
-            <input class="comment-input" type="text" placeholder="Write a comment" />
-            <button class="send-button">
+            <input class="comment-input" type="text" placeholder="Write a comment" [(ngModel)]="comment.content" />
+            <button class="send-button" (click)="createComment()">
               <i class="send-icon">➤</i>
             </button>
           </div>
-          <div class="comment-button-container">
+          <!-- <div class="comment-button-container">
             <div class="action-buttons">
               <button class="action-button">❤️ Like</button>
               <button class="action-button">🔁 Repost</button>
@@ -89,7 +89,7 @@
               <span>❤️ 2,905</span>
               <span>💬 43</span>
             </div>
-          </div>
+          </div> -->
         </div>
         <!-- BELOW LEFT -->
         <div class="about-right-container">
@@ -100,22 +100,22 @@
               </div>
               <div class="user-name">{{ artist.username }}</div>
               <div class="user-stats">
-                <span class="user-votes">105</span>
-                <span class="user-posts">2</span>
+                <!-- <span class="user-votes">{{ artist.followers_count }}</span>
+                <span class="user-posts">2</span> -->
               </div>
-              <div class="user-follow-button-container">
+              <!-- <div class="user-follow-button-container">
                 <button class="follow-button">Follow</button>
-              </div>
+              </div> -->
             </div>
           </div>
 
           <div class="comment-list-container">
             <div class="list-header">
-              <span>93 comments</span>
+              <span>{{ comments.length }} comments</span>
               <div class="sort-dropdown">
                 Sorted by:
                 <select>
-                  <option value="newest">Newest</option>
+                  <option value="newest" selected>Newest</option>
                   <option value="oldest">Oldest</option>
                   <option value="most-liked">Most Liked</option>
                 </select>
@@ -132,7 +132,6 @@
                   </div>
                   <div class="comment-text">{{ comment.content }}</div>
                 </div>
-                <div class="comment-likes"><span>0</span> ❤️</div>
               </div>
             </div>
           </div>
@@ -142,11 +141,11 @@
       <div class="sidebar-container">
         <div class="album-container">
           <div class="related-header">
-            <span>RELATED TRACKS</span>
+            <span>IN ALBUM TRACKS</span>
             <a href="#" class="c-757575">View all</a>
           </div>
           <div class="related-tracks">
-            <div class="track-item" *ngFor="let song of relatedSongs">
+            <div class="track-item" *ngFor="let song of relatedSongs" (click)="navigateToDetail(song.id)">
               <img [src]="song.image_url" alt="Track Cover" />
               <div class="track-info">
                 <div class="track-title">{{ song.name }}</div>
@@ -163,7 +162,7 @@
             </div>
           </div>
         </div>
-        <div class="like-container">
+        <!-- <div class="like-container">
           <div class="like-header">
             <span class="like-count">2,905 LIKES</span>
             <a href="#" class="view-all c-757575">View all</a>
@@ -187,7 +186,7 @@
               <img src="https://via.placeholder.com/40" alt="Avatar" class="like-acc" />
             </div>
           </div>
-        </div>
+        </div> -->
         <div class="share-container">
           <div class="share-header">GO MOBILE</div>
           <div class="app-links">

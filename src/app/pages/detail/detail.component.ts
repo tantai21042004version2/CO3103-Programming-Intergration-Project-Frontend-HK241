@@ -11,6 +11,9 @@ import { convertResponseToArtist } from 'src/app/utils/to.artirst';
 import { convertResponseToAlbum } from 'src/app/utils/to.album';
 import { convertResponseToComment } from 'src/app/utils/to.comment';
 import { Listener } from 'src/app/models/listener';
+import { CommentDto } from 'src/app/dtos/comment.dto';
+import { ApiResponse } from 'src/app/responses/api.response';
+import { convertResponseToGenre } from 'src/app/utils/to.genre';
 
 @Component({
   selector: 'app-detail',
@@ -75,6 +78,9 @@ export class DetailComponent extends BaseComponent implements OnInit {
   currentTime: number = 0;
   volume: number = 0.5;
 
+
+  comment: CommentDto = { content: '', song_id: 0 };
+
   constructor(private route: ActivatedRoute, private cdr: ChangeDetectorRef) {
     super();
   }
@@ -87,11 +93,16 @@ export class DetailComponent extends BaseComponent implements OnInit {
   // }
 
   async ngOnInit(): Promise<void> {
-    const id = this.route.snapshot.params['id'];
-    this.song_id = Number(id);
+    this.route.params.subscribe((params) => {
+      this.song_id = +params['id']; // Lấy id từ URL
+      this.loadSongData(); // Gọi hàm tải dữ liệu bài hát
+    });
     this.listener.image_url = this.tokenService.getImageUrl();
     this.listener.id = this.tokenService.getUserId();
 
+  }
+
+  async loadSongData(): Promise<void> {
     try {
       const [songDetailResponse, commentsResponse] = await Promise.all([
         this.songService.detail(this.song_id).toPromise(),
@@ -103,6 +114,7 @@ export class DetailComponent extends BaseComponent implements OnInit {
         this.detailSong = convertResponseToSong(song);
         this.artist = convertResponseToArtist(song.artist);
         this.album = convertResponseToAlbum(song.album);
+        this.genres = convertResponseToGenre(song.genre);
 
         this.updateAudioUrl(this.detailSong.secure_url, this.detailSong.duration);
       }
@@ -133,6 +145,8 @@ export class DetailComponent extends BaseComponent implements OnInit {
     this.cdr.detectChanges();
   }
 
+
+
   togglePlayPause(audio: HTMLAudioElement): void {
     if (!this.detailSong.secure_url) {
       console.error("Audio URL is empty!");
@@ -140,17 +154,14 @@ export class DetailComponent extends BaseComponent implements OnInit {
     }
 
     if (!this.isPlaying) {
-      // Chỉ gọi play khi audio không bị paused
       audio.play()
         .then(() => {
-          console.log("Audio is playing!");
           this.isPlaying = true;
         })
         .catch((error) => {
           console.error("Error during play:", error);
         });
     } else {
-      // Gọi pause nếu đang phát
       audio.pause();
       this.isPlaying = false;
       console.log("Audio is paused!");
@@ -209,4 +220,24 @@ export class DetailComponent extends BaseComponent implements OnInit {
   onEnded(audio: HTMLAudioElement): void {
     this.isPlaying = false;
   }
+
+  navigateToDetail(id: number) {
+    this.router.navigate(['/song', id]);
+  }
+
+  createComment() {
+    this.comment.song_id = this.song_id;
+    if (this.comment.content.trim() === '') {
+      return;
+    }
+    debugger;
+
+    this.commentService.create(this.comment, this.tokenService.getToken()).subscribe((response: ApiResponse) => {
+      if (response.status === "OK") {
+        this.comments.push(convertResponseToComment(response.data));
+        this.comment.content = '';
+      }
+    });
+  }
 }
+

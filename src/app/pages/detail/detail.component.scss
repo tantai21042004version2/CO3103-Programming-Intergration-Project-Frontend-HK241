@@ -10,18 +10,23 @@
 .fz-12 {
   font-size: 12px;
 }
+
 .fz-24 {
   font-size: 24px;
 }
+
 .fz-40 {
   font-size: 40px;
 }
+
 .fw-400 {
   font-weight: 400;
 }
+
 .fw-700 {
   font-weight: 700;
 }
+
 .br-20 {
   border-radius: 20px;
 }
@@ -41,6 +46,7 @@
 .w-16 {
   width: 16px !important;
 }
+
 .w-18 {
   width: 18px;
 }
@@ -72,6 +78,7 @@
 .m-b-8 {
   margin-bottom: 8px;
 }
+
 .m-b-12 {
   margin-bottom: 12px;
 }
@@ -87,24 +94,31 @@
 .m-t-b-12 {
   margin: 12px 0;
 }
+
 .m-r-4 {
   margin-right: 4px;
 }
+
 .m-l-4 {
   margin-left: 4px;
 }
+
 .m-l-12 {
   margin-left: 12px;
 }
+
 .m-l-100 {
   margin-left: 100px;
 }
+
 .m-l-60 {
   margin-left: 60px;
 }
+
 .c-white {
   color: #fff;
 }
+
 .c-ccc {
   color: #ccc;
 }
@@ -135,6 +149,7 @@
   display: flex;
   align-items: center;
 }
+
 .flex-dir-col {
   display: flex;
   flex-direction: column;
@@ -148,7 +163,7 @@
 
 // Private
 .detail-page-container {
-  min-height: 600px;
+  min-height: 500px;
   display: flex;
   flex-direction: column;
   // justify-content: center;
@@ -216,6 +231,7 @@
   background-color: #999999;
   border-radius: 20px;
 }
+
 .genre:hover {
   cursor: pointer;
   animation: hover-hesitation 0.5s ease-in-out;
@@ -253,6 +269,7 @@
   height: 200px;
   @include flex(space-between, flex-end);
 }
+
 .progress-container {
   margin-top: 10px;
   width: 90%;
@@ -306,7 +323,8 @@
   background: #ccc;
   border-radius: 5px;
   overflow: hidden;
-  display: none; /* Hidden by default */
+  display: none;
+  /* Hidden by default */
 }
 
 .volume-bar .volume-level {
@@ -654,6 +672,8 @@
   gap: 10px;
   align-items: center;
   overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .track-item img {
@@ -747,6 +767,7 @@
   transition: transform 0.2s;
   margin-right: -20px;
 }
+
 .like-avatars img:hover {
   // transform: scale(1.1);
   // border-color: #007bff;
@@ -825,13 +846,19 @@
   0% {
     transform: scale(1);
   }
+
   60% {
-    transform: scale(1.1); /* First increase */
+    transform: scale(1.1);
+    /* First increase */
   }
+
   80% {
-    transform: scale(1.05); /* Slight shrink for hesitation */
+    transform: scale(1.05);
+    /* Slight shrink for hesitation */
   }
+
   100% {
-    transform: scale(1.1); /* Settle at larger size */
+    transform: scale(1.1);
+    /* Settle at larger size */
   }
 }

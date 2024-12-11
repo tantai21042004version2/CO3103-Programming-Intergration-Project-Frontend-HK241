@@ -5,7 +5,7 @@
         <p class="footer-subtitle">
             Save tracks, follow artists and build playlists. All for free.
         </p>
-        <div class="action-buttons">
+        <div class="action-buttons" *ngIf="this.token == ''">
             <button class="btn btn-warning create-account-btn" (click)="goToSignUp()">Create account</button>
             <span class="already-account">Already have an account?</span>
             <button class="btn btn-outline-secondary sign-in-btn" (click)="goToSignIn()">Sign in</button>

@@ -6,7 +6,6 @@
     </div>
     <nav class="menu">
       <ul>
-        <li (click)="navigateToOverview()">Overview</li>
         <li (click)="navigateToTracks()">Tracks</li>
         <li (click)="navigateToNewTrack()">New Track</li>
         <li (click)="navigateToAlbums()">Albums</li>
@@ -41,8 +40,8 @@
               <img [src]="artirstInfor.image_url" alt="jackbentreimg" />
             </i>
             <ul class="artist-dropdown-menu">
-              <li><a>Profile</a></li>
-              <li><a>Logout</a></li>
+              <li (click)="navigateToProfile()"><a>Profile</a></li>
+              <li (click)="logout()"><a>Logout</a></li>
             </ul>
           </div>
         </div>

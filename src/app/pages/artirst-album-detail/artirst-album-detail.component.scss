@@ -235,6 +235,7 @@ body {
   color: #ff5a5a;
   font-weight: bold;
 }
+
 // Main content
 .main-content {
   height: 100vh;
@@ -243,6 +244,7 @@ body {
   @include flex(none, center);
   flex-direction: column;
 }
+
 // header   content
 .header-content {
   width: 100%;
@@ -287,22 +289,27 @@ body {
   flex-direction: column;
   @include flex(space-between, none);
 }
+
 .body-content-top {
   width: 100%;
-  height: 25%; /* Chiếm 40% chiều cao màn hình */
+  height: 300px;
+  /* Chiếm 40% chiều cao màn hình */
   overflow: hidden;
   border-radius: 8px;
 }
 
 .body-content-top .banner-img {
   width: 100%;
-  object-fit: cover; /* Giữ tỉ lệ ảnh và gói gọn trong phần tử */
+  object-fit: cover;
+  /* Giữ tỉ lệ ảnh và gói gọn trong phần tử */
 }
 
 .body-content-bot {
   display: flex;
-  flex: 1; /* Chiếm phần còn lại của màn hình */
-  overflow: auto; /* Cuộn nội dung nếu vượt quá chiều cao */
+  // flex: 1;
+  /* Chiếm phần còn lại của màn hình */
+  overflow: auto;
+  /* Cuộn nội dung nếu vượt quá chiều cao */
   gap: 20px;
   margin-top: 10px;
 }
@@ -310,7 +317,8 @@ body {
 .bot-left,
 .bot-right {
   flex: 1;
-  overflow-y: auto; /* Cuộn nội dung nếu nhiều */
+  overflow-y: auto;
+  /* Cuộn nội dung nếu nhiều */
 }
 
 .song-card {
@@ -321,14 +329,17 @@ body {
   padding: 10px;
   margin-bottom: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  max-height: 100px; /* Hạn chế chiều cao của thẻ bài hát */
+  max-height: 100px;
+  /* Hạn chế chiều cao của thẻ bài hát */
 }
 
 .song-card .song-img {
-  flex: 0 0 60px; /* Giới hạn kích thước ảnh */
+  flex: 0 0 60px;
+  /* Giới hạn kích thước ảnh */
   width: 60px;
   height: 60px;
-  object-fit: cover; /* Gói gọn ảnh trong khung */
+  object-fit: cover;
+  /* Gói gọn ảnh trong khung */
   border-radius: 8px;
   margin-right: 10px;
 }
@@ -345,7 +356,8 @@ body {
   padding: 10px;
   margin-bottom: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  max-height: 100px; /* Hạn chế chiều cao của thẻ bình luận */
+  max-height: 100px;
+  /* Hạn chế chiều cao của thẻ bình luận */
   overflow: hidden;
   @include flex(space-between, center);
 }

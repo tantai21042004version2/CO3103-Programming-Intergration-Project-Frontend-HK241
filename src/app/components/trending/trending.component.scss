@@ -44,13 +44,19 @@
   border-radius: 5px;
   padding: 10px;
   box-sizing: border-box;
-  cursor: pointer;
+  cursor: pointer !important;
+}
+
+.track-card:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
 }
 
 .track-image {
   width: 100%;
   height: auto;
   border-radius: 5px;
+  cursor: pointer !important;
 }
 
 .track-name {

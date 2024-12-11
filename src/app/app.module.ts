@@ -32,6 +32,8 @@ import { AdminApproveAlbumComponent } from './pages/admin-approve-album/admin-ap
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { ArtistAlbumUploadDetailComponent } from './pages/artist-album-upload-detail/artist-album-upload-detail.component';
+import { DefaultHeaderComponent } from './components/default-header/default-header.component';
+import { UserResetPasswordComponent } from './pages/user-reset-password/user-reset-password.component';
 
 
 @NgModule({
@@ -65,6 +67,8 @@ import { ArtistAlbumUploadDetailComponent } from './pages/artist-album-upload-de
     AdminDashboardComponent,
     UserProfileComponent,
     ArtistAlbumUploadDetailComponent,
+    DefaultHeaderComponent,
+    UserResetPasswordComponent,
   ],
   imports: [
     BrowserModule,

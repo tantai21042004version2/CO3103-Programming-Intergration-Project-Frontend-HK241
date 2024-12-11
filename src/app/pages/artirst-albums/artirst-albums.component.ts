@@ -53,10 +53,6 @@ export class ArtirstAlbumsComponent extends BaseComponent {
     });
   }
 
-  navigateToOverview() {
-    this.router.navigate(['/artist/overview']);
-  }
-
   navigateToTracks() {
     this.router.navigate(['/artist/tracks']);
   }
@@ -71,5 +67,14 @@ export class ArtirstAlbumsComponent extends BaseComponent {
 
   navigateToAlbumUpload() {
     this.router.navigate(['/artist/album-upload-detail']);
+  }
+
+  navigateToProfile() {
+    this.router.navigate(['/user/profile']);
+  }
+
+  logout() {
+    this.tokenService.removeToken();
+    this.router.navigate(['/']);
   }
 } 

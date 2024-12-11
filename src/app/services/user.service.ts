@@ -58,13 +58,17 @@ export class UserService {
     }
 
     private apiUploadProfile = `${environment.apiBaseUrl}/users/upload-profile-image`;
-    uploadProfileImage(files: File[]): Observable<ApiResponse> {
+    uploadProfileImage(files: File[], token: string): Observable<ApiResponse> {
         const formData = new FormData();
         for (let i = 0; i < files.length; i++) {
-            formData.append('files', files[i]);
+            formData.append('file', files[i]);
         }
         // Upload images for user profile
-        return this.http.post<ApiResponse>(this.apiUploadProfile, formData);
+        return this.http.post<ApiResponse>(this.apiUploadProfile, formData, {
+            headers: new HttpHeaders({
+                Authorization: `Bearer ${token}`
+            })
+        });
     }
 
     private apiUserDetail = `${environment.apiBaseUrl}/users/details`;
@@ -89,9 +93,8 @@ export class UserService {
     }
 
     private apiResetPassword = `${environment.apiBaseUrl}/users/reset-password`;
-    resetPassword(userId: number, token: string): Observable<ApiResponse> {
-        this.apiResetPassword += `${userId}`;
-        return this.http.put<ApiResponse>(this.apiResetPassword, null, {
+    resetPassword(body: { current_password: string, new_password: string, retype_new_password: string }, token: string): Observable<ApiResponse> {
+        return this.http.patch<ApiResponse>(this.apiResetPassword, body, {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`

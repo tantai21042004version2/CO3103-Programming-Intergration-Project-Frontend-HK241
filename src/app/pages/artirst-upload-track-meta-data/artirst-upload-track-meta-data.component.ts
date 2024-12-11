@@ -99,10 +99,6 @@ export class ArtirstUploadTrackMetaDataComponent extends BaseComponent implement
     }, 2000);
   }
 
-  navigateToOverview() {
-    this.router.navigate(['/artist/overview']);
-  }
-
   navigateToTracks() {
     this.router.navigate(['/artist/tracks']);
   }

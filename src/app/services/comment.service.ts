@@ -19,5 +19,11 @@ export class CommentService {
     getBySongId(songId: number, params: { page: number, limit: number }): Observable<ApiResponse> {
         return this.http.get<ApiResponse>(`${this.apiGetBySongId}/${songId}`, { params: params });
     }
+
+    apiCreate = `${environment.apiBaseUrl}/comments`;
+    create(data: any, token: string): Observable<ApiResponse> {
+        return this.http.post<ApiResponse>(this.apiCreate, data,
+            { headers: { Authorization: `Bearer ${token}` } });
+    }
 }
 
