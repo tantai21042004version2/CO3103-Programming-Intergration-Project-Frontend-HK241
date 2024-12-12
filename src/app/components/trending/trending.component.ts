@@ -12,15 +12,52 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class TrendingComponent extends BaseComponent implements OnInit {
   tracks: SongResponse[] = [];
 
+  totalPages = 1;
+  currentPage = 1;
+
+  goToPage(page: number): void {
+    if (page > 0 && page <= this.totalPages) {
+      this.currentPage = page;
+      this.getSong();
+    }
+  }
+
+  nextPage(): void {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.getSong();
+    }
+  }
+
+  prevPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.getSong();
+    }
+  }
+
+  lastPage(): void {
+    this.currentPage = this.totalPages;
+    this.getSong();
+  }
+
+  firstPage(): void {
+    this.currentPage = 1;
+    this.getSong();
+  }
+
   ngOnInit(): void {
-    debugger;
-    this.songService.getAllSong({ page: 1, limit: 15, keyword: '', album_id: '' }).subscribe({
+    this.getSong();
+  }
+
+  getSong(): void {
+    this.songService.getAllSong({ page: this.currentPage, limit: 12, keyword: '', album_id: '' }).subscribe({
       next: (apiResponse: ApiResponse) => {
-        debugger;
         this.tracks = apiResponse.data.songs;
+        this.totalPages = apiResponse.data.total_pages;
+        this.currentPage = apiResponse.data.current_page;
       },
       error: (error: HttpErrorResponse) => {
-        debugger;
         console.log(error);
       }
     });

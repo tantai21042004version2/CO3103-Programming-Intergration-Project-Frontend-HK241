@@ -19,11 +19,13 @@
 
 .trending-content {
   max-width: 1152px;
-  max-height: calc(2 * 320px);
+  height: fit-content;
   /* Hiển thị tối đa 2 hàng */
   overflow-y: hidden;
   /* Ẩn scrollbar */
   padding: 20px 0;
+
+  overflow: hidden;
 }
 
 .row {
@@ -35,8 +37,10 @@
 }
 
 .track-card {
+  min-width: 172px;
+  min-height: 181px;
+
   flex: 0 0 calc(100% / 6 - 20px);
-  /* Chia đều thành 6 cột */
   max-width: calc(100% / 6 - 20px);
   text-align: center;
   background-color: #f9f9f9;
@@ -52,9 +56,16 @@
   transition: transform 0.3s ease-in-out;
 }
 
+.track-card-image {
+  width: 100%;
+  height: 128px;
+  background-color: #f9f9f9;
+}
+
 .track-image {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   border-radius: 5px;
   cursor: pointer !important;
 }
@@ -144,4 +155,55 @@
 
 .control-button:hover {
   background-color: #ddd;
+}
+
+.pagination-container {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.pagination-button.active {
+  background-color: #333;
+}
+
+.pagination-button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+button {
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+button.active {
+  background-color: #f50;
+  color: white;
+  border: 1px solid #f50;
+}
+
+button:disabled {
+  background-color: #f0f0f0;
+  color: #aaa;
+  cursor: not-allowed;
+}
+
+button:not(:disabled):hover {
+  background-color: #f4f4f4;
 }

@@ -6,9 +6,32 @@
     <div class="row">
       <div (click)="navigateToDetail(track.id)" class="track-card"
         *ngFor="let track of tracks | slice : 0 : 12; let i = index">
-        <img [src]="track.image_url" alt="Track Image" class="track-image" />
+        <div class="track-card-image">
+          <img [src]="track.image_url" alt="Track Image" class="track-image" />
+        </div>
         <p class="track-name">{{ track.name }}</p>
         <p class="track-artist">{{ track.artist }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="pagination-container">
+    <div class="pagination-wrapper">
+      <div class="pagination-button">
+        <button (click)="firstPage()" [disabled]="currentPage === 1">First</button>
+      </div>
+      <div class="pagination-button">
+        <button (click)="prevPage()" [disabled]="currentPage === 1">Prev</button>
+      </div>
+      <ng-container *ngFor="let page of [].constructor(totalPages); let i = index">
+        <button (click)="goToPage(i + 1)" [class.active]="currentPage === i + 1">
+          {{ i + 1 }}
+        </button>
+      </ng-container>
+      <div class="pagination-button">
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+      </div>
+      <div class="pagination-button">
+        <button (click)="lastPage()" [disabled]="currentPage === totalPages">Last</button>
       </div>
     </div>
   </div>
