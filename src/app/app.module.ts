@@ -34,6 +34,8 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { ArtistAlbumUploadDetailComponent } from './pages/artist-album-upload-detail/artist-album-upload-detail.component';
 import { DefaultHeaderComponent } from './components/default-header/default-header.component';
 import { UserResetPasswordComponent } from './pages/user-reset-password/user-reset-password.component';
+import { SearchComponent } from './pages/search/search.component';
+import { RecommendComponent } from './pages/recommend/recommend.component';
 
 
 @NgModule({
@@ -69,6 +71,8 @@ import { UserResetPasswordComponent } from './pages/user-reset-password/user-res
     ArtistAlbumUploadDetailComponent,
     DefaultHeaderComponent,
     UserResetPasswordComponent,
+    SearchComponent,
+    RecommendComponent,
   ],
   imports: [
     BrowserModule,

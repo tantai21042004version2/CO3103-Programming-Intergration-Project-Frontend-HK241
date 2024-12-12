@@ -22,9 +22,13 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { ArtirstProfileControlComponent } from './pages/artirst-profile-control/artirst-profile-control.component';
 import { ArtistAlbumUploadDetailComponent } from './pages/artist-album-upload-detail/artist-album-upload-detail.component';
 import { UserResetPasswordComponent } from './pages/user-reset-password/user-reset-password.component';
+import { SearchComponent } from './pages/search/search.component';
+import { TrendingComponent } from './components/trending/trending.component';
+import { RecommendComponent } from './pages/recommend/recommend.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: 'search', component: SearchComponent },
     { path: 'home', component: HomepageComponent },
     { path: 'signup', component: SignupComponent },
     { path: 'signin', component: SigninComponent },
@@ -45,6 +49,7 @@ const routes: Routes = [
     { path: 'admin/dashboard', component: AdminDashboardComponent, canActivate: [RoleGuard], data: { roles: ['ADMIN'] } },
     { path: 'user/profile', component: UserProfileComponent, canActivate: [RoleGuard], data: { roles: ['LISTENER', 'ARTIST', 'ADMIN'] } },
     { path: 'user/profile/change-password', component: UserResetPasswordComponent, canActivate: [RoleGuard], data: { roles: ['LISTENER', 'ARTIST', 'ADMIN'] } },
+    { path: 'song/:id/recommend', component: RecommendComponent },
     { path: 'no-access', component: NoaccessComponent },
 ];
 
