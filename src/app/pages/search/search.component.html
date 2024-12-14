@@ -1,1 +1,149 @@
-<p>search works!</p>
+<div class="container">
+  <div class="header">
+    <div class="header-left">
+      <div class="header-logo">
+        <img src="../../../assets/whiteSClogo.png" alt="SClogo" />
+      </div>
+      <div class="header-navWrapper" role="navigation">
+        <ul class="header-navMenu">
+          <li class="home-navMenu"><a href="#">Home</a></li>
+          <li class="feed-navMenu"><a href="#">Feed</a></li>
+          <li class="library-navMenu"><a href="#">Library</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="header-middle">
+      <div class="header-search" role="search">
+        <form>
+          <input
+            type="search"
+            name="search"
+            id="search"
+            placeholder="Search for artists, bands, tracks, podcasts"
+          />
+        </form>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="sign-in-btn">
+        <button>Sign in</button>
+      </div>
+      <div class="create-acc-btn">
+        <button>Create account</button>
+      </div>
+      <div class="upload-btn">
+        <button>Upload</button>
+      </div>
+      <div class="more-btn">
+        <img src="../../../assets/ellipsis.svg" alt="ellipsis" />
+      </div>
+    </div>
+  </div>
+  <div class="main-content">
+    <div class="main-content-top">
+      <div class="search-title">
+        <h1>Search</h1>
+      </div>
+    </div>
+    <div class="main-content-bottom">
+      <div class="main-content-bottom-left">
+        <!-- <div class="search-options">
+          <ul class="search-options-inner">
+            <li>
+              <a href="#">
+                <img
+                  src="../../../assets/search-icon.png"
+                  alt="Everything"
+                  class="search-icon"
+                />
+                Everything
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img
+                  src="../../../assets/track-icon.png"
+                  alt="Tracks"
+                  class="search-icon"
+                />
+                Tracks
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img
+                  src="../../../assets/people-icon.png"
+                  alt="People"
+                  class="search-icon"
+                />
+                People
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img
+                  src="../../../assets/album-icon.png"
+                  alt="Albums"
+                  class="search-icon"
+                />
+                Albums
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img
+                  src="../../../assets/playlist.png"
+                  alt="Playlists"
+                  class="search-icon"
+                />
+                Playlists
+              </a>
+            </li>
+          </ul>
+        </div> -->
+        <div class="search-options">
+          <ul class="search-options-inner">
+            <li
+              *ngFor="let item of menuItems; let i = index"
+              [class.selected]="selectedIndex === i"
+              (click)="selectItem(i)"
+            >
+              <a href="">
+                <img [src]="item.icon" [alt]="item.label" />
+                {{ item.label }}
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer">
+          <a href="">Legal</a>
+          <span>-</span>
+          <a href="">Privacy</a>
+          <span>-</span>
+          <a href="">Cookie Policy</a>
+          <span>-</span>
+          <a href="">Cookie Manager</a>
+          <span>-</span>
+          <a href="">Imprint</a>
+          <span>-</span>
+          <a href="">Artist Resources</a>
+          <span>-</span>
+          <a href="">Blog</a>
+          <span>-</span>
+          <a href="">Charts</a>
+          <span>-</span>
+          <a href="">Transparency Reports</a>
+          <div class="footer-language">
+            <a href="#">Language:<span> English(US)</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="main-content-bottom-right">
+        <div class="search-empty">
+          <p>Search SoundCloud for tracks, artists, podcasts, and playlists.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

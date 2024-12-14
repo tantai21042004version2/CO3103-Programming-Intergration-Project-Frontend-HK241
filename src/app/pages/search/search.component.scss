@@ -1,0 +1,260 @@
+/* Private */
+/* Mixin */
+/* Flexbox Mixin */
+@mixin flex-box($direction: none, $justify: center, $align: center, $gap: 0) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+/* General Container */
+.container {
+  @include flex-box(column, none, none);
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+/* Header */
+.header {
+  @include flex-box(center, center);
+  max-height: 46px;
+  padding: 20px;
+  color: #ccc;
+  background-color: #333;
+  border-bottom: 1px solid #ddd;
+}
+
+.header-left,
+.header-middle,
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.header-middle {
+  min-height: 46px;
+  padding: 0px 8px;
+  border-left: 1px solid #000;
+}
+
+.header-logo img {
+  max-height: 40px;
+}
+
+.header-navMenu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.header-navMenu li {
+  float: left;
+}
+
+.header-navMenu a {
+  text-decoration: none;
+  height: 46px;
+  width: 104px;
+  font-size: 14px;
+  display: block;
+  line-height: 46px;
+  text-align: center;
+  border-left: 1px solid #000;
+}
+
+.header-navMenu a:hover {
+  color: #fff;
+}
+
+.header-search {
+  display: block;
+  visibility: visible;
+}
+
+.header-search input {
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  outline-offset: -2;
+  height: 28px;
+  width: 380px;
+}
+
+.sign-in-btn {
+  border: 1px solid #ccc;
+  color: #fff;
+  border-radius: 2px;
+  padding: 2px 10px;
+  font-size: 14px;
+  margin-right: 8px;
+}
+.sign-in-btn:hover {
+  border: 1px solid #fff;
+}
+
+.create-acc-btn {
+  color: #fff;
+  background-color: #f50;
+  padding: 1px 8px;
+  margin-right: 8px;
+  border-radius: 2px;
+}
+
+.upload-btn {
+  color: #ccc;
+  font-size: 14px;
+  padding: 12px;
+}
+
+.more-btn {
+  width: 46px;
+  height: 46px;
+  @include flex-box();
+  cursor: pointer;
+}
+.more-btn:hover img {
+  color: #ccc;
+}
+.more-btn img {
+  width: 20px;
+  height: auto;
+}
+
+/* Main Content */
+.main-content {
+  padding: 20px 200px;
+}
+
+.main-content-top {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.search-title h1 {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.main-content-bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-content-bottom-left {
+  top: 94px;
+  width: 220px;
+}
+
+/* Tổng quan */
+.search-options-inner {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  @include flex-box(column, none, none);
+}
+
+.search-options-inner li {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  padding: 10px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+/* Trạng thái mặc định */
+.search-options-inner li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.search-options-inner li img {
+  width: 16px;
+  height: 16px;
+}
+
+/* Khi được chọn */
+.search-options-inner li.selected {
+  background-image: url("../../../assets/orange-box.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+.search-options-inner li.selected a {
+  color: white;
+}
+
+.search-options-inner li.selected img {
+  filter: brightness(0) invert(1); /* Đổi màu icon */
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap; /* Để xử lý nếu danh sách quá dài */
+  gap: 5px; /* Khoảng cách giữa các phần tử */
+  font-size: 14px; /* Kích thước chữ */
+  align-items: center;
+  font-size: 12px;
+  color: #ccc;
+  border-top: 1px solid #ddd;
+  padding: 12px 0;
+}
+
+.footer a {
+  text-decoration: none;
+  color: #ccc;
+}
+
+.footer a:hover {
+  color: #333;
+}
+
+.footer-language {
+  margin-top: 10px;
+}
+
+.footer-language a {
+  text-decoration: none;
+  color: #3388dd;
+}
+
+.footer-language a:hover {
+  color: #333;
+}
+
+.footer-language a span {
+  color: #333;
+}
+.main-content-bottom-right {
+  width: 80%;
+  @include flex-box(column, center, center);
+}
+
+.search-empty {
+  text-align: center;
+  width: 80%;
+  padding-top: 300px;
+  background-image: url(../../../assets/hugeSearchIcon.svg);
+  background-repeat: no-repeat;
+  background-position: top;
+  margin: 60px auto 0;
+}
+
+.search-empty p {
+  font-size: 18px;
+  color: #666;
+  text-align: center;
+  margin-top: 20px;
+}
